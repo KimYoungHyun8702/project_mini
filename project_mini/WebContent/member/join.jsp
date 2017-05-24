@@ -21,7 +21,7 @@
 <table cellpadding="5">
 	<tr style = "text-align:center">
 		<td>ID</td>
-		<td><input id="aa" type="text" name="memberId" style="ime-mode:disabled"></td>
+		<td><input id="id" type="text" name="id" style="ime-mode:disabled"></td>
 		<td><input type="button" onclick="checkId()" value="중복체크"></input></td>
 	</tr>
 	<tr style = "text-align:center">
@@ -79,7 +79,7 @@ function foo2() {
 
 // 아이디 중복확인(아이디를 입력하고 중복확인 버튼을 누르면 실행됨)
 function checkId() {
- var sid = document.getElementById("aa") .value;               // 아이디값 가져오기
+ var sid = document.getElementById("id") .value;               // 아이디값 가져오기
  if(sid == "") alert("입력된 아이디가 없습니다.")      // 없는 경우 메시지출력
  	/* 값이 있는 경우 체크창 출력
     window.open 명령을 사용하여 새로운 창을 하나 띄웁니다.
