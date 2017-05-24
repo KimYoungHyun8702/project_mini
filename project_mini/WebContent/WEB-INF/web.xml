@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
+	<display-name>myweb</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<!--================================회원 관리 ========================================  -->
+	<!-- MemberLoginServlet 객체 등록 -->
+	<servlet>
+		<servlet-name>memberLogin</servlet-name>
+		<servlet-class>member.servlet.MemberLoginServlet</servlet-class> <!-- Servlet파일 경로 -->
+	</servlet>
+	<!-- MemberLoginServlet 경로 지정 -->
+	<servlet-mapping>
+		<servlet-name>memberLogin</servlet-name>
+		<url-pattern>/memberLogin</url-pattern>
+	</servlet-mapping>
+	
+	<!-- MemberLogoutServlet 객체 등록 -->
+	<servlet>
+		<servlet-name>memberLogout</servlet-name>
+		<servlet-class>member.servlet.MemberLogoutServlet</servlet-class> <!-- Servlet파일 경로 -->
+	</servlet>
+	<!-- MemberLogoutServlet 경로 지정 -->
+	<servlet-mapping>
+		<servlet-name>memberLogout</servlet-name>
+		<url-pattern>/memberLogout</url-pattern>
+	</servlet-mapping>
+	
+	<!-- MemberJoinServlet 객체 등록 -->
+	<servlet>
+		<servlet-name>memberJoin</servlet-name>
+		<servlet-class>member.servlet.MemberJoinServlet</servlet-class> <!-- Servlet파일 경로 -->
+	</servlet>
+	<!-- MemberJoinServlet 경로 지정 -->
+	<servlet-mapping>
+		<servlet-name>memberJoin</servlet-name>
+		<url-pattern>/memberJoin</url-pattern>
+	</servlet-mapping>
+	
+	<!-- MemberUpdateServlet 객체 등록 -->
+	<servlet>
+		<servlet-name>memberUpdate</servlet-name>
+		<servlet-class>member.servlet.MemberUpdateServlet</servlet-class> <!-- Servlet파일 경로 -->
+	</servlet>
+	<!-- MemberUpdateServlet 경로 지정 -->
+	<servlet-mapping>
+		<servlet-name>memberUpdate</servlet-name>
+		<url-pattern>/memberUpdate</url-pattern>
+	</servlet-mapping>
+	
+	<!-- MemberDeleteServlet 객체 등록 -->
+	<servlet>
+		<servlet-name>memberDelete</servlet-name>
+		<servlet-class>member.servlet.MemberDeleteServlet</servlet-class> <!-- Servlet파일 경로 -->
+	</servlet>
+	<!-- MemberUpdateServlet 경로 지정 -->
+	<servlet-mapping>
+		<servlet-name>memberDelete</servlet-name>
+		<url-pattern>/memberDelete</url-pattern>
+	</servlet-mapping>
+	
+	<!-- MemberIdCheckServlet 객체 등록 -->
+	<servlet>
+		<servlet-name>memberIdCheck</servlet-name>
+		<servlet-class>member.servlet.MemberIdCheckServlet</servlet-class> <!-- Servlet파일 경로 -->
+	</servlet>
+	<!-- MemberIdCheckServlet 경로 지정 -->
+	<servlet-mapping>
+		<servlet-name>memberIdCheck</servlet-name>
+		<url-pattern>/memberIdCheck</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	
+	
+	<!--===============================게시판 관리 ===========================================  -->
+		<context-param>
+			<param-name>rootPath</param-name>
+			<param-value>/project_mini</param-value>
+		</context-param>
+		
+	<servlet>
+		<servlet-name>InsertController</servlet-name>
+		<servlet-class>board.controller.InsertController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InsertController</servlet-name>
+		<url-pattern>/InsertController</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>SelectController</servlet-name>
+		<servlet-class>board.controller.SelectController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SelectController</servlet-name>
+		<url-pattern>/SelectController</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>SelectBoardInfoController</servlet-name>
+		<servlet-class>board.controller.SelectBoardInfoController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SelectBoardInfoController</servlet-name>
+		<url-pattern>/SelectBoardInfoController</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ModifyController</servlet-name>
+		<servlet-class>board.controller.ModifyController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ModifyController</servlet-name>
+		<url-pattern>/ModifyController</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>DeleteController</servlet-name>
+		<servlet-class>board.controller.DeleteController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteController</servlet-name>
+		<url-pattern>/DeleteController</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>PostModifyController</servlet-name>
+		<servlet-class>board.controller.PostModifyController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PostModifyController</servlet-name>
+		<url-pattern>/PostModifyController</url-pattern>
+	</servlet-mapping>
+	
+
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>board.filter.BoardFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<!--==============================영화 관리 ===========================================-->
+	<!-- Servlet 객체 등록 -->
+
+	<servlet>
+		<servlet-name>movie main servlet</servlet-name>
+		<servlet-class>servlet.MovieMainServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>movie main servlet</servlet-name>
+		<url-pattern>/mainServlet</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>movie detail servlet</servlet-name>
+		<servlet-class>servlet.MovieDetailServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>movie detail servlet</servlet-name>
+		<url-pattern>/detailServlet</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>movie search servlet</servlet-name>
+		<servlet-class>servlet.MovieSearchServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>movie search servlet</servlet-name>
+		<url-pattern>/searchServlet</url-pattern>
+	</servlet-mapping>
+	
+</web-app>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- /** 설명 작성자 : 김경혜,오효원 최초 작성일 : 2017.05.23 **평균평점 수정필요. 변경이력 xxx 며칠날 수정 
+-김경혜) 평균평점 수정 : 2017.05.24수정
+	*/ -->
+<mapper namespace="dao.config.mapper.movieMapper">
+	<sql id="select-all-sql">
+		SELECT m.movie_id,
+				m.movie_title,
+				m.movie_genre,
+				m.movie_director,
+				m.movie_actor,
+				m.movie_date,
+				m.movie_image,
+				m.movie_video,
+				b.movie_avg_score
+		FROM movie m,(
+			SELECT movie_id, sum(board_score)/count(board_score) movie_avg_score
+			FROM board 
+			GROUP BY movie_id) b 
+		WHERE m.movie_id=b.movie_id(+)
+	</sql>
+	<sql id="select-part-sql">
+		SELECT movie_id,
+		movie_title,
+		movie_image
+		FROM movie
+	</sql>
+
+	<resultMap type="movie" id="movie-resultmap">
+		<id column="movie_id" property="movieId" />
+		<result column="movie_title" property="movieTitle" />
+		<result column="movie_genre" property="movieGenre" />
+		<result column="movie_director" property="movieDirector" />
+		<result column="movie_actor" property="movieActor" />
+		<result column="movie_date" property="movieDate" />
+		<result column="movie_image" property="movieImage" />
+		<result column="movie_video" property="movieVideo" />
+		<result column="movie_avg_score" property="movieAvgScore"/>
+	</resultMap>
+	<!-- avgScore용 -->
+<!-- 	<resultMap type="movie" id="movie-join-resultmap" extends="movie-resultmap"> -->
+<!-- 		<result column="movie_avg_score" property="movieAvgScore"/> -->
+<!-- 	</resultMap> -->
+	<resultMap type="movie" id="movie-part-resultmap">
+		<id column="movie_id" property="movieId" />
+		<result column="movie_title" property="movieTitle" />
+		<result column="movie_image" property="movieImage" />
+	</resultMap>
+
+	<!-- 전체조회 -->
+	<select id="selectAllMovie" resultMap="movie-resultmap">
+		<include refid="select-all-sql" />
+	</select>
+
+	<!-- id로 조회 -->
+	<select id="selectMovieById" parameterType="_int" resultMap="movie-resultmap">
+		<include refid="select-all-sql" />
+		 AND m.movie_id=#{value}
+		<!-- WHERE movie_id=#{value} -->
+	</select>
+
+	<!-- 이름으로 조회 -->
+	<select id="selectMovieByName" parameterType="string"
+		resultMap="movie-part-resultmap">
+		<include refid="select-part-sql" />
+		WHERE movie_title LIKE '%'||#{value}||'%'
+	</select>
+
+	<!-- 장르로 조회 -->
+	<select id="selectMovieByGenre" parameterType="string"
+		resultMap="movie-part-resultmap">
+		<include refid="select-part-sql" />
+		WHERE movie_genre LIKE '%'||#{value}||'%'
+	</select>
+
+	<!-- 개봉년도로 조회 -->
+	<select id="selectMovieByDate" parameterType="_int"
+		resultMap="movie-part-resultmap">
+		<include refid="select-part-sql" />
+		WHERE movie_date=#{value}
+	</select>
+
+	<!-- 평균평점 조회 수정 필요-->
+<!-- 	<select id="movieAvgScore" parameterType="_int" resultMap="movie-join-resultmap"> -->
+<!-- 		SELECT b.movie_avg_score -->
+<!-- 		FROM movie m,( -->
+<!-- 			SELECT movie_id, sum(board_score)/count(board_score) movie_avg_score -->
+<!-- 			FROM board  -->
+<!-- 			GROUP BY movie_id) b  -->
+<!-- 		WHERE m.movie_id=b.movie_id(+) AND m.movie_id=#{value} -->
+<!-- 	</select> -->
+	
+<!-- 	<select id="movieAvgScore" parameterType="_int" resultMap="movie-join-resultmap"> -->
+<!-- 		SELECT b.movie_avg_score -->
+<!-- 		FROM movie m,( -->
+<!-- 			SELECT movie_id, sum(board_score)/count(board_score) movie_avg_score -->
+<!-- 			FROM board  -->
+<!-- 			GROUP BY movie_id) b  -->
+<!-- 		WHERE m.movie_id=b.movie_id(+) AND m.movie_id=#{value} -->
+<!-- 	</select> -->
+ 
+</mapper>
