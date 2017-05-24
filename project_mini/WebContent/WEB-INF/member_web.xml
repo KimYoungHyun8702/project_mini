@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
+	<display-name>myweb</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<!-- MemberLoginServlet 객체 등록 -->
+	<servlet>
+		<servlet-name>memberLogin</servlet-name>
+		<servlet-class>member.servlet.MemberLoginServlet</servlet-class> <!-- Servlet파일 경로 -->
+	</servlet>
+	<!-- MemberLoginServlet 경로 지정 -->
+	<servlet-mapping>
+		<servlet-name>memberLogin</servlet-name>
+		<url-pattern>/memberLogin</url-pattern>
+	</servlet-mapping>
+	
+	<!-- MemberLogoutServlet 객체 등록 -->
+	<servlet>
+		<servlet-name>memberLogout</servlet-name>
+		<servlet-class>member.servlet.MemberLogoutServlet</servlet-class> <!-- Servlet파일 경로 -->
+	</servlet>
+	<!-- MemberLogoutServlet 경로 지정 -->
+	<servlet-mapping>
+		<servlet-name>memberLogout</servlet-name>
+		<url-pattern>/memberLogout</url-pattern>
+	</servlet-mapping>
+	
+	<!-- MemberJoinServlet 객체 등록 -->
+	<servlet>
+		<servlet-name>memberJoin</servlet-name>
+		<servlet-class>member.servlet.MemberJoinServlet</servlet-class> <!-- Servlet파일 경로 -->
+	</servlet>
+	<!-- MemberJoinServlet 경로 지정 -->
+	<servlet-mapping>
+		<servlet-name>memberJoin</servlet-name>
+		<url-pattern>/memberJoin</url-pattern>
+	</servlet-mapping>
+	
+	<!-- MemberUpdateServlet 객체 등록 -->
+	<servlet>
+		<servlet-name>memberUpdate</servlet-name>
+		<servlet-class>member.servlet.MemberUpdateServlet</servlet-class> <!-- Servlet파일 경로 -->
+	</servlet>
+	<!-- MemberUpdateServlet 경로 지정 -->
+	<servlet-mapping>
+		<servlet-name>memberUpdate</servlet-name>
+		<url-pattern>/memberUpdate</url-pattern>
+	</servlet-mapping>
+	
+	<!-- MemberDeleteServlet 객체 등록 -->
+	<servlet>
+		<servlet-name>memberDelete</servlet-name>
+		<servlet-class>member.servlet.MemberDeleteServlet</servlet-class> <!-- Servlet파일 경로 -->
+	</servlet>
+	<!-- MemberUpdateServlet 경로 지정 -->
+	<servlet-mapping>
+		<servlet-name>memberDelete</servlet-name>
+		<url-pattern>/memberDelete</url-pattern>
+	</servlet-mapping>
+	
+	<!-- MemberIdCheckServlet 객체 등록 -->
+	<servlet>
+		<servlet-name>memberIdCheck</servlet-name>
+		<servlet-class>member.servlet.MemberIdCheckServlet</servlet-class> <!-- Servlet파일 경로 -->
+	</servlet>
+	<!-- MemberIdCheckServlet 경로 지정 -->
+	<servlet-mapping>
+		<servlet-name>memberIdCheck</servlet-name>
+		<url-pattern>/memberIdCheck</url-pattern>
+	</servlet-mapping>
+</web-app>
