@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
+	<display-name>board</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	
+		<context-param>
+			<param-name>rootPath</param-name>
+			<param-value>/board</param-value>
+		</context-param>
+		
+	<servlet>
+		<servlet-name>InsertController</servlet-name>
+		<servlet-class>board.controller.InsertController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>InsertController</servlet-name>
+		<url-pattern>/InsertController</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>SelectController</servlet-name>
+		<servlet-class>board.controller.SelectController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SelectController</servlet-name>
+		<url-pattern>/SelectController</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>SelectBoardInfoController</servlet-name>
+		<servlet-class>board.controller.SelectBoardInfoController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SelectBoardInfoController</servlet-name>
+		<url-pattern>/SelectBoardInfoController</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ModifyController</servlet-name>
+		<servlet-class>board.controller.ModifyController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ModifyController</servlet-name>
+		<url-pattern>/ModifyController</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>DeleteController</servlet-name>
+		<servlet-class>board.controller.DeleteController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteController</servlet-name>
+		<url-pattern>/DeleteController</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>PostModifyController</servlet-name>
+		<servlet-class>board.controller.PostModifyController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PostModifyController</servlet-name>
+		<url-pattern>/PostModifyController</url-pattern>
+	</servlet-mapping>
+	
+
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>board.filter.BoardFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+</web-app>
