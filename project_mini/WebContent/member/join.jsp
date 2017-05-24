@@ -87,7 +87,7 @@ function checkId() {
     두번째 인자 : 새로 열 창의 이름 ( "" )
     세번째 인자 : 새로 열 창의 옵션 ( "width=400 height=150" )
     받는 쪽에서는 String id= requset.getParameter("id"); 로 이 아이디 값을 받을수 있습니다. */        
- else window.open("check_Id.jsp?id="+ sid,"", "width=400 height=150")   
+ else window.open("id_check.jsp","", "width=400 height=150")   
 }
 </script>
 </body>

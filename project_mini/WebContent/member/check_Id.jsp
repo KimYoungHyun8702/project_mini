@@ -90,7 +90,7 @@ import="java.sql.Connection, java.sql.PreparedStatement" %>
                         <a href="check_Id.jsp">다른아이디 고르기</a><br></br>       <!-- 다른 아이디를 원할 경우 -->
                         <!-- 사용자가 입력한 아이디를 선택하면 checkIdClose 자바 스크립트가 실행됩니다. 이때 
                                아이디 값을 인자로 함께 넣어 줍니다. -->
-                        <input type="button" value="현재 아이디 선택" onClick="javas-ript:checkIdClose('<%=id %>')">
+                        <input type="button" value="현재 아이디 선택" onclick="checkIdClose('<%=id %>')">
             <% 
                     }
                 }
