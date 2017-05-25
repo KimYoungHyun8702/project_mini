@@ -23,16 +23,34 @@ public class MemberIdCheckServlet extends HttpServlet{
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
-		try {
-		Member member = service.checkMemberId(memberId);
-		HttpSession session = request.getSession();
-		session.setAttribute("memberIdInfo", member);
-
-		} catch (LoginFailException e) {
-		request.getRequestDispatcher("/member/check_success.jsp").forward(request, response);	
+		
+		System.out.println(request.getParameter("memberId"));
+		
+		try{
+			Member member = service.checkMemberId(memberId);
+			
+			if(member ==null){
+				//out.println("<script> alert('사용가능합니다');</script>");
+				request.setAttribute("msg", "사용가능한 아이디입니다.");
+				request.getRequestDispatcher("/member/join.jsp").forward(request, response);
+			}else{
+				//out.println("<script> alert('이미사용중입니다');</script>");
+				request.setAttribute("msg", "중복된 아이디 입니다.");
+				request.getRequestDispatcher("/member/join.jsp").forward(request, response);
+			}
+			/*//로그인 성공
+			HttpSession session = request.getSession();
+			//로그아웃 할때까지 가지고 있는 속성값
+			session.setAttribute("memberLoginInfo", member);
+			
+			//System.out.println(member);
+			request.getRequestDispatcher("/member/id_check.jsp").forward(request, response);*/
+		}catch(LoginFailException e){
+			e.printStackTrace();
 		}
-		
-		
-		
+	}
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
 	}
 }
