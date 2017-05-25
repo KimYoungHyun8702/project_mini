@@ -1,19 +1,18 @@
 package board.controller;
 
 import java.io.IOException;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import board.service.BoardService;
 import board.service.impl.BoardServiceImpl;
+import board.vo.Board;
 import board.vo.Reference;
 
-public class SelectController extends HttpServlet{
+public class SelectByIdController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
@@ -22,20 +21,15 @@ public class SelectController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try{
-			int page = 1;
-			try{
-				page=Integer.parseInt(req.getParameter("page"));
-			}catch(Exception e){}
-				BoardService service = BoardServiceImpl.getInstance();
-				Map<String, Object> map = service.getBoardList(page);
-				
-				HttpSession session = req.getSession();
-				String loginId = "wish";
-				session.setAttribute("memberLoginInfo", loginId);
+			int boardId = Integer.parseInt(req.getParameter("boardId"));
+			String memberId = req.getParameter("memberId");
+			BoardService service = BoardServiceImpl.getInstance();
+			Board board = service.selectBoardById(boardId);
+			Reference reference = service.selectReferenceService(boardId, memberId);
 			
-				req.setAttribute("list", map.get("list"));
-				req.setAttribute("boardBean", map.get("pageBean"));
-				req.getRequestDispatcher("/boardJsp/boardView.jsp").forward(req,resp);
+			req.setAttribute("reference",reference);
+			req.setAttribute("board", board);
+			req.getRequestDispatcher("/boardJsp/boardInfo.jsp").forward(req, resp);
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}

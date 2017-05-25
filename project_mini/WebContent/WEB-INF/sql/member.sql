@@ -12,7 +12,7 @@ select member_id 회원ID , member_name 이름,  member_password 비밀번호, m
 from member;
 
 insert into MEMBER
-values('kk','kk','kk','kk','kk',66);
+values('wish','kk','kk','kk','kk',66);
 
 delete from MEMBER
 where member_id = 'kk'
@@ -84,5 +84,26 @@ UPDATE board
 SET board_reference = board_reference + 1
 WHERE board_id = 2
 
+<<<<<<< HEAD
+select *
+from board
+
+drop table reference;
+create table Reference(
+	board_id number,
+	member_id varchar2(20),
+	constraint board_fk foreign key(board_id) references board,
+	constraint member_fk foreign key(member_id) references member
+);
+
+select * from member
+
+SELECT reference
+FROM reference
+WHERE member_id = djestiny4444
+
+delete from reference;
+
 --게시글 더미 데이터
 insert into board values(board_id_seq.nextval,'게시글1','asdf',)
+>>>>>>> branch 'master' of https://github.com/KimYoungHyun8702/project_mini.git

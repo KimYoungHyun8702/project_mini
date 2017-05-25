@@ -77,6 +77,10 @@
 		WHERE m.movie_title = #{value}
 	</select>
 	
-	<update id=""></update>
+	<update id="updateBoardReference">
+		UPDATE board 
+		SET board_reference = #{boardReference}
+		WHERE board_id = #{value}
+	</update>
 
 </mapper>
