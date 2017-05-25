@@ -29,9 +29,9 @@ public class SelectController extends HttpServlet{
 				Map<String, Object> map = service.getBoardList(page);
 				
 				//회원관리와 연동
-				HttpSession session = req.getSession();
-				String loginId = "바꿔야함";
-				session.setAttribute("memberLoginInfo", loginId);
+			/*"	HttpSession session = req.getSession();
+				String loginId = "바꿔야함;
+				session.setAttribute("memberLoginInfo", loginId);*/
 				/*HttpSession session = req.getSession();
 				String loginId = (String) session.getAttribute("loginId");
 				session.setAttribute("memberLoginInfo", loginId);*/

@@ -38,6 +38,7 @@ td{
 </style>
 </head>
 <body>
+<jsp:include page="/layout.jsp" />
 <h2>게시판 목록</h2>
 <table>
 	<thead>

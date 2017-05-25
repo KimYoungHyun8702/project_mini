@@ -36,4 +36,8 @@ public class MemberLoginServlet extends HttpServlet{
 			request.getRequestDispatcher("/member/login_fail.jsp").forward(request, response);
 		}
 		}
+/*	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}*/
 }

@@ -39,10 +39,10 @@ drop table movie;
 create table movie(
 	movie_id number primary key,
 	movie_title varchar2(50) not null,
-	movie_genre varchar2(30) not null,
-	movie_director varchar2(30) not null,
-	movie_actor varchar2(50) not null,
-	movie_date date not null,
+	movie_genre varchar2(50) not null,--30>50으로변경
+	movie_director varchar2(50) not null,--30>50으로변경
+	movie_actor varchar2(300) not null,--50>300으로변경
+	movie_date number not null,
 	movie_image varchar2(1000) not null,
 	movie_video varchar2(1000) not null
 );
@@ -83,3 +83,6 @@ FROM board b LEFT JOIN movie m ON b.movie_id = m.movie_id(+) -- 조건은 ON 뒤
 UPDATE board
 SET board_reference = board_reference + 1
 WHERE board_id = 2
+
+--게시글 더미 데이터
+insert into board values(board_id_seq.nextval,'게시글1','asdf',)

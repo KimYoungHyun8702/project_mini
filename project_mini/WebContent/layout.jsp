@@ -11,7 +11,7 @@
 }
 
 body {
-	align:center;
+	align: center;
 	font-family: "굴림";
 	font-weight: bold;
 }
@@ -49,7 +49,7 @@ ul {
 }
 
 li {
-	float:left;
+	float: left;
 }
 
 li a {
@@ -69,14 +69,19 @@ li a:hover {
 <body>
 	<nav>
 		<ul>
-		<li><a href="/project_mini/index.jsp">메인화면</a></li>
-		<li><a href="/project_mini/movieJsp/search/searchForm.jsp">영화 검색</a></li>
+			<li><a href="/project_mini/index.jsp">메인화면</a></li>
+			<li><a href="/project_mini/movieJsp/search/searchForm.jsp">영화
+					검색</a></li>
+			<li><a href="${initParam.rootPath }/SelectController">게시판</a></li>
 			<c:choose>
-				<c:when test="${empty sessionScope.login }">
-					<li style="float:right"><a href="/project_mini/index.jsp">로그인</a></li>
+				<c:when test="${empty sessionScope.memberLoginInfo }">
+					<li style="float: right"><a
+						href="/project_mini/member/login.jsp">로그인</a></li>
 				</c:when>
 				<c:otherwise>
-					<li style="float:right"><a href="/project_mini/index.jsp">로그아웃</a></li>
+					<li style="float: right"><a href="/project_mini/member/mypage.jsp">마이페이지</a></li>
+					<li style="float: right"><a href="/project_mini/memberLogout">로그아웃</a></li>
+
 				</c:otherwise>
 			</c:choose>
 		</ul>

@@ -16,6 +16,7 @@ p{
 
 </head>
 <body>
+<jsp:include page="/layout.jsp" />
 <h1 style = "text-align:center">로그인</h1>
 
 <p>
