@@ -71,6 +71,7 @@ li a:hover {
 		<ul>
 		<li><a href="/project_mini/index.jsp">메인화면</a></li>
 		<li><a href="/project_mini/movieJsp/search/searchForm.jsp">영화 검색</a></li>
+		<li><a href="/project_mini/boardJsp/index.jsp">게시판</a></li>
 			<c:choose>
 				<c:when test="${empty sessionScope.login }">
 					<li style="float:right"><a href="/project_mini/index.jsp">로그인</a></li>
