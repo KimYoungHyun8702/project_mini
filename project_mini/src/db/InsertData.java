@@ -16,8 +16,8 @@ public class InsertData {
 		try {
 			String url = "jdbc:oracle:thin:@127.0.0.1:1521:XE"; // 본인 데이터베이스 설정에
 																// 맞게 쓸것
-			String id = "movie"; // 본인 데이터베이스 아이디에 맞춰서 쓸것
-			String pw = "movie"; // 본인 데이터베이스 비밀번호에 맞춰서 쓸것
+			String id = "scott"; // 본인 데이터베이스 아이디에 맞춰서 쓸것
+			String pw = "tiger"; // 본인 데이터베이스 비밀번호에 맞춰서 쓸것
 
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
