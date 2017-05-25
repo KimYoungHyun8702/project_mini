@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import board.service.BoardService;
 import board.service.impl.BoardServiceImpl;
+import board.vo.Reference;
 
 public class SelectController extends HttpServlet{
 	@Override
@@ -30,7 +31,7 @@ public class SelectController extends HttpServlet{
 				
 				//회원관리와 연동
 				HttpSession session = req.getSession();
-				String loginId = "바꿔야함";
+				String loginId = "wish";
 				session.setAttribute("memberLoginInfo", loginId);
 				
 				

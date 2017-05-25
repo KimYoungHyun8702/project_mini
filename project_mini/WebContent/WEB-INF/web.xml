@@ -108,14 +108,6 @@
 		<url-pattern>/SelectController</url-pattern>
 	</servlet-mapping>
 	
-	<servlet>
-		<servlet-name>SelectBoardInfoController</servlet-name>
-		<servlet-class>board.controller.SelectBoardInfoController</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>SelectBoardInfoController</servlet-name>
-		<url-pattern>/SelectBoardInfoController</url-pattern>
-	</servlet-mapping>
 	
 	<servlet>
 		<servlet-name>ModifyController</servlet-name>
@@ -157,6 +149,24 @@
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+	<servlet>
+		<servlet-name>ReferenceController</servlet-name>
+		<servlet-class>board.controller.ReferenceController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ReferenceController</servlet-name>
+		<url-pattern>/ReferenceController</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>SelectByIdController</servlet-name>
+		<servlet-class>board.controller.SelectByIdController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SelectByIdController</servlet-name>
+		<url-pattern>/SelectByIdController</url-pattern>
+	</servlet-mapping>
 	
 	<!--==============================영화 관리 ===========================================-->
 	<!-- Servlet 객체 등록 -->

@@ -35,7 +35,9 @@ public class ModifyController extends HttpServlet{
 		
 		BoardServiceImpl service = BoardServiceImpl.getInstance();  
 		String message = service.UpdateBoardService(new Board(boardId,boardTitle,new Date(),boardContent,boardScore,boardReference,memberId,movieId));
+		Board board = service.selectBoardById(boardId);
 		
-		req.getRequestDispatcher("/SelectController").forward(req, resp);
+		req.setAttribute("board", board);
+		req.getRequestDispatcher("/boardJsp/boardInfo.jsp").forward(req, resp);
 	}
 }

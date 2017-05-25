@@ -1,8 +1,11 @@
 package board.service;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import board.vo.Board;
+import board.vo.Reference;
 
 public interface BoardService {
 	
@@ -31,7 +34,7 @@ public interface BoardService {
 	 * 조회하는 Sercive
 	 * @return
 	 */
-	Map<String, Object> selectBoardListService(int boardId);
+	Board selectBoardById(int boardId);
 	
 	/**
 	 * page 기준으로 board들을 조회하는 메소드.
@@ -45,7 +48,11 @@ public interface BoardService {
 	 * @param movieTitle
 	 * @return
 	 */
-	void movieTitleConvertService(String movieTitle);
+	String updateBoardReference(int boardId);
 	
+	void insertReferenceService(Reference reference);
+
+	
+	Reference selectReferenceService(int boardId, String memberId);
 
 }

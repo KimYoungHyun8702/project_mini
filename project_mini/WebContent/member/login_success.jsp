@@ -11,7 +11,7 @@
 <h1>로그인 성공</h1>
 ${sessionScope.memberLoginInfo.memberName} 님 환영합니다.<br>
 <p>
-메인페이지로 이동
+<a href="${initParam.rootPath }/SelectController">메인페이지로 이동</a>
 </p>
 <p>
 <a href="/project_mini/memberLogout">로그아웃</a><br>

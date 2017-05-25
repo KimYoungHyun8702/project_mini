@@ -13,6 +13,11 @@
 		<result column="movie_id" property="movieId"/>
 	</resultMap>
 	
+	<resultMap type="Reference" id="reference-resultmap">
+		<id column="board_id" property="boardId" />
+		<result column="member_id" property="memberId" />
+	</resultMap>
+	
 	<insert id = "insertBoard123" parameterType="board">
 		INSERT INTO board
 		VALUES(#{boardId},#{boardTitle},#{boardDate},#{boardContent},#{boardScore},#{boardReference},#{memberId},#{movieId})
@@ -77,6 +82,20 @@
 		WHERE m.movie_title = #{value}
 	</select>
 	
-	<update id=""></update>
-
+	<update id="updateBoardReference" parameterType="int">
+		UPDATE board 
+		SET board_reference = board_reference + 1
+		WHERE board_id = #{value}
+	</update>
+	
+	<insert id="referenceInsert" parameterType="reference">
+		INSERT INTO reference
+		VALUES( #{boardId}, #{memberId})
+	</insert>
+	
+	<select id="referenceSelect" parameterType="map" resultMap="reference-resultmap">
+		SELECT board_id, member_id
+		FROM reference
+		WHERE board_id = #{boardId} and member_id = #{memberId}
+	</select>
 </mapper>

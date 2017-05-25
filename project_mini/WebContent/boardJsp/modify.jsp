@@ -13,14 +13,14 @@
 	작성 일자 : ${requestScope.date }<br> --%>
 	
 	<form action="${initParam.rootPath }/ModifyController" method="post">
-			영화 : <input type="text" value="${requestScope.movieId }" name = "movieId"/><br>
-			평점 : <input type="number" value="${requestScope.boardScore }" name = "boardScore" max="5" min="1"/><br>
-			제목 : <input type="text" value="${requestScope.boardTitle}" name="boardTitle"/><br>
+			영화 : <input type="text" value="${requestScope.board.movieId }" name = "movieId"/><br>
+			평점 : <input type="number" value="${requestScope.board.boardScore }" name = "boardScore" max="5" min="1"/><br>
+			제목 : <input type="text" value="${requestScope.board.boardTitle}" name="boardTitle"/><br>
 			내용<br>
-			<textarea rows = "10" cols = "100" name = "boardContent">${requestScope.boardContent}</textarea><br>
-			<input type="hidden" name="memberId" value="${sessionScope.loginId }"/>
-			<input type="hidden" name="boardId" value="${requestScope.boardId }"/>
-			<input type="hidden" name="boardReference" value="0"/>
+			<textarea rows = "10" cols = "100" name = "boardContent">${requestScope.board.boardContent}</textarea><br>
+			<input type="hidden" name="memberId" value="${sessionScope.memberLoginInfo }"/>
+			<input type="hidden" name="boardId" value="${requestScope.board.boardId }"/>
+			<input type="hidden" name="boardReference" value="${requestScope.board.boardReference }"/>
 			<input type = "submit" value="수정완료"/>
 	</form>
 			<%-- <input type="submit" value="수정완료"/>
@@ -33,6 +33,6 @@
 	
 	<%-- <c:if test="${memberId == sessionScope.memberId }">
 	</c:if> --%>
-	<button onclick="location.href='${initParam.rootPath }/boardInfo.jsp'">뒤로가기</button>
+	<button onclick="location.href='${initParam.rootPath }/SelectByIdController?boardId=${requestScope.board.boardId }'">뒤로가기</button>
 </body>
 </html>

@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import board.dao.BoardDao;
 import board.vo.Board;
+import board.vo.Reference;
 
 public class BoardDaoImpl implements BoardDao{
 	private static BoardDaoImpl instance = new BoardDaoImpl();
@@ -28,12 +29,6 @@ public class BoardDaoImpl implements BoardDao{
 	}
 
 	@Override
-	public int insertBoardSeq(SqlSession session, Board board) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
 	public int updateBoard(SqlSession session, Board board) {
 		return session.update(makeSql("updateBoard"),board);
 	}
@@ -44,8 +39,8 @@ public class BoardDaoImpl implements BoardDao{
 	}
 
 	@Override
-	public List<Board> selectBoardById(SqlSession session, int boardId) {
-		return session.selectList(makeSql("selectBoard"));
+	public Board selectBoardById(SqlSession session, int boardId) {
+		return session.selectOne(makeSql("selectBoard"), boardId);
 	}
 
 	@Override
@@ -68,6 +63,25 @@ public class BoardDaoImpl implements BoardDao{
 	
 	@Override
 	public int updateBoardReference(SqlSession session, int boardId){
+		return session.update(makeSql("updateBoardReference"), boardId);
+	}
+	
+	@Override
+	public int insertReference(SqlSession session, Reference reference){
+		return session.insert(makeSql("referenceInsert"), reference);
+	}
+	
+	@Override
+	public Reference selectReference(SqlSession session, int boardId, String memberId){
+		HashMap<String, Object> referenceMap = new HashMap<>();
+		referenceMap.put("boardId", boardId);
+		referenceMap.put("memberId", memberId);
+		return session.selectOne(makeSql("referenceSelect"),referenceMap);
+	}
+	
+	@Override
+	public int insertBoardSeq(SqlSession session, Board board) {
+		// TODO Auto-generated method stub
 		return 0;
 	}
 }
