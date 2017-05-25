@@ -29,6 +29,7 @@ insert into board values(6,5,3);
 insert into board values(7,5,4);
 insert into board values(8,1,5);
 insert into board values(9,3,5);
+insert into board values(10,5,6);
 
 
 

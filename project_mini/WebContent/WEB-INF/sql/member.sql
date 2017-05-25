@@ -83,3 +83,6 @@ FROM board b LEFT JOIN movie m ON b.movie_id = m.movie_id(+) -- 조건은 ON 뒤
 UPDATE board
 SET board_reference = board_reference + 1
 WHERE board_id = 2
+
+--게시글 더미 데이터
+insert into board values(board_id_seq.nextval,'게시글1','asdf',)

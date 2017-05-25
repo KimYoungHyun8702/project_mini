@@ -16,7 +16,7 @@
 			<input type="submit" value="등록"/>
 			<input type="reset" value="초기화"/>
 			<input type="button" value="취소" onclick="location.href='${initParam.rootPath }/SelectController'"/>
-			<input type="hidden" name="memberId" value="${sessionScope.memberLoginInfo }"/>
+			<input type="hidden" name="memberId" value="${sessionScope.memberLoginInfo.memberId  }"/>
 			<input type="hidden" name="boardReference" value="0"/>
 		</form>
 </body>
