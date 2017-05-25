@@ -16,9 +16,9 @@ function use(){
 <form action="/project_mini/memberIdCheck" method="post">
 <tr style = "text-align:center">
 		<td>아이디 입력</td>
-		<td><input id="memberId" type="text" name="Id"></td>
+		<td><input id="memberId" type="text" name="memberId"></td>
 	</tr>
 <input type="submit" value="중복확인"><br><br>
-<button type="button" onclick="use();"> 사용</button>
+<button type="button" onclick="use();" disabled="true"> 사용</button>
 </body>
 </html>

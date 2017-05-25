@@ -12,6 +12,7 @@
 ${sessionScope.memberLoginInfo.memberName} 님 환영합니다.<br>
 <p>
 메인페이지로 이동
+<a href="/project_mini/boardJsp/index.jsp">게시판으로</a>
 </p>
 <p>
 <a href="/project_mini/memberLogout">로그아웃</a><br>

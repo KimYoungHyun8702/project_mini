@@ -21,8 +21,9 @@
 <table cellpadding="5">
 	<tr style = "text-align:center">
 		<td>ID</td>
-		<td><input id="id" type="text" name="id" style="ime-mode:disabled"></td>
-		<td><input type="button" onclick="checkId()" value="중복체크"></input></td>
+		<td><input id="memberId" type="text" name="memberId" style="ime-mode:disabled"></td>
+		<td><input type="button" onclick="checkId()" value="중복체크"> &nbsp;&nbsp; ${requestScope.msg} </input></td>
+		<input type="text" value="중복체크">
 	</tr>
 	<tr style = "text-align:center">
 		<td>이름</td>
@@ -63,6 +64,7 @@
 <script type="text/javascript">
 function foo() {
 	window.open("id_check.jsp", "id_check", "width=500,height=300");
+	
 }
 
 function foo2() {
@@ -79,15 +81,13 @@ function foo2() {
 
 // 아이디 중복확인(아이디를 입력하고 중복확인 버튼을 누르면 실행됨)
 function checkId() {
- var sid = document.getElementById("id") .value;               // 아이디값 가져오기
- if(sid == "") alert("입력된 아이디가 없습니다.")      // 없는 경우 메시지출력
- 	/* 값이 있는 경우 체크창 출력
-    window.open 명령을 사용하여 새로운 창을 하나 띄웁니다.
-    첫번째 인자 : 새로 열 창의 주소 ( "check_Id.jsp?id="+sid --> jsp를 열며 id값을 함께 넘겨 줍니다.)
-    두번째 인자 : 새로 열 창의 이름 ( "" )
-    세번째 인자 : 새로 열 창의 옵션 ( "width=400 height=150" )
-    받는 쪽에서는 String id= requset.getParameter("id"); 로 이 아이디 값을 받을수 있습니다. */        
- else window.open("id_check.jsp","", "width=400 height=150")   
+ 	var sid = document.getElementById("memberId") .value;         
+ 	location.href="/project_mini/memberIdCheck?memberId=" + sid;
+ 	
+ 	
+ 	  
+ 
+
 }
 </script>
 </body>
