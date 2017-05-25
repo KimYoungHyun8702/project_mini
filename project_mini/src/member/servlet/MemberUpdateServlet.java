@@ -33,7 +33,7 @@ public class MemberUpdateServlet extends HttpServlet{
 		session.setAttribute("memberEmail", member.getMemberemail());
 		session.setAttribute("memberSex", member.getMemberSex());
 		session.setAttribute("memberAge", member.getMemberAge());
-		System.out.println(member);
+		//System.out.println(member);
 		
 		request.setAttribute("memberLoginInfo", member);
 		session.setAttribute("memberLoginInfo", member);

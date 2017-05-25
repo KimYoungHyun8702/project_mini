@@ -31,9 +31,13 @@ public class MemberLoginServlet extends HttpServlet{
 			//로그아웃 할때까지 가지고 있는 속성값
 			session.setAttribute("memberLoginInfo", member);
 			//System.out.println(member);
-			request.getRequestDispatcher("/member/login_success.jsp").forward(request, response);
+			request.getRequestDispatcher("/index.jsp").forward(request, response);
 		}catch(LoginFailException e){
 			request.getRequestDispatcher("/member/login_fail.jsp").forward(request, response);
 		}
 		}
+/*	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}*/
 }

@@ -4,9 +4,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+p{
+	line-height : 20px;
+	margin : 10px 20px;
+	border :1px solid #ccc;
+	padding : 5px;
+}
+</style>
+
+
 </head>
 <body>
+<jsp:include page="/layout.jsp" />
 <h1 style = "text-align:center">로그인</h1>
+
+<p>
 <form action=/project_mini/memberLogin method="post">
 <table cellpadding="5">
 	<tr style = "text-align:center">
@@ -22,5 +35,6 @@
 	</tr>
 	</table>
 	</form>
+</p>
 </body>
 </html>

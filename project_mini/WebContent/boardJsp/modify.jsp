@@ -23,16 +23,6 @@
 			<input type="hidden" name="boardReference" value="${requestScope.board.boardReference }"/>
 			<input type = "submit" value="수정완료"/>
 	</form>
-			<%-- <input type="submit" value="수정완료"/>
-			<input type="reset" value="삭제"/>
-			<input type="button" value="뒤로가기" onclick="location.href='${initParam.rootPath }/index.jsp'"/>
-			<input type="hidden" name="memberId" value=12/> --%>
-		<!-- </form> -->
-		
-		
-	
-	<%-- <c:if test="${memberId == sessionScope.memberId }">
-	</c:if> --%>
 	<button onclick="location.href='${initParam.rootPath }/SelectByIdController?boardId=${requestScope.board.boardId }'">뒤로가기</button>
 </body>
 </html>

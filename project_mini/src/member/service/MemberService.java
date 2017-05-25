@@ -86,11 +86,8 @@ public class MemberService {
 		try{
 			session = SqlSessionFactoryManager.getInstance().getSqlSessionFactory().openSession();
 			Member member = dao.selectMemberById(session, memberId);
-			if (member == null){ //아이디가 있으면
-				return member;
-			}else{
-				throw new LoginFailException("아이디를 확인하세요");
-			}
+			return member;
+			
 		}finally{
 			session.close();
 		}

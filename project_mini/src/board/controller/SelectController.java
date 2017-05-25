@@ -29,12 +29,10 @@ public class SelectController extends HttpServlet{
 				BoardService service = BoardServiceImpl.getInstance();
 				Map<String, Object> map = service.getBoardList(page);
 				
-				//회원관리와 연동
 				HttpSession session = req.getSession();
 				String loginId = "wish";
 				session.setAttribute("memberLoginInfo", loginId);
-				
-				
+			
 				req.setAttribute("list", map.get("list"));
 				req.setAttribute("boardBean", map.get("pageBean"));
 				req.getRequestDispatcher("/boardJsp/boardView.jsp").forward(req,resp);

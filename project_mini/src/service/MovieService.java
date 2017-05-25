@@ -5,6 +5,7 @@
 변경이력
 -김경혜) movieAvgScore메소드 return 타입 변경) double -> Movie객체   : 2017.05.24수정
 -김경혜) movieAvgScore 메소드 삭제. findMovieById, getMovieList메소드 수정(평점평균 추가) : 2017.05.24 수정
+-김경혜) top5Movie 메소드 추가. : 2017.05.25
 xxx 며칠날 수정
 */
 package service;

@@ -38,10 +38,11 @@
 		<result column="movie_video" property="movieVideo" />
 		<result column="movie_avg_score" property="movieAvgScore"/>
 	</resultMap>
-	<!-- avgScore용 -->
-<!-- 	<resultMap type="movie" id="movie-join-resultmap" extends="movie-resultmap"> -->
-<!-- 		<result column="movie_avg_score" property="movieAvgScore"/> -->
-<!-- 	</resultMap> -->
+	<!-- selectMovieRank용 -->
+	<resultMap type="movie" id="movie-addRank-resultmap" extends="movie-resultmap">
+		<result column="movie_rank" property="movieRank"/>
+	</resultMap>
+	<!-- 아이디, 제목, 이미지만 제공-->
 	<resultMap type="movie" id="movie-part-resultmap">
 		<id column="movie_id" property="movieId" />
 		<result column="movie_title" property="movieTitle" />
@@ -79,6 +80,31 @@
 		resultMap="movie-part-resultmap">
 		<include refid="select-part-sql" />
 		WHERE movie_date=#{value}
+	</select>
+	
+	<!--평점이 입력된 영화들만 순위 포함하여 영화정보를 조회-->
+	<select id="selectMovieRank" resultMap="movie-addRank-resultmap">
+		SELECT m.movie_id,
+				m.movie_title,
+				m.movie_genre,
+				m.movie_director,
+				m.movie_actor,
+				m.movie_date,
+				m.movie_image,
+				m.movie_video,
+				b.movie_avg_score,
+				RANK() OVER(ORDER BY b.movie_avg_score desc) movie_rank 
+		FROM movie m,(
+			SELECT movie_id, sum(board_score)/count(board_score) movie_avg_score
+			FROM board 
+			GROUP BY movie_id) b 
+		WHERE m.movie_id=b.movie_id(+) AND b.movie_avg_score IS NOT NULL
+	</select>
+	
+	<!-- 등록된 영화수 조회-->
+	<select id="countMovie" resultType="_int">
+	SELECT count(*)
+	FROM movie
 	</select>
 
 	<!-- 평균평점 조회 수정 필요-->
