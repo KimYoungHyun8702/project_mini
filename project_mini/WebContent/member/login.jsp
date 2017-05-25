@@ -6,6 +6,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="/layout.jsp" />
 <h1 style = "text-align:center">로그인</h1>
 <form action=/project_mini/memberLogin method="post">
 <table cellpadding="5">
