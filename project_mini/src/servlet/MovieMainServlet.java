@@ -61,5 +61,9 @@ public class MovieMainServlet extends HttpServlet {
 			System.out.println("SQLException");
 		}
 	}
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
+	}
 
 }
