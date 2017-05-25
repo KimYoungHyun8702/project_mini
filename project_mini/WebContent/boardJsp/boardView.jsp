@@ -59,7 +59,7 @@ td{
 			<tr>
 				<td align="center">${board.boardId }</td>
 				<td align="center">${board.movieId }</td>
-				<td align="center"><a href="/board/SelectBoardInfoController?boardReference=${board.boardReference }&boardId=${board.boardId }&boardScore=${board.boardScore }&boardTitle=${board.boardTitle }&boardContent=${board.boardContent}&boardDate=${board.boardDate}&memberId=${board.memberId}&movieId=${board.movieId}">${board.boardTitle }</a></td>
+				<td align="center"><a href="${initParam.rootPath }/SelectBoardInfoController?boardReference=${board.boardReference }&boardId=${board.boardId }&boardScore=${board.boardScore }&boardTitle=${board.boardTitle }&boardContent=${board.boardContent}&boardDate=${board.boardDate}&memberId=${board.memberId}&movieId=${board.movieId}">${board.boardTitle }</a></td>
 				<td align="center">${board.memberId }</td>
 				<td align="center">${board.boardDate }</td>
 				<td align="center">${board.boardReference }</td>
@@ -74,7 +74,7 @@ td{
 														페이징 처리
 			###################################################### --%>
 	<!-- 첫페이지로 이동 -->
-	<a href="/board/SelectController?page=1">첫 페이지</a>
+	<a href="${initParam.rootPath }/SelectController?page=1">첫 페이지</a>
 
 	<!--
 		이전 페이지 그룹 처리.

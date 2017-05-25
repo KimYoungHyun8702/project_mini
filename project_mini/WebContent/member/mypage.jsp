@@ -15,6 +15,7 @@ ID : <%=((Member)session.getAttribute("memberLoginInfo")).getMemberId()%><br>
 나이 : <%=((Member)session.getAttribute("memberLoginInfo")).getMemberAge()%><br>
 
 <p>메인페이지로이동</p><br>
+<a href="/project_mini/boardJsp/index.jsp">게시판으로 이동</a>
 <a href="/project_mini/member/delete.jsp">회원탈퇴</a><br>
 <a href="/project_mini/member/update.jsp">정보수정하기</a><br>
 </body>

@@ -32,17 +32,17 @@ import="java.sql.Connection, java.sql.PreparedStatement" %>
 
 
 <%
-    //1. 데이터 받아오기 (write.html의 자바스크립트에서 "check.jsp?id="+sid 라는 구문을 이용해 넘겨받는다.)
+    //1. 데이터 받아오기 (write.html의 자바스크립트에서 "check.jsp?id="+sid 라는 구문을 이용해 넘겨 주었습니다.)
     String id = request.getParameter("id");
     
     // 2. db-select
     try
     {
         this.setConnection();                                          // 접속
-        String sql = "select * from member where id=?";      // 아이디로 검색하여 있으면 레코드를 가져 옴
-        pstmt = conn.prepareStatement(sql);                     // 핸들을 생성하고 쿼리문을 등록
-        pstmt.setString(1, id);                                          // 쿼리문의 ?의 형식을 지정
-        rs = pstmt.executeQuery();                                  // resultset에 내용을 담아 옴
+        String sql = "select * from member where id=?";      // 아이디로 검색하여 있으면 레코드를 가져 옵니다.
+        pstmt = conn.prepareStatement(sql);                     // 핸들을 생성하고 쿼리문을 등록합니다
+        pstmt.setString(1, id);                                          // 쿼리문의 ?의 형식을 지정합니다
+        rs = pstmt.executeQuery();                                  // resultset에 내용을 담아 옵니다
     }
     catch(SQLException e){e.printStackTrace();}
 %>
@@ -56,9 +56,9 @@ import="java.sql.Connection, java.sql.PreparedStatement" %>
         <script>
             function checkIdClose(id)
             {
-                opener.joinform.id.value = id;    // 열려있는문서중(opener) joinform의 이름을 가진 문서에 아이디값 전달
+                opener.writeForm.id.value = id;    // 열려있는문서중(opener) writeForm의 이름을 가진 문서에 아이디값 전달
                 window.close();                        // checkId.jsp 윈도우 닫기
-                opener.joinform.readMemberPassword.focus();   // 회원가입폼의 포커스를 패스워드입력 상자로 이동
+                opener.writeForm.pwd.focus();   // 회원가입폼의 포커스를 패스워드입력 상자로 이동
             }
         </script>
         <!-- 스타일 지정, 바디의 폰트를 지정합니다 -->
@@ -68,7 +68,7 @@ import="java.sql.Connection, java.sql.PreparedStatement" %>
     </head>
 
     <body>
-        <!--submit 실행시 check_Id.jsp로 되돌아 갑니다.-->
+        <!--submit 실행시 checkId.jsp로 되돌아 갑니다.-->
         <form method="post" action="check_Id.jsp">
             <%
                 try
@@ -90,7 +90,7 @@ import="java.sql.Connection, java.sql.PreparedStatement" %>
                         <a href="check_Id.jsp">다른아이디 고르기</a><br></br>       <!-- 다른 아이디를 원할 경우 -->
                         <!-- 사용자가 입력한 아이디를 선택하면 checkIdClose 자바 스크립트가 실행됩니다. 이때 
                                아이디 값을 인자로 함께 넣어 줍니다. -->
-                        <input type="button" value="현재 아이디 선택" onclick="checkIdClose('<%=id %>')">
+                        <input type="button" value="현재 아이디 선택" onClick="javas-ript:checkIdClose('<%=id %>')">
             <% 
                     }
                 }
