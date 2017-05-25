@@ -3,6 +3,7 @@
 작성자 :  김경혜,오효원
 최초 작성일 : 2017.05.23
 변경이력
+-김경혜) 코드정리 2017.05.25
 xxx 며칠날 수정
 */
 package servlet;
@@ -26,15 +27,16 @@ public class MovieDetailServlet extends HttpServlet{
 		try{
 		MovieService movieService=MovieServiceImpl.getInstance();
 		// 1.요청파라미터조회+검증
-		String movieId=req.getParameter("movie");
-		System.out.println(movieId);
+		req.setCharacterEncoding("UTF-8");
+		//String movieId=req.getParameter("movie");
+		//System.out.println(movieId);
 
 		// 2.처리-비즈니스로직
-		Movie movieDetail=movieService.findMovieById(Integer.parseInt(movieId));
-		System.out.println(movieDetail);
-		// 3.처리결과응답.
+		//Movie movieDetail=movieService.findMovieById(Integer.parseInt(req.getParameter("movie")));
+		//System.out.println(movieDetail);
 		
-		req.setAttribute("movieDetail", movieDetail);
+		// 3.처리결과응답.
+		req.setAttribute("movieDetail", movieService.findMovieById(Integer.parseInt(req.getParameter("movie"))));
 		req.getRequestDispatcher("movieJsp/main/detail.jsp").forward(req, resp);
 		}catch(SQLException e){
 			System.out.println("SQLException");

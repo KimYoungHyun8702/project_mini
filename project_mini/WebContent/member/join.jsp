@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>당신이 원하는 바로 그 영화!@KOSTA탈주</title>
 <style>
 	div.ex {
 		text-align: center;
@@ -15,6 +15,7 @@
 </style>
 </head>
 <body>
+<jsp:include page="/layout.jsp" />
 <h1 style = "text-align:center">회원가입</h1>
 
 <form action="/project_mini/memberJoin" method="post" name="joinform">
@@ -22,7 +23,7 @@
 	<tr style = "text-align:center">
 		<td>ID</td>
 		<td><input id="memberId" type="text" name="memberId" style="ime-mode:disabled"></td>
-		<td><input type="button" onclick="checkId()" value="중복체크"> &nbsp;&nbsp;  <input type="text" value="${requestScope.msg}"></input></td>
+		<td><input type="button" onclick="checkId()" value="중복체크"> &nbsp;&nbsp;  <input type="text" value="${requestScope.msg}" readonly></input></td>
 	</tr>
 	<tr style = "text-align:center">
 		<td>이름</td>

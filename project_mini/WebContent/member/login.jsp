@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>당신이 원하는 바로 그 영화!@KOSTA탈주</title>
 <style>
 p{
 	line-height : 20px;

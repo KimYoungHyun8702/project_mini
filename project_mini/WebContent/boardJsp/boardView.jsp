@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>당신이 원하는 바로 그 영화!@KOSTA탈주</title>
 <style type="text/css">
 c:link{
 	/*방문하지 않은 링크 설정.*/
@@ -38,99 +38,99 @@ td{
 </style>
 </head>
 <body>
-<jsp:include page="/layout.jsp" />
-<h2>게시판 목록</h2>
-<table>
-	<thead>
-		<tr>
-			<td align="center">게시판 번호</td>
-			<td align="center">영화 제목</td>
-			<td align="center">제목</td>
-			<td align="center">작성자</td>
-			<td align="center">글쓴 날짜</td>
-			<td align="center">추천수</td>
-			<td align="center">평점</td>
-		</tr>
-	</thead>
-	<tbody>
-		<%-- ######################################################
-														조회된 item 출력 
-			###################################################### --%>
-		<c:forEach items="${requestScope.list }" var="board">
+	<jsp:include page="/layout.jsp" />
+	<h2>게시판 목록</h2>
+	<table>
+		<thead>
 			<tr>
-				<td align="center">${board.boardId }</td>
-				<td align="center">${board.movieId }</td>
-				<td align="center"><a href="${initParam.rootPath }/SelectBoardInfoController?boardReference=${board.boardReference }&boardId=${board.boardId }&boardScore=${board.boardScore }&boardTitle=${board.boardTitle }&boardContent=${board.boardContent}&boardDate=${board.boardDate}&memberId=${board.memberId}&movieId=${board.movieId}">${board.boardTitle }</a></td>
-				<td align="center">${board.memberId }</td>
-				<td align="center">${board.boardDate }</td>
-				<td align="center">${board.boardReference }</td>
-				<td align="center">${board.boardScore }</td>
+				<td align="center">게시판 번호</td>
+				<td align="center">영화 제목</td>
+				<td align="center">제목</td>
+				<td align="center">작성자</td>
+				<td align="center">글쓴 날짜</td>
+				<td align="center">추천수</td>
+				<td align="center">평점</td>
 			</tr>
-		</c:forEach>
-	</tbody>
-</table>
-
-<p>
-	<%-- ######################################################
-														페이징 처리
-			###################################################### --%>
-	<!-- 첫페이지로 이동 -->
-	<a href="${initParam.rootPath }/SelectController?page=1">첫 페이지</a>
-
-	<!--
-		이전 페이지 그룹 처리.
-		만약에 이전페이지 그룹이 있으면 링크처리하고 없으면 화살표만 나오도록 처리.
-	 -->
-		<c:choose>
-			<c:when test="${requestScope.boardBean.previousPageGroup}">
-			<!--이전 페이지 그룹이 있다면 : isPreviousPageGroup()  -->
-			<a href="${initParam.rootPath }/SelectController?page=${requestScope.boardBean.beginPage-1}">◀</a>
-			</c:when>
-			<c:otherwise>
-			◀
-			</c:otherwise>
-		</c:choose>
-
-
-
-
-	<!-- 
-		현재 page가 속한 page 그룹내의 페이지들 링크.
-		현재 pageGroup의 시작page ~ 끝 page
-	 -->
-	 <!-- 만약에 p가 현재페이지면 링크처리를 하지 않고 p가 현재페이지가 아니라면 링크처리. -->
-		<c:forEach begin="${requestScope.boardBean.beginPage }"
-			end="${requestScope.boardBean.endPage }" var="page">
+		</thead>
+		<tbody>
+			<%-- ######################################################
+															조회된 item 출력 
+				###################################################### --%>
+			<c:forEach items="${requestScope.list }" var="board">
+				<tr>
+					<td align="center">${board.boardId }</td>
+					<td align="center">${board.movieId }</td>
+					<td align="center"><a href="${initParam.rootPath }/SelectBoardInfoController?boardReference=${board.boardReference }&boardId=${board.boardId }&boardScore=${board.boardScore }&boardTitle=${board.boardTitle }&boardContent=${board.boardContent}&boardDate=${board.boardDate}&memberId=${board.memberId}&movieId=${board.movieId}">${board.boardTitle }</a></td>
+					<td align="center">${board.memberId }</td>
+					<td align="center">${board.boardDate }</td>
+					<td align="center">${board.boardReference }</td>
+					<td align="center">${board.boardScore }</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+	
+	<p>
+		<%-- ######################################################
+															페이징 처리
+				###################################################### --%>
+		<!-- 첫페이지로 이동 -->
+		<a href="${initParam.rootPath }/SelectController?page=1">첫 페이지</a>
+	
+		<!--
+			이전 페이지 그룹 처리.
+			만약에 이전페이지 그룹이 있으면 링크처리하고 없으면 화살표만 나오도록 처리.
+		 -->
 			<c:choose>
-				<c:when test="${requestScope.boardBean.page != page }">
-					<!--현재 페이지가 아니라면  -->
-					<a href="${initParam.rootPath }/SelectController?page=${page}">${page }</a>
+				<c:when test="${requestScope.boardBean.previousPageGroup}">
+				<!--이전 페이지 그룹이 있다면 : isPreviousPageGroup()  -->
+				<a href="${initParam.rootPath }/SelectController?page=${requestScope.boardBean.beginPage-1}">◀</a>
 				</c:when>
 				<c:otherwise>
-					[${page }]&nbsp;
+				◀
 				</c:otherwise>
 			</c:choose>
-		</c:forEach>
-
+	
+	
+	
+	
 		<!-- 
-		다음페이지 그룹으로 이동
-		만약에 다음페이지 그룹이 있으면 링크 처리 없으면 화살표만 나오도록 처리
-	 -->
-	<c:choose>
-			<c:when test="${requestScope.boardBean.nextPageGroup }">
-				<a href="${initParam.rootPath }/SelectController?page=${requestScope.boardBean.endPage+1}">▶</a>
-			</c:when>
-			<c:otherwise>
-			▶
-			</c:otherwise>
-
-		</c:choose> 
-		
-	<!-- 마지막 페이지로 이동 -->
-	<a href="${initParam.rootPath }/SelectController?page=${requestScope.boardBean.totalPage}">마지막 페이지</a>
-
-
-<button onclick="location.href='${initParam.rootPath }/boardJsp/input.jsp'">글쓰기</button>
+			현재 page가 속한 page 그룹내의 페이지들 링크.
+			현재 pageGroup의 시작page ~ 끝 page
+		 -->
+		 <!-- 만약에 p가 현재페이지면 링크처리를 하지 않고 p가 현재페이지가 아니라면 링크처리. -->
+			<c:forEach begin="${requestScope.boardBean.beginPage }"
+				end="${requestScope.boardBean.endPage }" var="page">
+				<c:choose>
+					<c:when test="${requestScope.boardBean.page != page }">
+						<!--현재 페이지가 아니라면  -->
+						<a href="${initParam.rootPath }/SelectController?page=${page}">${page }</a>
+					</c:when>
+					<c:otherwise>
+						[${page }]&nbsp;
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+	
+			<!-- 
+			다음페이지 그룹으로 이동
+			만약에 다음페이지 그룹이 있으면 링크 처리 없으면 화살표만 나오도록 처리
+		 -->
+		<c:choose>
+				<c:when test="${requestScope.boardBean.nextPageGroup }">
+					<a href="${initParam.rootPath }/SelectController?page=${requestScope.boardBean.endPage+1}">▶</a>
+				</c:when>
+				<c:otherwise>
+				▶
+				</c:otherwise>
+	
+			</c:choose> 
+			
+		<!-- 마지막 페이지로 이동 -->
+		<a href="${initParam.rootPath }/SelectController?page=${requestScope.boardBean.totalPage}">마지막 페이지</a>
+	
+	
+	<button onclick="location.href='${initParam.rootPath }/boardJsp/input.jsp'">글쓰기</button>
 </body>
 </html>
 

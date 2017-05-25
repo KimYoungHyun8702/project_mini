@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title></title>
 <style>
 #rightAlign {
 	text-align: right;
@@ -81,7 +81,7 @@ li a:hover {
 				<c:otherwise>
 					<li style="float: right"><a href="/project_mini/member/mypage.jsp">마이페이지</a></li>
 					<li style="float: right"><a href="/project_mini/memberLogout">로그아웃</a></li>
-
+					<li style="float: right">${sessionScope.memberLoginInfo.memberId}님 환영합니다.</li>
 				</c:otherwise>
 			</c:choose>
 		</ul>
