@@ -4,6 +4,7 @@
 최초 작성일 : 2017.05.23
 변경이력
 -movie데이터 List로 변경 2017.05.24 수정
+-top5movieList로 변경. 2017.05.25 수정
 xxx 며칠날 수정
 */
 package servlet;
@@ -31,11 +32,12 @@ public class MovieMainServlet extends HttpServlet {
 		try {
 			ArrayList<Movie> top5MovieList=new ArrayList<>();
 			MovieService test = MovieServiceImpl.getInstance();
-			top5MovieList.add(test.findMovieById(1));
+			top5MovieList=(ArrayList)test.top5Movie();
+/*			top5MovieList.add(test.findMovieById(1));
 			top5MovieList.add(test.findMovieById(2));
 			top5MovieList.add(test.findMovieById(3));
 			top5MovieList.add(test.findMovieById(4));
-			top5MovieList.add(test.findMovieById(5));
+			top5MovieList.add(test.findMovieById(5));*/
 			
 /*			Movie movie1 = test.findMovieById(1);
 			Movie movie2 = test.findMovieById(2);

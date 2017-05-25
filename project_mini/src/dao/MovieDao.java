@@ -3,7 +3,7 @@
 작성자 :  김경혜
 최초 작성일 : 2017.05.23
 -김경혜) movieAvgScore메소드 return 타입 변경) double -> Movie객체 ->double  : 2017.05.24수정
--김경혜) selectMovieRank메소드 추가. : 2017.05.25 수정
+-김경혜) selectMovieRank메소드 추가. countMovie메소드 추가. : 2017.05.25 수정
 xxx 며칠날 수정
 */
 
@@ -72,6 +72,14 @@ public interface MovieDao {
 	 * @throws SQLException
 	 */
 	List<Movie> selectMovieRank(SqlSession session) throws SQLException;
+	
+	/**
+	 * 등록된 영화 수 조회하는 메소드
+	 * @param session
+	 * @return
+	 * @throws SQLException
+	 */
+	int countMovie(SqlSession session) throws SQLException;
 	
 	/**
 	 * 매개변수로 받은 영화ID와 일치하는 평균평점을 조회하는 메소드.

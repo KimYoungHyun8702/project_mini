@@ -96,7 +96,7 @@ FROM movie
 WHERE movie_date=2016
 
 --평점이 입력된 영화들만 영화정보를 조회하는 메소드 --rank
---List<Movie> selectAllMovie(Connection conn) throws SQLException;
+--List<Movie> selectMovieRank
 		SELECT m.movie_id,
 				m.movie_title,
 				m.movie_genre,
@@ -112,6 +112,11 @@ WHERE movie_date=2016
 			FROM board 
 			GROUP BY movie_id) b 
 		WHERE m.movie_id=b.movie_id(+) AND b.movie_avg_score IS NOT NULL
+		
+--등록된 영화수 
+--int countMovie(SqlSession session) 
+SELECT count(*)
+FROM movie
 
 --조인쿼리문(영화별 평점평균)
 --매개변수로 받은 영화ID와 일치하는 평균평점을 조회하는 메소드.

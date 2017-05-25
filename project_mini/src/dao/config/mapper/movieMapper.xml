@@ -100,6 +100,12 @@
 			GROUP BY movie_id) b 
 		WHERE m.movie_id=b.movie_id(+) AND b.movie_avg_score IS NOT NULL
 	</select>
+	
+	<!-- 등록된 영화수 조회-->
+	<select id="countMovie" resultType="_int">
+	SELECT count(*)
+	FROM movie
+	</select>
 
 	<!-- 평균평점 조회 수정 필요-->
 <!-- 	<select id="movieAvgScore" parameterType="_int" resultMap="movie-join-resultmap"> -->
