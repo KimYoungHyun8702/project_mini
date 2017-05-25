@@ -24,6 +24,7 @@ public class ModifyController extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		//1. 요청파라미터 조회
 		int boardId = Integer.parseInt(req.getParameter("boardId"));
 		String boardTitle = req.getParameter("boardTitle");
@@ -37,5 +38,6 @@ public class ModifyController extends HttpServlet{
 		String message = service.UpdateBoardService(new Board(boardId,boardTitle,new Date(),boardContent,boardScore,boardReference,memberId,movieId));
 		
 		req.getRequestDispatcher("/SelectController").forward(req, resp);
+		
 	}
 }

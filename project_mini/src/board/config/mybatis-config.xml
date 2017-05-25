@@ -17,8 +17,8 @@
 			<dataSource type="POOLED">
 				<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
 				<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:XE" />
-				<property name="username" value="movie"/>
-				<property name="password" value="movie"/>
+				<property name="username" value="scott"/>
+				<property name="password" value="tiger"/>
 				<property name="poolMaximumActiveConnections" value="100"/>
 			</dataSource>
 		</environment>
@@ -26,7 +26,7 @@
 	
 	<!-- Mapper 등록 -->
 	<mappers>
-		<mapper resource="project_mini/config/mapper/boardMapper.xml"/>
+		<mapper resource="board/config/mapper/boardMapper.xml"/>
 	</mappers>
 </configuration>
 

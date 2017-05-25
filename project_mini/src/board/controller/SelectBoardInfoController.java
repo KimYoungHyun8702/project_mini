@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.Session;
 
 public class SelectBoardInfoController extends HttpServlet{
 	@Override
@@ -17,7 +18,7 @@ public class SelectBoardInfoController extends HttpServlet{
 		String boardTitle = req.getParameter("boardTitle");
 		String boardContent = req.getParameter("boardContent");
 		String boardDate = req.getParameter("boardDate");
-		String memberId = req.getParameter("memberId");
+		String memberId = req.getParameter("memberLoginInfo");
 		int movieId = Integer.parseInt(req.getParameter("movieId"));
 		int boardId = Integer.parseInt(req.getParameter("boardId"));
 		int boardScore = Integer.parseInt(req.getParameter("boardScore"));

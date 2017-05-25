@@ -22,8 +22,7 @@
 	<tr style = "text-align:center">
 		<td>ID</td>
 		<td><input id="memberId" type="text" name="memberId" style="ime-mode:disabled"></td>
-		<td><input type="button" onclick="checkId()" value="중복체크"> &nbsp;&nbsp; ${requestScope.msg} </input></td>
-		<input type="text" value="중복체크">
+		<td><input type="button" onclick="checkId()" value="중복체크"> &nbsp;&nbsp;  <input type="text" value="${requestScope.msg}"></input></td>
 	</tr>
 	<tr style = "text-align:center">
 		<td>이름</td>
@@ -63,8 +62,7 @@
 
 <script type="text/javascript">
 function foo() {
-	window.open("id_check.jsp", "id_check", "width=500,height=300");
-	
+	//indow.open("id_check.jsp", "id_check", "width=500,height=300");
 }
 
 function foo2() {
@@ -82,12 +80,7 @@ function foo2() {
 // 아이디 중복확인(아이디를 입력하고 중복확인 버튼을 누르면 실행됨)
 function checkId() {
  	var sid = document.getElementById("memberId") .value;         
- 	location.href="/project_mini/memberIdCheck?memberId=" + sid;
- 	
- 	
- 	  
- 
-
+ 	location.href="/project_mini/memberIdCheck?memberId=" + sid;	 
 }
 </script>
 </body>

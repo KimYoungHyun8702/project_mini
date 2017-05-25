@@ -7,7 +7,6 @@ xxx 며칠날 수정
 */
 
 package dao;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 

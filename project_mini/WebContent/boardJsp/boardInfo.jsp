@@ -21,6 +21,7 @@
 	</thead>
 	<tbody>
 		<td>${requestScope.memberId}</td>
+		<%-- <td>${sessionScope.memberId }</td> --%>
 		<td>${requestScope.movieId}</td>
 		<td>${requestScope.boardTitle}</td>
 		<td>${requestScope.boardContent}</td>
@@ -30,7 +31,7 @@
 
 	
 	<c:if test="${requestScope.memberId == sessionScope.memberLoginInfo }">
-	<button onclick="location.href='${initParam.rootPath }/PostModifyController?boardId=${requestScope.boardId }&memberId=${requestScope.memberId}&boardTitle=${requestScope.boardTitle}&movieId=${requestScope.movieId}&boardScore=${requestScope.boardScore}&boardContent=${requestScope.boardContent}&boardReference=${requestScope.boardReference }'">수정</button>
+	<button onclick="location.href='${initParam.rootPath }/PostModifyController?boardId=${requestScope.boardId }&memberId=${requestScope.memberId}&boardTitle=${requestScope.boardTitle}&movieId=${requestScope.movieId}&boardScore=${requestScope.boardScore}&boardContent=${requestScope.boardContent}&boardReference=${requestScope.boardReference }&boardDate=${requestScope.boardDate }'">수정</button>
 	<button onclick="location.href='${initParam.rootPath }/DeleteController?boardId=${requestScope.boardId }'">삭제</button>
 	</c:if>
 	<button onclick="location.href='${initParam.rootPath }/SelectController'">뒤로가기</button>

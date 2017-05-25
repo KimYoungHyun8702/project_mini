@@ -32,6 +32,9 @@ public class SelectController extends HttpServlet{
 				HttpSession session = req.getSession();
 				String loginId = "바꿔야함";
 				session.setAttribute("memberLoginInfo", loginId);
+				/*HttpSession session = req.getSession();
+				String loginId = (String) session.getAttribute("loginId");
+				session.setAttribute("memberLoginInfo", loginId);*/
 				
 				
 				req.setAttribute("list", map.get("list"));

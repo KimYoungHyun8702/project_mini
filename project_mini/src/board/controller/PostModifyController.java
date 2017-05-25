@@ -23,6 +23,10 @@ public class PostModifyController extends HttpServlet{
 	      int movieId = Integer.parseInt(req.getParameter("movieId"));
 	      int boardScore = Integer.parseInt(req.getParameter("boardScore"));
 	      int boardId = Integer.parseInt(req.getParameter("boardId"));
+	      String boardDate = req.getParameter("boardDate");
+	      int boardReference = Integer.parseInt(req.getParameter("boardReference"));
+	      
+	    		  
 	      
 	   
 	      //2. 비즈니스로직
@@ -32,6 +36,9 @@ public class PostModifyController extends HttpServlet{
 	      req.setAttribute("movieId", movieId);
 	      req.setAttribute("boardScore", boardScore);
 	      req.setAttribute("boardContent", boardContent);
+	      req.setAttribute("boardDate", boardDate);
+	      req.setAttribute("boardReference", boardReference);
+	      
 	      
 	      
 	      //modify.jsp로 이동
