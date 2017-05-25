@@ -42,15 +42,20 @@ select movie_id, sum(board_score)/count(board_score) from board group by movie_i
 --쿼리문
 --전체 영화정보를 조회하는 메소드
 --List<Movie> selectAllMovie(Connection conn) throws SQLException;
-SELECT movie_id,
-	movie_title,
-	movie_genre,
-	movie_director,
-	movie_actor,
-	movie_date,
-	movie_image,
-	movie_video
-FROM movie
+		SELECT m.movie_id,
+				m.movie_title,
+				m.movie_genre,
+				m.movie_director,
+				m.movie_actor,
+				m.movie_date,
+				m.movie_image,
+				m.movie_video,
+				b.movie_avg_score,
+		FROM movie m,(
+			SELECT movie_id, sum(board_score)/count(board_score) movie_avg_score
+			FROM board 
+			GROUP BY movie_id) b 
+		WHERE m.movie_id=b.movie_id(+)
 
 
 --매개변수로 받은 영화ID와 일치하는 영화정보를 영화 테이블에서 조회하는 메소드
@@ -90,6 +95,23 @@ SELECT movie_id,
 FROM movie
 WHERE movie_date=2016
 
+--평점이 입력된 영화들만 영화정보를 조회하는 메소드 --rank
+--List<Movie> selectAllMovie(Connection conn) throws SQLException;
+		SELECT m.movie_id,
+				m.movie_title,
+				m.movie_genre,
+				m.movie_director,
+				m.movie_actor,
+				m.movie_date,
+				m.movie_image,
+				m.movie_video,
+				b.movie_avg_score,
+				RANK() OVER(ORDER BY b.movie_avg_score desc)
+		FROM movie m,(
+			SELECT movie_id, sum(board_score)/count(board_score) movie_avg_score
+			FROM board 
+			GROUP BY movie_id) b 
+		WHERE m.movie_id=b.movie_id(+) AND b.movie_avg_score IS NOT NULL
 
 --조인쿼리문(영화별 평점평균)
 --매개변수로 받은 영화ID와 일치하는 평균평점을 조회하는 메소드.

@@ -24,15 +24,16 @@ public class Movie implements Serializable {
 	 * 부모테이블 : MOVIE, 자식테이블 : BOARD에서 파생된 테이블
 	 * 평균평점은 영화 하나에 소속되 있다.
 	 * 평균평점을 저장할 instance 변수 선언.
+	 * +평균평점별 rank를 저장할 instance 변수 선언.
 	 ****************************************/
 	private double movieAvgScore;
+	private int movieRank;
 
 	public Movie() {
 	}
 
-
 	public Movie(int movieId, String movieTitle, String movieGenre, String movieDirector, String movieActor,
-			int movieDate, String movieImage, String movieVideo, double movieAvgScore) {
+			int movieDate, String movieImage, String movieVideo, double movieAvgScore, int movieRank) {
 		this.movieId = movieId;
 		this.movieTitle = movieTitle;
 		this.movieGenre = movieGenre;
@@ -42,8 +43,18 @@ public class Movie implements Serializable {
 		this.movieImage = movieImage;
 		this.movieVideo = movieVideo;
 		this.movieAvgScore = movieAvgScore;
+		this.movieRank = movieRank;
 	}
 
+
+
+	public int getMovieRank() {
+		return movieRank;
+	}
+
+	public void setMovieRank(int movieRank) {
+		this.movieRank = movieRank;
+	}
 
 	public double getMovieAvgScore() {
 		return movieAvgScore;
@@ -119,15 +130,13 @@ public class Movie implements Serializable {
 		this.movieVideo = movieVideo;
 	}
 
-
 	@Override
 	public String toString() {
 		return "Movie [movieId=" + movieId + ", movieTitle=" + movieTitle + ", movieGenre=" + movieGenre
 				+ ", movieDirector=" + movieDirector + ", movieActor=" + movieActor + ", movieDate=" + movieDate
 				+ ", movieImage=" + movieImage + ", movieVideo=" + movieVideo + ", movieAvgScore=" + movieAvgScore
-				+ "]";
+				+ ", movieRank=" + movieRank + "]";
 	}
-
 
 	@Override
 	public int hashCode() {
@@ -142,11 +151,11 @@ public class Movie implements Serializable {
 		result = prime * result + ((movieGenre == null) ? 0 : movieGenre.hashCode());
 		result = prime * result + movieId;
 		result = prime * result + ((movieImage == null) ? 0 : movieImage.hashCode());
+		result = prime * result + movieRank;
 		result = prime * result + ((movieTitle == null) ? 0 : movieTitle.hashCode());
 		result = prime * result + ((movieVideo == null) ? 0 : movieVideo.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -182,6 +191,8 @@ public class Movie implements Serializable {
 			if (other.movieImage != null)
 				return false;
 		} else if (!movieImage.equals(other.movieImage))
+			return false;
+		if (movieRank != other.movieRank)
 			return false;
 		if (movieTitle == null) {
 			if (other.movieTitle != null)

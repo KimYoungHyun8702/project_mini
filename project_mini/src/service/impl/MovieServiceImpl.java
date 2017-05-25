@@ -7,6 +7,7 @@
 변경이력
 -김경혜) movieAvgScore메소드 return 타입 변경) double -> Movie객체   : 2017.05.24수정
 -김경혜) movieAvgScore 메소드 삭제. findMovieById, getMovieList메소드 수정(평점평균 추가) : 2017.05.24 수정
+-김경혜) top5Movie 메소드 추가. 전체 instance변수 -> 로컬변수화(값이 유지되기 때문에 로컬변수로 선언해야한다._강사님말씀) : 2017.05.25
 
 */
 package service.impl;
@@ -49,15 +50,11 @@ public class MovieServiceImpl implements MovieService {
 	SqlSessionFactoryManager ssfm = SqlSessionFactoryManager.getInstance();
 	MovieDao dao = MovieDaoImpl.getInstance();
 
-	List<Movie> movieList = null;
-	Movie movie = null;
-	//double avgScore = 0.0;
-
 	@Override
 	public List<Movie> getMovieList() throws SQLException {
 		SqlSession session = null;
-		
-		try {
+		List<Movie> movieList = null;
+		try {	
 			session = factory.openSession();
 			movieList = dao.selectAllMovie(session);
 			for(Movie movie:movieList){
@@ -73,7 +70,7 @@ public class MovieServiceImpl implements MovieService {
 	@Override
 	public Movie findMovieById(int movieId) throws SQLException {
 		SqlSession session = null;
-		
+		Movie movie = null;
 		try { 
 			session = factory.openSession();
 			movie = dao.selectMovieById(session, movieId);
@@ -89,7 +86,7 @@ public class MovieServiceImpl implements MovieService {
 	@Override
 	public List<Movie> findMovieByName(String movieTitle) throws SQLException {
 		SqlSession session = null;
-		
+		List<Movie> movieList = null;		
 		try {
 			session = factory.openSession();
 			movieList = dao.selectMovieByName(session, movieTitle);
@@ -104,7 +101,7 @@ public class MovieServiceImpl implements MovieService {
 	@Override
 	public List<Movie> findMovieByGenre(String movieGenre) throws SQLException {
 		SqlSession session = null;
-		
+		List<Movie> movieList = null;
 		try {
 			session = factory.openSession();
 			movieList = dao.selectMovieByGenre(session, movieGenre);
@@ -119,6 +116,7 @@ public class MovieServiceImpl implements MovieService {
 	@Override
 	public List<Movie> selectMovieByDate(int movieDate) throws SQLException {
 		SqlSession session = null;
+		List<Movie> movieList = null;
 		try {
 			session = factory.openSession();
 			movieList = dao.selectMovieByDate(session, movieDate);
@@ -130,16 +128,41 @@ public class MovieServiceImpl implements MovieService {
 		return movieList;
 	}
 
-	//수정필요
 	@Override
+	public List<Movie> top5Movie() throws SQLException, IOException {
+		SqlSession session = null;
+		List<Movie> movieList = new ArrayList<>();
+		try {
+			session = factory.openSession();
+			ArrayList<Movie> allMovieRankList=(ArrayList)dao.selectMovieRank(session);
+			//System.out.println(allMovieRankList);
+//			movieList = dao.selectMovieRank(session);
+
+			for(int i=0;i<5;i++){
+				Movie movie=allMovieRankList.get(i);
+				System.out.println(movie);
+				movieList.add(movie);
+			}
+			session.commit();
+		} finally {
+			session.close();
+		}
+		
+		return movieList;
+	}
+
+	
+	//수정필요
+/*	@Override
 	public List<Movie> top5Movie() throws SQLException,IOException {
 		movieList=MovieServiceImpl.getInstance().getMovieList();
 		HashMap<Integer,Double> scoreMap=new HashMap();
 		ArrayList<Double> avgScoreList=new ArrayList<>();
+		ArrayList<Integer> movieIdList=new ArrayList<>();
 		
-/*		for(Movie movie : movieList){
+		for(Movie movie : movieList){
 			scoreMap.put(movie.getMovieId(), movie.getMovieAvgScore());
-		}*/
+		}
 		for(Movie movie : movieList){
 			scoreMap.put(movie.getMovieId(),movie.getMovieAvgScore());
 		}
@@ -150,20 +173,36 @@ public class MovieServiceImpl implements MovieService {
 			Entry entry=(Entry)e;
 			int movieId=(Integer)entry.getKey();
 			double avgScore=(Double)entry.getValue();
-			
+			movieIdList.add(movieId);
 			avgScoreList.add(avgScore);
 		}
-		
+		System.out.println("변경전(id)"+movieIdList);
+		System.out.println("변경전"+avgScoreList);
 		//avgScoreList 내림차순정렬
 		Collections.sort(avgScoreList);//오름차순 정렬 후
 		Collections.reverse(avgScoreList);//순서 반대로 = 내림차순 정렬
 
+		for(Double avgScore : avgScoreList){
+			int i=avgScoreList.indexOf(avgScore);
+			System.out.print(i+"-"+avgScore+",   ");
+		}
 		System.out.println(avgScoreList);
+		System.out.println(avgScoreList.size());
+		
+		System.out.println("index");
+		for(int i=0;i<avgScoreList.size();i++){
+			for(int movieId : movieIdList){
+				System.out.println(scoreMap.get(movieId));
+				if(scoreMap.get(movieId)==avgScoreList.get(i)){
+					System.out.print(movieIdList.indexOf(movieId)+", ");
+				}
+			}
+		}
 
 		//top 5 객체만 top5List생성.
 		
 		return movieList;
-	}
+	}*/
 
 /*	@Override
 	public Movie movieAvgScore(int movieId) throws SQLException {
