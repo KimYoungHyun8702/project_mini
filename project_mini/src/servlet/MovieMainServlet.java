@@ -41,7 +41,6 @@ public class MovieMainServlet extends HttpServlet {
 			req.setAttribute("top5MovieList", top5MovieList);
 			req.getRequestDispatcher("/movieJsp/main/recommand.jsp").forward(req, resp);
 		} catch (SQLException e) {
-			System.out.println("SQLException");
 		}
 	}
 	@Override

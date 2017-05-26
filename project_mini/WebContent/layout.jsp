@@ -1,10 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title></title>
+
 <style>
 #rightAlign {
 	text-align: right;
@@ -65,8 +61,7 @@ li a:hover {
 	color: white;
 }
 </style>
-</head>
-<body>
+
 	<nav>
 		<ul>
 			<li><a href="${initParam.rootPath }/index.jsp">메인화면</a></li>
@@ -81,10 +76,8 @@ li a:hover {
 				<c:otherwise>
 					<li style="float: right"><a href="${initParam.rootPath }/member/mypage.jsp">마이페이지</a></li>
 					<li style="float: right"><a href="${initParam.rootPath }/memberLogout">로그아웃</a></li>
-					<li style="float: right">${sessionScope.memberLoginInfo.memberId}님 환영합니다.</li>
+					<li style="float: right;padding: 15px;color:white">${sessionScope.memberLoginInfo.memberId}님 환영합니다.</li>
 				</c:otherwise>
 			</c:choose>
 		</ul>
 	</nav>
-</body>
-</html>
