@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시글 등록</title>
+<title>CGW</title>
 </head>
 <body>
 	<jsp:include page="/layout.jsp" />

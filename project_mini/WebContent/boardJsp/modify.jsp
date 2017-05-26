@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="enconding">
-<title>게시글 수정</title>
+<title>CGW</title>
 </head>
 <body>
 	<jsp:include page="/layout.jsp" />

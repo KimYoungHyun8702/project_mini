@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 목록</title>
+<title>CGW</title>
 <style type="text/css">
 c:link {
 	/*방문하지 않은 링크 설정.*/

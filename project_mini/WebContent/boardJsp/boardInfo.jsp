@@ -5,9 +5,10 @@
 <html>
 <head>
 <meta charset="enconding">
-<title>게시글 정보</title>
+<title>CGW</title>
 </head>
 <body>
+	<jsp:include page="/layout.jsp" />
 	<h1>게시글 정보입니다</h1>
 	<table border="1" width="1000">
 		<thead>

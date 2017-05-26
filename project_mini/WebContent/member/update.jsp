@@ -4,7 +4,7 @@
 
 <HTML>
 <HEAD>
-<TITLE>회원가입</TITLE>
+<TITLE>CGW</TITLE>
 <!-- <link href="style.css" rel="stylesheet" type="text/css"> -->
 </HEAD>
 <BODY>
