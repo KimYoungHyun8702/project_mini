@@ -59,15 +59,14 @@ td{
 		<c:forEach items="${requestScope.list }" var="board">
 			<tr>
 				<td align="center">${board.boardId }</td>
-				<td align="center">${board.movieId }</td>
-				<td align="center"><a href="${initParam.rootPath }/SelectByIdController?boardId=${board.boardId }&memberId=${sessionScope.memberLoginInfo}">${board.boardTitle }</a></td>
+				<td align="center">${board.movieTitle }</td>
+				<td align="center"><a href="${initParam.rootPath }/SelectByIdController?boardId=${board.boardId }&memberId=${sessionScope.memberLoginInfo.memberId}">${board.boardTitle }</a></td>
 				<td align="center">${board.memberId }</td>
 				<td align="center">${board.boardDate }</td>
 				<td align="center">${board.boardReference }</td>
 				<td align="center">${board.boardScore }</td>
 			</tr>
 		</c:forEach>
-		
 	</tbody>
 </table>
 
@@ -130,8 +129,8 @@ td{
 	<!-- 마지막 페이지로 이동 -->
 	<a href="${initParam.rootPath }/SelectController?page=${requestScope.boardBean.totalPage}">마지막 페이지</a>
 
-
-<button onclick="location.href='${initParam.rootPath }/boardJsp/input.jsp'">글쓰기</button>
+<%-- 
+<button onclick="location.href='${initParam.rootPath }/boardJsp/input.jsp'">글쓰기</button> --%>
 </body>
 </html>
 

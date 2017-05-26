@@ -11,6 +11,7 @@
 		<result column="board_reference" property="boardReference"/>
 		<result column="member_id" property="memberId"/>
 		<result column="movie_id" property="movieId"/>
+		<result column="movie_title" property="movieTitle"/>
 	</resultMap>
 	
 	<resultMap type="Reference" id="reference-resultmap">
@@ -52,9 +53,9 @@
 	<select id="selectBoard" resultMap="board-resultmap" parameterType="int">
 		SELECT board_id, board_title, board_date,
 		board_content, board_score, board_reference,
-		member_id, movie_id 
-		FROM board
-		WHERE Board_id =#{value}
+		member_id, board.movie_id, movie_title 
+		FROM board, movie
+		WHERE board.movie_id = movie.movie_id and Board_id =#{value}
 	</select>
 	
 	<select id="selectBoardCount" resultType="_int">
@@ -63,18 +64,19 @@
 
 	<select id="selectBoardList" parameterType="map" resultMap="board-resultmap">
 		<![CDATA[
-			select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id
+			select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title
 			from(
-				select rownum rnum, board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id
+				select rownum rnum, board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title
 				from(
-					select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id 
-					from board order by board_id
+					select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, board.movie_id, movie_title
+					from board, movie WHERE board.movie_Id = movie.movie_id order by board_id
 				)
 				where rownum <= #{endItemNum}
 			)
 			where rnum >= #{beginItemNum}
 		]]>
 	</select>
+	
 	
 	<select id="movieTitleConvert" parameterType="String" resultMap="board-resultmap">
 		select m.movie_id

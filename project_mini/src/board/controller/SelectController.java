@@ -1,17 +1,20 @@
 package board.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import board.service.BoardService;
 import board.service.impl.BoardServiceImpl;
-import board.vo.Reference;
+import board.vo.Board;
+import service.MovieService;
+import service.impl.MovieServiceImpl;
 
 public class SelectController extends HttpServlet{
 	@Override
@@ -29,10 +32,7 @@ public class SelectController extends HttpServlet{
 				BoardService service = BoardServiceImpl.getInstance();
 				Map<String, Object> map = service.getBoardList(page);
 				
-				HttpSession session = req.getSession();
-				String loginId = "wish";
-				session.setAttribute("memberLoginInfo", loginId);
-			
+				System.out.println(map);
 				req.setAttribute("list", map.get("list"));
 				req.setAttribute("boardBean", map.get("pageBean"));
 				req.getRequestDispatcher("/boardJsp/boardView.jsp").forward(req,resp);

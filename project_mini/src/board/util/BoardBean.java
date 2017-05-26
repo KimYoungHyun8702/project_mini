@@ -60,7 +60,7 @@ public class BoardBean {
 		if(totalBoards%boardPerPage != 0){
 			totalPage = totalBoards/boardPerPage +1;
 		}else{
-			totalPage = totalBoards/boardPerPage;
+			totalPage = totalBoards/boardPerPage +1;
 		}		
 		return totalPage;
 	}
@@ -113,7 +113,6 @@ public class BoardBean {
 	public int getEndBoardInPage(){
 		return page * boardPerPage;
 	}
-	
 	/**
 	 * 보려는 페이지가 속한 페이지 그룹의 시작 페이지 번호를 계산해서 return 한다.<br>
 	 * 1. Page Group 내 Page 수*(현재 페이지 그룹 -1) + 1을 한 값이 첫 페이지이다.(페이지 그룹*페이지 그룹 개수 이 그 그룹의 마지막 번호이므로)<br>

@@ -1,5 +1,6 @@
 <%@page import="vo.Movie"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,5 +45,8 @@
 			<iframe style="align:center" width="600" height="300" src="<%=((Movie) request.getAttribute("movieDetail")).getMovieVideo()%>"></iframe>
 		</div>
 	</section>
+	<c:if test="${sessionScope.memberLoginInfo.memberId != null }">
+	<a href="${initParam.rootPath }/InputDataController?movieId=<%=((Movie) request.getAttribute("movieDetail")).getMovieId()%>&movieTitle=<%=((Movie) request.getAttribute("movieDetail")).getMovieTitle()%>">게시글 쓰기</a>
+	</c:if>
 </body>
 </html>

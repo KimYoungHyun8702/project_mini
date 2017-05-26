@@ -49,7 +49,7 @@ create table movie(
 
 delete from board
 delete from movie;
-
+delete from reference
 create sequence board_id_seq;
 select board_id_seq.nextval FROM dual
 drop sequence board_id_seq;
@@ -107,3 +107,31 @@ delete from reference;
 --게시글 더미 데이터
 insert into board values(board_id_seq.nextval,'게시글1','asdf',)
 >>>>>>> branch 'master' of https://github.com/KimYoungHyun8702/project_mini.git
+
+select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id
+			from(
+				select rownum rnum, board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id
+				from(
+					select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id 
+					from board WHERE board_title = #{serch} order by board_id
+				)
+				where rownum <= 10
+			)
+			where rnum >= 1
+			
+			select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title
+			from(
+				select rownum rnum, board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title
+				from(
+					select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, board.movie_id, movie_title
+					from board, movie WHERE board.movie_Id = movie.movie_id order by board_id
+				)
+				where rownum <= 10
+			)
+			where rnum >= 1
+			
+		SELECT board_id, board_title, board_date,
+		board_content, board_score, board_reference,
+		member_id, board.movie_id, movie_title 
+		FROM board, movie
+		WHERE board.movie_id = movie.movie_id and Board_id = 6

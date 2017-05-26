@@ -108,6 +108,15 @@
 		<url-pattern>/SelectController</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>InputDataController</servlet-name>
+		<servlet-class>board.controller.InputDataController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InputDataController</servlet-name>
+		<url-pattern>/InputDataController</url-pattern>
+	</servlet-mapping>
+	
 	
 	<servlet>
 		<servlet-name>ModifyController</servlet-name>

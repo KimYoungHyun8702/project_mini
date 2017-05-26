@@ -13,7 +13,7 @@
 	<thead>
 		<tr>
 			<td>작성자 </td>
-			<td>영화</td>
+			<td>영화 제목</td>
 			<td>제목 </td>
 			<td>내용 </td>
 			<td>작성일자 </td>
@@ -23,7 +23,7 @@
 	<tbody>
 		<tr>
 			<td>${requestScope.board.memberId}</td>
-			<td>${requestScope.board.movieId}</td>
+			<td>${requestScope.board.movieTitle }</td>
 			<td>${requestScope.board.boardTitle}</td>
 			<td>${requestScope.board.boardContent}</td>
 			<td>${requestScope.board.boardDate}</td>
@@ -32,13 +32,15 @@
 	</tbody>
 </table>
 	
-	<c:if test="${requestScope.board.memberId == sessionScope.memberLoginInfo }">
+	<c:if test="${requestScope.board.memberId == sessionScope.memberLoginInfo.memberId }">
 	<button onclick="location.href='${initParam.rootPath }/PostModifyController?boardId=${requestScope.board.boardId }'">수정</button>
 	<button onclick="location.href='${initParam.rootPath }/DeleteController?boardId=${requestScope.board.boardId }'">삭제</button>
 	</c:if>
+	<c:if test="${sessionScope.memberLoginInfo.memberId != null}">
 	<c:if test="${requestScope.reference == null}">
-	<button onclick="location.href='${initParam.rootPath }/ReferenceController?boardId=${requestScope.board.boardId }&memberId=${sessionScope.memberLoginInfo }'">추천하기 꾸욱~</button>
+	<button onclick="location.href='${initParam.rootPath }/ReferenceController?boardId=${requestScope.board.boardId }&memberId=${sessionScope.memberLoginInfo.memberId }'">추천하기 꾸욱~</button>
 	</c:if>
-	<button onclick="location.href='${initParam.rootPath }/SelectController?memberId=${sessionScope.memberLoginInfo }'">뒤로가기</button>
+	</c:if>
+	<button onclick="location.href='${initParam.rootPath }/SelectController?memberId=${sessionScope.memberLoginInfo.memberId }'">뒤로가기</button>
 </body>
 </html>
