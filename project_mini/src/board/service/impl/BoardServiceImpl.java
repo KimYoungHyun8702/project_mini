@@ -153,4 +153,23 @@ public class BoardServiceImpl implements BoardService{
 			session.close();
 		}
 	}
+
+	@Override
+	public String deleteReferenceService(int boardId, String memberId) {
+		HashMap<String, Object> map = new HashMap<>();
+		SqlSession session = factory.openSession();
+		try{
+			int cnt = dao.deleteReference(session, boardId, memberId);
+			if(cnt == 0){
+				return "실패";
+			}
+			session.commit();
+		}finally{
+			session.close();
+		}
+		return "성공";
+	}
+	
+	
+	
 }

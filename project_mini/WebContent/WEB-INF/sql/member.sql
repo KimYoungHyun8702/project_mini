@@ -17,23 +17,27 @@ values('wish','kk','kk','kk','kk',66);
 delete from MEMBER
 where member_id = 'kk'
 
-
-
-
+--전체 테이블 검색
+select * from tab;
 
 --게시판 관리
 drop table board;
 create table board(
 	board_id number primary key,
-	board_title varchar2(30) not null,
+	board_title varchar2(2000) not null,
 	board_date date not null,
-	board_content varchar2(500) not null,
+	board_content varchar2(2000) not null,
 	board_score	  number not null,
 	board_reference number not null,
 	member_id varchar2(20) not null,
 	movie_id number ,
 	constraint movie_fk foreign key(movie_id) references movie
 	);
+	
+--보드테이블 시퀀스
+create sequence board_id_seq;
+select board_id_seq.nextval FROM dual
+drop sequence board_id_seq;
 	
 --영화 관리
 drop table movie;
@@ -52,7 +56,7 @@ create table movie(
 drop table reference;
 create table Reference(
 	board_id number,
-	member_id varchar2(20),
+	member_id varchar2(20)
 );
 
 select * from movie;
@@ -60,9 +64,7 @@ select * from movie;
 delete from board
 delete from movie;
 delete from reference
-create sequence board_id_seq;
-select board_id_seq.nextval FROM dual
-drop sequence board_id_seq;
+
 
 	select board_id, board_title, member_id, board_date, board_reference, board_score
 			from(

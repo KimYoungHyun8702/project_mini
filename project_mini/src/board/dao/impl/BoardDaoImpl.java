@@ -80,8 +80,12 @@ public class BoardDaoImpl implements BoardDao{
 	}
 	
 	@Override
-	public int insertBoardSeq(SqlSession session, Board board) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int deleteReference(SqlSession session, int boardId, String memberId) {
+		HashMap<String, Object> referenceMap = new HashMap<>();
+		referenceMap.put("boardId", boardId);
+		referenceMap.put("memberId", memberId);
+		return session.delete(makeSql("deleteReference"),referenceMap);
 	}
+	
+	
 }
