@@ -19,11 +19,11 @@
 			제목 : <input type="text" value="${requestScope.board.boardTitle}" name="boardTitle"/><br>
 			내용<br>
 			<textarea rows = "10" cols = "100" name = "boardContent">${requestScope.board.boardContent}</textarea><br>
-			<input type="hidden" name="memberId" value="${sessionScope.memberLoginInfo }"/>
+			<input type="hidden" name="memberId" value="${sessionScope.memberLoginInfo.memberId }"/>
 			<input type="hidden" name="boardId" value="${requestScope.board.boardId }"/>
 			<input type="hidden" name="boardReference" value="${requestScope.board.boardReference }"/>
 			<input type = "submit" value="수정완료"/>
 	</form>
-	<button onclick="location.href='${initParam.rootPath }/SelectByIdController?boardId=${requestScope.board.boardId }'">뒤로가기</button>
+	<button onclick="location.href='${initParam.rootPath }/SelectByIdController?boardId=${requestScope.board.boardId }&memberId=${sessionScope.memberLoginInfo.memberId }'">뒤로가기</button>
 </body>
 </html>

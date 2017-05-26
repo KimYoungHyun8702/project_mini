@@ -39,7 +39,7 @@ public class ModifyController extends HttpServlet{
 		Board board = service.selectBoardById(boardId);
 		
 		req.setAttribute("board", board);
-		req.getRequestDispatcher("/boardJsp/boardInfo.jsp").forward(req, resp);
+		req.getRequestDispatcher("/SelectByIdController").forward(req, resp);
 
 	}
 }

@@ -130,8 +130,8 @@ td{
    <!-- 마지막 페이지로 이동 -->
    <a href="${initParam.rootPath }/SelectController?page=${requestScope.boardBean.totalPage}">마지막 페이지</a>
 
-
-<button onclick="location.href='${initParam.rootPath }/boardJsp/input.jsp'">글쓰기</button>
+<%-- 
+<button onclick="location.href='${initParam.rootPath }/boardJsp/input.jsp'">글쓰기</button> --%>
 </body>
 </html>
 
