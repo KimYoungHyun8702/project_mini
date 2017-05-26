@@ -51,8 +51,8 @@ public class BoardDaoImpl implements BoardDao{
 	@Override
 	public List<Board> selectBoardList(SqlSession session, int beginItemNo, int endItemNo) {
 		HashMap<String, Object> param = new HashMap<>();
-		param.put("beginItemNum", beginItemNo);
-		param.put("endItemNum", endItemNo);
+		param.put("beginItemNo", beginItemNo);
+		param.put("endItemNo", endItemNo);
 		return session.selectList(makeSql("selectBoardList"),param);
 	}	
 

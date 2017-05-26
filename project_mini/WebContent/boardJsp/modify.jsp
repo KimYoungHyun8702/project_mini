@@ -3,11 +3,11 @@
 <html>
 <head>
 <meta charset="enconding">
-<title>수정</title>
+<title>게시글 수정</title>
 </head>
 <body>
 	<jsp:include page="/layout.jsp" />
-	<h2>수정 하세용 ~~</h2>
+	<h2>게시글을 수정 하세용 ~~</h2>
 	<%-- 제목 : ${requestScope.title }<br>
 	내용 <br>
 	${requestScope.content }<br>
@@ -28,7 +28,7 @@
 </body>
 <script type="text/javascript">
 function msg(){
-	alert("수정을 완료 했습니다 !!!");
+	alert("게시글 수정을 완료 했습니다 !!!");
 }
 </script>
 </html>

@@ -103,6 +103,51 @@
 	
 	<delete id="deleteReference" parameterType="map">
 	DELETE FROM reference
-	WHERE board_id = #{value} and member_id = #{value}
+	WHERE board_id = #{boardId} and member_id = #{memberId}
 	</delete>
+	
+	<select id="boardSerachByBoardTitle" parameterType="map" resultMap="board-resultmap">
+	<![CDATA[
+	select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title
+			from(
+				select rownum rnum, board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title
+				from(
+					select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, board.movie_id, movie_title
+					from board, movie WHERE board.movie_Id = movie.movie_id and board_title Like '%'||#{boardTitle}||'%' order by board_id
+				)
+				where rownum <= #{endItemNo}
+			)
+			where rnum >= #{beginItemNo}
+			]]>
+	</select>
+	
+	<select id="boardSerachByMovieTitle" parameterType="map" resultMap="board-resultmap">
+	<![CDATA[
+	select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title
+			from(
+				select rownum rnum, board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title
+				from(
+					select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, board.movie_id, movie_title
+					from board, movie WHERE board.movie_Id = movie.movie_id and movie_title Like '%'||#{movieTitle}||'%' order by board_id
+				)
+				where rownum <= #{endItemNo}
+			)
+			where rnum >= #{beginItemNo}
+			]]>
+	</select>
+	
+	<select id="boardSerachByMemberId" parameterType="map" resultMap="board-resultmap">
+	<![CDATA[
+	select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title
+			from(
+				select rownum rnum, board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title
+				from(
+					select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, board.movie_id, movie_title
+					from board, movie WHERE board.movie_Id = movie.movie_id and member_id Like '%'||#{memberId}||'%' order by board_id
+				)
+				where rownum <= #{endItemNo}
+			)
+			where rnum >= #{beginItemNo}
+			]]>
+	</select>
 </mapper>

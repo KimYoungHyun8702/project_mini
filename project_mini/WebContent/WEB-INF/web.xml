@@ -177,6 +177,15 @@
 		<url-pattern>/SelectByIdController</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>boardSearchByBoardTitleController</servlet-name>
+		<servlet-class>board.controller.boardSearchByBoardTitleController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>boardSearchByBoardTitleController</servlet-name>
+		<url-pattern>/boardSearchByBoardTitleController</url-pattern>
+	</servlet-mapping>
+	
 	<!--==============================영화 관리 ===========================================-->
 	<!-- Servlet 객체 등록 -->
 
