@@ -1,11 +1,20 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <!DOCTYPE html>
 <HTML>
 <HEAD>
 <TITLE>회원가입</TITLE>
 <!-- <link href="style.css" rel="stylesheet" type="text/css"> -->
 </HEAD>
-<BODY>
+<%-- <c:choose> 
+	<c:when test="${requestScope.msg != null }">
+		<body onload="window.alert('${requestScope.msg}')">
+	</c:when>
+	<c:otherwise>
+		<body>
+	</c:otherwise>
+</c:choose> --%>
+<body>
 <jsp:include page="/layout.jsp" />
 <center>
 <form action="/project_mini/memberJoin" method="post" name="joinform">
@@ -21,11 +30,18 @@
 </TR>
 
 <tr>
-<td width="170">아이디입력</TD>
+<td width="170">*아이디입력</TD>
 <td width="530">
-<input id="memberId" name="memberId" type="text" size="8" maxlength="8" style="ime-mode:disabled;">
-<input type="button" onclick="checkId()" value="중복체크" style='background-color:orange'>
-<input type="text" value="${requestScope.msg}" readonly size="40"></input><br>
+<input id="memberId" name="memberId" type="text" size="8" value="${requestScope.msg}" maxlength="8" style="ime-mode:disabled;">
+<input type="button" onclick="checkId()" value="중복체크" style='background-color:orange' >
+<c:choose>
+<c:when test="${requestScope.msg != null }">
+<input type="text" value="${requestScope.msg} 는 사용가능한 아이디입니다" readonly size="40" style="text-align:center"></input><br>
+</c:when>
+<c:otherwise>
+<input type="text" value="다른 아이디를 입력해 주세요" readonly size="40" style="text-align:center"></input><br>
+</c:otherwise>
+</c:choose>
 한글아이디를 입력할 수 없습니다.
 </TD>
 
@@ -62,7 +78,7 @@
 </TR>
 
 <tr>
-<td> 이메일 주소 </TD>
+<td> *이메일 주소 </TD>
 <td>
 <input name="memberEmail" type="email" size="20" maxlength="20"><br>
 아이디/비밀번호 분실, 변경시 본인확인 방법으로 사용하실 수 (있게하고싶습니다..)
@@ -80,7 +96,7 @@
 </TR>
 
 <tr>
-<td> 나이 </TD>
+<td> *나이 </TD>
 <td>
 <input name="memberAge" type="number" size="20" maxlength="20"><br>
 본인의 나이를 솔직하게 적어주세요<br>(반올림말고 미국나이 말고 한.국.나.이)
