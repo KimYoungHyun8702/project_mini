@@ -8,6 +8,7 @@
 	<!-- VO 클래스 이름 별칭 설정 -->
 	<typeAliases>
 		<package name="board.vo"/>
+		<package name="board.vo"/>
 	</typeAliases>
 	
 	<!-- 환경설정 : DB 연결관련 설정 -->

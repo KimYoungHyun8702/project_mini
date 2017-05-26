@@ -3,9 +3,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>당신이 원하는 바로 그 영화!@KOSTA탈주</title>
 </head>
 <body>
+
 <jsp:include page="/layout.jsp" />
 <br><br><br><br><br><br><br><br>
 <h1 style = "text-align:center">회원 가입이 완료되었습니다</h1><br><br><br><br>
@@ -17,5 +18,6 @@
 </tr>
 </TABLE>
 </center>
+
 </body>
 </html>

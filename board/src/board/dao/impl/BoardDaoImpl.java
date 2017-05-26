@@ -65,9 +65,9 @@ public class BoardDaoImpl implements BoardDao{
 	public int movieTitleConvert(SqlSession session, String movieTitle){
 		return session.selectOne(makeSql("movieTitleConvert"));
 	}
-	
 	@Override
-	public int updateBoardReference(SqlSession session, int boardId){
+	public int updateBoardReference(SqlSession session, int boardId) {
+		// TODO Auto-generated method stub
 		return 0;
 	}
 }

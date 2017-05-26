@@ -14,6 +14,7 @@ import board.service.BoardService;
 import board.util.BoardBean;
 import board.util.SqlSessionFactoryManager;
 import board.vo.Board;
+import board.vo.Reference;
 
 
 public class BoardServiceImpl implements BoardService{
@@ -26,7 +27,7 @@ public class BoardServiceImpl implements BoardService{
 		factory = SqlSessionFactoryManager.getInstance().getSqlSessionFactory();
 		dao = BoardDaoImpl.getInstance();
 	}
-	
+
 	public static BoardServiceImpl getInstance() throws IOException {
 		if (instance == null) {
 			instance = new BoardServiceImpl();
@@ -83,13 +84,11 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public Map<String, Object> selectBoardListService(int boardId) {
-		HashMap<String, Object> map = new HashMap<>();
+	public Board selectBoardById(int boardId) {
 		SqlSession session = factory.openSession();
 		try{
-			List<Board> list = dao.selectBoardById(session, boardId);
-			map.put("Info", list);
-			return map;
+			Board board = dao.selectBoardById(session, boardId);
+			return board;
 		}finally{
 			session.close();
 		}
@@ -114,10 +113,42 @@ public class BoardServiceImpl implements BoardService{
 	}
 	
 	@Override
-	public void movieTitleConvertService(String movieTitle){
+	public String updateBoardReference(int boardId){
+		BoardDaoImpl daoImpl = BoardDaoImpl.getInstance();
 		SqlSession session = factory.openSession();
 		try{
-			dao.movieTitleConvert(session, movieTitle);
+			int cnt = daoImpl.updateBoardReference(session, boardId);
+			if(cnt == 0){
+				return "실패";
+			}
+			session.commit();
+		}finally{
+			session.close();
+		}
+		return "성공";
+	}
+	
+	@Override
+	public void insertReferenceService(Reference reference) {
+		BoardDaoImpl daoImpl = BoardDaoImpl.getInstance();
+		SqlSession session = factory.openSession();
+		try{
+			int cnt = daoImpl.insertReference(session, reference);
+			if(cnt == 0){
+			}
+			session.commit();
+		}finally{
+			session.close();
+		}
+	}
+	
+	@Override
+	public Reference selectReferenceService(int boardId, String memberId) {
+		HashMap<String, Object> map = new HashMap<>();
+		SqlSession session = factory.openSession();
+		try{
+			Reference reference = dao.selectReference(session, boardId, memberId);	
+			return reference;
 		}finally{
 			session.close();
 		}

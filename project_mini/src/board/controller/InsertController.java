@@ -11,12 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import board.service.impl.BoardServiceImpl;
 import board.vo.Board;
+import board.vo.Reference;
 
 public class InsertController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
+		
 		int movieId = Integer.parseInt(req.getParameter("movieId"));
 		String boardTitle = req.getParameter("boardTitle");
 		String boardContent = req.getParameter("boardContent");
@@ -26,6 +27,7 @@ public class InsertController extends HttpServlet {
 		
 		BoardServiceImpl service = BoardServiceImpl.getInstance();  
 		String message = service.InsertBoardService(new Board(1,boardTitle,new Date(),boardContent,boardScore,boardReference,memberId,movieId));
+		
 		
 		resp.sendRedirect("/project_mini/SelectController");
 	

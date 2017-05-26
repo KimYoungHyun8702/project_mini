@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import board.vo.Board;
+import board.vo.Reference;
 
 public interface BoardDao {
 
@@ -45,7 +46,7 @@ public interface BoardDao {
 	 * @param session
 	 * @return
 	 */
-	List<Board> selectBoardById(SqlSession session, int boardId);
+	Board selectBoardById(SqlSession session, int boardId);
 	
 	/**
 	 * 
@@ -78,4 +79,20 @@ public interface BoardDao {
 	 * @return
 	 */
 	int updateBoardReference(SqlSession session, int boardId);
+	
+	/**
+	 * 추천수 등록 메소드
+	 * @param session
+	 * @param reference
+	 * @return
+	 */
+	int insertReference(SqlSession session, Reference reference);
+	
+	/**
+	 * 추천수 조회 메소드
+	 * @param session
+	 * @param boardId
+	 * @return
+	 */
+	Reference selectReference(SqlSession session, int boardId, String memberId);
 }
