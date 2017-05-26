@@ -53,8 +53,6 @@ drop table reference;
 create table Reference(
 	board_id number,
 	member_id varchar2(20),
-	constraint board_fk foreign key(board_id) references board,
-	constraint member_fk foreign key(member_id) references member
 );
 
 select * from movie;
