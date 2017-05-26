@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>당신이 원하는 바로 그 영화!@KOSTA탈주</title>
 </head>
 <body style="align: center">
 	<jsp:include page="/layout.jsp" />
@@ -21,21 +21,21 @@
 							<c:choose>
 								<c:when test="${loop.count%5==0 }">
 									<td><a
-										href="/project_mini/detailServlet?movie=${resultMovie.movieId }">
+										href="${initParam.rootPath }/detailServlet?movie=${resultMovie.movieId }">
 											<img src="${resultMovie.movieImage}" width="240px"
 											height="344px">
 									</a><br> <a
-										href="/project_mini/detailServlet?movie=${resultMovie.movieId }">${resultMovie.movieTitle}</a>
+										href="${initParam.rootPath }/detailServlet?movie=${resultMovie.movieId }">${resultMovie.movieTitle}</a>
 									</td>
 									<tr>
 								</c:when>
 								<c:otherwise>
 									<td><a
-										href="/project_mini/detailServlet?movie=${resultMovie.movieId }">
+										href="${initParam.rootPath }/detailServlet?movie=${resultMovie.movieId }">
 											<img src="${resultMovie.movieImage}" width="240px"
 											height="344px">
 									</a><br> <a
-										href="/project_mini/detailServlet?movie=${resultMovie.movieId }">${resultMovie.movieTitle}</a>
+										href="${initParam.rootPath }/detailServlet?movie=${resultMovie.movieId }">${resultMovie.movieTitle}</a>
 									</td>
 								</c:otherwise>
 							</c:choose>

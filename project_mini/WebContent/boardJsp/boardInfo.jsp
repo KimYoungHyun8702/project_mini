@@ -31,7 +31,6 @@
 		</tr>
 	</tbody>
 </table>
-	
 	<c:if test="${requestScope.board.memberId == sessionScope.memberLoginInfo.memberId }">
 	<button onclick="location.href='${initParam.rootPath }/PostModifyController?boardId=${requestScope.board.boardId }'">수정</button>
 	<button onclick="location.href='${initParam.rootPath }/DeleteController?boardId=${requestScope.board.boardId }'">삭제</button>

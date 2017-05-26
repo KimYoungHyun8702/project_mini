@@ -4,31 +4,40 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>당신이 원하는 바로 그 영화!@KOSTA탈주</title>
 </head>
-<body>
-<h1>회원탈퇴</h1>
+<body style="background-color:pink">
 
-<h2>주의! 계정탈퇴는 신중히 하시기 바랍니다</h2>
-<p>
+<br><br><br><br><br><br><br><br>
+
+<h1 style = "text-align:center">회원탈퇴</h1>
+<h2  style = "text-align:center">주의! 계정탈퇴는 신중히 하시기 바랍니다</h2><br><br>
+<center>
 <form action="/project_mini/memberDelete" method="post">
+<TABLE width="700" border="10" cellspacing="8" cellpadding="5" bordercolor="red" style = "align:center">
+<tr>
+
 <input type="hidden" name="memberId" value= "${sessionScope.memberLoginInfo.memberId}">
 <input  id="pw1" type="hidden" name="readPassword" value= "${sessionScope.memberLoginInfo.memberPassword}">
-<table cellpadding="5">
+
 <tr>
-<td>비밀번호확인</td>  
-<td><input id="pw2" type="password" name="memberPassword"></td>
-<td><input type="button" onclick="foo2()" value="확인"></input></td>
+<td>*비밀번호 확인 (완료시 등록 가능)</TD> 
+<td>
+<input id="pw2" name="memberPassword" type="password" size="10" maxlength="8">
+<input type="button" onclick="foo2()" value="확인"></input>
+</TD>
+</TR>
+<tr align="center">
+<td colspan="2">
+<input id="submitButton" type="submit"  onclick="foo()" value="삭제" disabled="true">
+</td>
 </tr>
-<tr>
-<td><input id="submitButton" type="submit" value="등록" disabled="true"></td>
-</tr>
-</table>
+</TABLE>
 </form>
-</p>
+</center>
 <script type="text/javascript">
 function foo() {
-	window.open()
+	alert("수정완료");
 }
 
 function foo2() {

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>당신이 원하는 바로 그 영화!@KOSTA탈주</title>
 </head>
 <body>
 	<jsp:include page="/layout.jsp" />
@@ -15,7 +15,7 @@
 		<tr>
 			<c:forEach var="top5Movie" items="${requestScope.top5MovieList }">
 				<td><a
-					href="/project_mini/detailServlet?movie=${top5Movie.movieId }">
+					href="${initParam.rootPath }/detailServlet?movie=${top5Movie.movieId }">
 						<img src="${top5Movie.movieImage}" width="240px" height="344px">
 				</a></td>
 			</c:forEach>
@@ -23,7 +23,7 @@
 		<tr>
 			<c:forEach var="top5Movie" items="${requestScope.top5MovieList }">
 				<td><a
-					href="/project_mini/detailServlet?movie=${top5Movie.movieId }">${top5Movie.movieTitle}</a></td>
+					href="${initParam.rootPath }/detailServlet?movie=${top5Movie.movieId }">${top5Movie.movieTitle}</a></td>
 			</c:forEach>
 		</tr>
 	</table>

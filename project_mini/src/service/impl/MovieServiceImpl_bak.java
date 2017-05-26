@@ -31,52 +31,56 @@ import service.MovieService;
 import util.SqlSessionFactoryManager;
 import vo.Movie;
 
-public class MovieServiceImpl implements MovieService {
+public class MovieServiceImpl_bak implements MovieService {
 	private static SqlSessionFactory factory;
 	private static MovieService instance;
-	MovieDao dao = MovieDaoImpl.getInstance();
 
-	private MovieServiceImpl() throws IOException {
-		factory = SqlSessionFactoryManager.getInstance().getSqlSessionFactory();
+	private MovieServiceImpl_bak() throws IOException {
+		SqlSessionFactoryManager ssfm = SqlSessionFactoryManager.getInstance();
+		factory = ssfm.getSqlSessionFactory();
 	}
 
 	public static MovieService getInstance() throws IOException {
 		if (instance == null) {
-			instance = new MovieServiceImpl();
+			instance = new MovieServiceImpl_bak();
 		}
 		return instance;
 	}
-	
+
+	SqlSessionFactoryManager ssfm = SqlSessionFactoryManager.getInstance();
+	MovieDao dao = MovieDaoImpl.getInstance();
+
 	@Override
-	public void roundAvgScore(Movie movie){
-		movie.setMovieAvgScore(Math.round(movie.getMovieAvgScore() * 10) / 10.0);//평점평균 소수 첫째자리까지만 조회.
+	public void roundAvgScore(Movie movie) {
+		// TODO Auto-generated method stub
+		
 	}
-	
+
 	@Override
-	public List<Movie> getMovieList() throws SQLException, IOException {
+	public List<Movie> getMovieList() throws SQLException {
 		SqlSession session = null;
-		List<Movie> movieAllList = null;
+		List<Movie> movieList = null;
 		try {
 			session = factory.openSession();
-			movieAllList = dao.selectAllMovie(session);
-			for (Movie movie : movieAllList) {
-				MovieServiceImpl.getInstance().roundAvgScore(movie);
+			movieList = dao.selectAllMovie(session);
+			for (Movie movie : movieList) {
+				movie.setMovieAvgScore(Math.round(movie.getMovieAvgScore() * 10) / 10.0);
 			}
 			session.commit();
 		} finally {
 			session.close();
 		}
-		return movieAllList;
+		return movieList;
 	}
 
 	@Override
-	public Movie findMovieById(int movieId) throws SQLException, IOException {
+	public Movie findMovieById(int movieId) throws SQLException {
 		SqlSession session = null;
 		Movie movie = null;
 		try {
 			session = factory.openSession();
 			movie = dao.selectMovieById(session, movieId);
-			MovieServiceImpl.getInstance().roundAvgScore(dao.selectMovieById(session, movieId));
+			movie.setMovieAvgScore(Math.round(movie.getMovieAvgScore() * 10) / 10.0);
 			session.commit();
 		} finally {
 			session.close();
@@ -88,58 +92,63 @@ public class MovieServiceImpl implements MovieService {
 	@Override
 	public List<Movie> findMovieByName(String movieTitle) throws SQLException {
 		SqlSession session = null;
-		List<Movie> movieListByName = null;
+		List<Movie> movieList = null;
 		try {
 			session = factory.openSession();
-			movieListByName = dao.selectMovieByName(session, movieTitle);
+			movieList = dao.selectMovieByName(session, movieTitle);
 			session.commit();
 		} finally {
 			session.close();
 		}
 
-		return movieListByName;
+		return movieList;
 	}
 
 	@Override
 	public List<Movie> findMovieByGenre(String movieGenre) throws SQLException {
 		SqlSession session = null;
-		List<Movie> movieListByGenre = null;
+		List<Movie> movieList = null;
 		try {
 			session = factory.openSession();
-			movieListByGenre = dao.selectMovieByGenre(session, movieGenre);
+			movieList = dao.selectMovieByGenre(session, movieGenre);
 			session.commit();
 		} finally {
 			session.close();
 		}
 
-		return movieListByGenre;
+		return movieList;
 	}
 
 	@Override
 	public List<Movie> selectMovieByDate(int movieDate) throws SQLException {
 		SqlSession session = null;
-		List<Movie> movieListByDate = null;
+		List<Movie> movieList = null;
 		try {
 			session = factory.openSession();
-			movieListByDate = dao.selectMovieByDate(session, movieDate);
+			movieList = dao.selectMovieByDate(session, movieDate);
 			session.commit();
 		} finally {
 			session.close();
 		}
 
-		return movieListByDate;
+		return movieList;
 	}
 
 	@Override
 	public List<Movie> top5Movie() throws SQLException, IOException {
 		SqlSession session = null;
-		List<Movie> top5MovieList = new ArrayList<>();
+		List<Movie> movieList = new ArrayList<>();
 		try {
 			session = factory.openSession();
 			ArrayList<Movie> allMovieRankList = (ArrayList) dao.selectMovieRank(session);
+			// System.out.println(allMovieRankList);
+			// movieList = dao.selectMovieRank(session);
+			// System.out.println(allMovieRankList.size());
 			if (allMovieRankList.size() >= 5) {
 				for (int i = 0; i < 5; i++) {
-					top5MovieList.add(allMovieRankList.get(i));
+					Movie movie = allMovieRankList.get(i);
+					System.out.println(movie);
+					movieList.add(movie);
 				}
 			} else {
 				// 평점 등록수가 부족하여 top5안되는 경우 random으로 영화 5개 선정.
@@ -154,17 +163,19 @@ public class MovieServiceImpl implements MovieService {
 						}
 					}
 				}
-
+				for (int i = 0; i < randomList.length; i++) {
+					System.out.println(randomList[i]);
+				}
 				// 생성한 랜덤수를 movieId로 하는 영화5개정보 list에 저장.
 				for (int i = 0; i < 5; i++) {
-					top5MovieList.add(MovieServiceImpl.getInstance().findMovieById(randomList[i]));
+					movieList.add(MovieServiceImpl_bak.getInstance().findMovieById(randomList[i]));
 				}
-			}//end of else
+			}
 			session.commit();
 		} finally {
 			session.close();
 		}
-		return top5MovieList;
+		return movieList;
 	}
 
 }

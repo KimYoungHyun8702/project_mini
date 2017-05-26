@@ -6,6 +6,7 @@
 -김경혜) movieAvgScore메소드 return 타입 변경) double -> Movie객체   : 2017.05.24수정
 -김경혜) movieAvgScore 메소드 삭제. findMovieById, getMovieList메소드 수정(평점평균 추가) : 2017.05.24 수정
 -김경혜) top5Movie 메소드 추가. : 2017.05.25
+-김경혜) 코드 정리(필요없는 주석 제거) : 2017.05.25 수정
 xxx 며칠날 수정
 */
 package service;
@@ -18,19 +19,25 @@ import vo.Movie;
 
 public interface MovieService {
 	/**
-	 * 전체 영화정보 조회 후 평점평균(소숫점 첫째자리까지) 추가하여 리턴.
+	 * 평점평균 소수 첫째자리자리까지 반올림하는 메소드.
+	 * @param movie
+	 */
+	void roundAvgScore(Movie movie);
+	
+	/**
+	 * 전체 영화정보 조회 후 평점평균(roundAvgScore()사용-소숫점 첫째자리까지) 추가하여 리턴.
 	 * @return
 	 * @throws SQLException
 	 */
-	List<Movie> getMovieList() throws SQLException;
+	List<Movie> getMovieList() throws SQLException, IOException;
 
 	/**
-	 * 저장된 영화중 매개변수의 ID를 가진 영화정보 조회 후 평점평균(소숫점 첫째자리까지) 추가해준 메소드.
+	 * 저장된 영화중 매개변수의 ID를 가진 영화정보 조회 후 평점평균(roundAvgScore()사용-소숫점 첫째자리까지) 추가해준 메소드.
 	 * @param movieId : 찾을 영화의 ID
 	 * @return 조회한 영화정보를 리턴. 단 찾는 ID의 영화가 등록되어 있지않으면 null을 리턴.
 	 * @throws SQLException
 	 */
-	Movie findMovieById(int movieId) throws SQLException;
+	Movie findMovieById(int movieId) throws SQLException, IOException;
 
 	/**
 	 * 저장된 영화중 매개변수로 받은 제목의 영화정보들을 찾아서 리턴.
@@ -55,14 +62,6 @@ public interface MovieService {
 	 * @throws SQLException
 	 */
 	List<Movie> selectMovieByDate(int movieDate) throws SQLException;
-
-	/**
-	 * 저장된 영화중 매개변수로 받은 ID의 영화 평점평균 값을 리턴.
-	 * @param movieId : 찾을 영화 ID
-	 * @return 조회한 영화 평점평균(소숫점 첫째자리까지)을 포함한 정보를 리턴. 단 찾는 ID의 영화의 평점이 등록되어 있지않으면 0.0을 리턴.
-	 * @throws SQLException
-	 */
-//	Movie movieAvgScore(int movieId) throws SQLException;
 
 	/**
 	 * 평균평점 높은순으로 top5 영화 가져옴.

@@ -41,7 +41,6 @@ public class ModifyController extends HttpServlet{
 		
 		req.setAttribute("boardId", boardId);
 		req.setAttribute("board", board);
-		
 		req.setAttribute("memberId", memberId);
 		req.getRequestDispatcher("/SelectByIdController").forward(req, resp);
 

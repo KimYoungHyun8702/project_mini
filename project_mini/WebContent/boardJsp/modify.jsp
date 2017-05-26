@@ -6,6 +6,7 @@
 <title>수정</title>
 </head>
 <body>
+	<jsp:include page="/layout.jsp" />
 	<h2>수정 하세용 ~~</h2>
 	<%-- 제목 : ${requestScope.title }<br>
 	내용 <br>

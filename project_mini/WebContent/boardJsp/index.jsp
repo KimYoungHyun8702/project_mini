@@ -7,6 +7,7 @@
 <title>게시판</title>
 </head>
 <body>
+	<jsp:include page="/layout.jsp" />
 	<a href="${initParam.rootPath }/SelectController">게시판 ㄱㄱ</a>
 </body>
 </html>

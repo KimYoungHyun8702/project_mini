@@ -6,6 +6,7 @@
 <title>게시판 등록</title>
 </head>
 <body>
+	<jsp:include page="/layout.jsp" />
 	<h2>게시판 등록</h2>
 		<form action="${initParam.rootPath }/InsertController" method="post">
 			영화 제목 : <input type="text" name="movieTitle" value="${requestScope.movieTitle }" readonly/>

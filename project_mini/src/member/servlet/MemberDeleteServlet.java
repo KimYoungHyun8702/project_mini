@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import member.service.MemberService;
 
@@ -24,11 +25,10 @@ public class MemberDeleteServlet extends HttpServlet{
 		response.setContentType("text/html;charset=UTF-8");
 		 PrintWriter out = response.getWriter(); 
 		 
-		 out.println("<!doctype html>");
-		 out.println("<html><head><title>입력 결과</title></head>");
-		 out.println("<body>");
-		 out.println("<h1>계정삭제가 완료되었습니다<h1><br>");
-		 out.println("<a href=/project_mini/member/login.jsp>로그인 페이지로</a>");
-		 out.println("</body></html>");	 
+		 HttpSession session = request.getSession();
+		 session.invalidate();
+		 
+		 out.println("<script> alert('삭제완료');</script>");
+		 request.getRequestDispatcher("/member/login.jsp").forward(request, response);
 	}
 }

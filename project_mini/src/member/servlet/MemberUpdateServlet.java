@@ -37,7 +37,7 @@ public class MemberUpdateServlet extends HttpServlet{
 		
 		request.setAttribute("memberLoginInfo", member);
 		session.setAttribute("memberLoginInfo", member);
-		request.getRequestDispatcher("/member/update_result.jsp").forward(request, response);
+		request.getRequestDispatcher("/member/mypage.jsp").forward(request, response);
 		 
 		 
 	}
