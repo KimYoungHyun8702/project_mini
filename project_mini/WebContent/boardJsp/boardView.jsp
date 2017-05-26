@@ -41,34 +41,33 @@ td{
 <jsp:include page="/layout.jsp" />
 <h2>게시판 목록</h2>
 <table>
-   <thead>
-      <tr>
-         <td align="center">게시판 번호</td>
-         <td align="center">영화 제목</td>
-         <td align="center">제목</td>
-         <td align="center">작성자</td>
-         <td align="center">글쓴 날짜</td>
-         <td align="center">추천수</td>
-         <td align="center">평점</td>
-      </tr>
-   </thead>
-   <tbody>
-      <%-- ######################################################
-                                          조회된 item 출력 
-         ###################################################### --%>
-      <c:forEach items="${requestScope.list }" var="board">
-         <tr>
-            <td align="center">${board.boardId }</td>
-            <td align="center">${board.movieId }</td>
-            <td align="center"><a href="${initParam.rootPath }/SelectByIdController?boardId=${board.boardId }&memberId=${sessionScope.memberLoginInfo.memberId}">${board.boardTitle }</a></td>
-            <td align="center">${board.memberId }</td>
-            <td align="center">${board.boardDate }</td>
-            <td align="center">${board.boardReference }</td>
-            <td align="center">${board.boardScore }</td>
-         </tr>
-      </c:forEach>
-      
-   </tbody>
+	<thead>
+		<tr>
+			<td align="center">게시판 번호</td>
+			<td align="center">영화 제목</td>
+			<td align="center">제목</td>
+			<td align="center">작성자</td>
+			<td align="center">글쓴 날짜</td>
+			<td align="center">추천수</td>
+			<td align="center">평점</td>
+		</tr>
+	</thead>
+	<tbody>
+		<%-- ######################################################
+														조회된 item 출력 
+			###################################################### --%>
+		<c:forEach items="${requestScope.list }" var="board">
+			<tr>
+				<td align="center">${board.boardId }</td>
+				<td align="center">${board.movieTitle }</td>
+				<td align="center"><a href="${initParam.rootPath }/SelectByIdController?boardId=${board.boardId }&memberId=${sessionScope.memberLoginInfo.memberId}">${board.boardTitle }</a></td>
+				<td align="center">${board.memberId }</td>
+				<td align="center">${board.boardDate }</td>
+				<td align="center">${board.boardReference }</td>
+				<td align="center">${board.boardScore }</td>
+			</tr>
+		</c:forEach>
+	</tbody>
 </table>
 
 <p>

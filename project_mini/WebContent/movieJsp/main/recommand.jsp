@@ -9,7 +9,7 @@
 </head>
 <body>
 	<jsp:include page="/layout.jsp" />
-	<h1 align="center">top5</h1>
+	<h1 align="center">추천영화</h1>
 	<hr>
 	<table style="align:center;width:100%;">
 		<tr>

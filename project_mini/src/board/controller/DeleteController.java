@@ -19,9 +19,10 @@ public class DeleteController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int boardId = Integer.parseInt(req.getParameter("boardId"));
-		
+		String memberId = req.getParameter("memberId");
 		BoardService service = BoardServiceImpl.getInstance();
 		service.deleteBoardService(boardId);
+		service.deleteReferenceService(boardId, memberId);
 		
 		req.getRequestDispatcher("/SelectController").forward(req, resp);
 	}

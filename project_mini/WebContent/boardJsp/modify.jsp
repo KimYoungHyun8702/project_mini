@@ -22,8 +22,13 @@
 			<input type="hidden" name="memberId" value="${sessionScope.memberLoginInfo.memberId }"/>
 			<input type="hidden" name="boardId" value="${requestScope.board.boardId }"/>
 			<input type="hidden" name="boardReference" value="${requestScope.board.boardReference }"/>
-			<input type = "submit" value="수정완료"/>
+			<input type = "submit" onclick="msg()" value="수정완료"/>
 	</form>
 	<button onclick="location.href='${initParam.rootPath }/SelectByIdController?boardId=${requestScope.board.boardId }&memberId=${sessionScope.memberLoginInfo.memberId }'">뒤로가기</button>
 </body>
+<script type="text/javascript">
+function msg(){
+	alert("수정을 완료 했습니다 !!!");
+}
+</script>
 </html>

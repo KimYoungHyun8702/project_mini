@@ -24,9 +24,11 @@ public class InsertController extends HttpServlet {
 		int boardScore = Integer.parseInt(req.getParameter("boardScore"));
 		String memberId = req.getParameter("memberId");
 		int boardReference = Integer.parseInt(req.getParameter("boardReference"));
+		String movieTitle = req.getParameter("movieTitle");
 		
 		BoardServiceImpl service = BoardServiceImpl.getInstance();  
-		String message = service.InsertBoardService(new Board(1,boardTitle,new Date(),boardContent,boardScore,boardReference,memberId,movieId));
+		String message = service.InsertBoardService(new Board(1,boardTitle,new Date(),boardContent,boardScore,boardReference,memberId,movieId,movieTitle));
+	
 		
 		
 		resp.sendRedirect("/project_mini/SelectController");

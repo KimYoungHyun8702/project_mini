@@ -17,23 +17,27 @@ values('wish','kk','kk','kk','kk',66);
 delete from MEMBER
 where member_id = 'kk'
 
-
-
-
+--전체 테이블 검색
+select * from tab;
 
 --게시판 관리
 drop table board;
 create table board(
 	board_id number primary key,
-	board_title varchar2(30) not null,
+	board_title varchar2(2000) not null,
 	board_date date not null,
-	board_content varchar2(500) not null,
+	board_content varchar2(2000) not null,
 	board_score	  number not null,
 	board_reference number not null,
 	member_id varchar2(20) not null,
 	movie_id number ,
 	constraint movie_fk foreign key(movie_id) references movie
 	);
+	
+--보드테이블 시퀀스
+create sequence board_id_seq;
+select board_id_seq.nextval FROM dual
+drop sequence board_id_seq;
 	
 --영화 관리
 drop table movie;
@@ -52,19 +56,15 @@ create table movie(
 drop table reference;
 create table Reference(
 	board_id number,
-	member_id varchar2(20),
-	constraint board_fk foreign key(board_id) references board,
-	constraint member_fk foreign key(member_id) references member
+	member_id varchar2(20)
 );
 
 select * from movie;
 
 delete from board
 delete from movie;
+delete from reference
 
-create sequence board_id_seq;
-select board_id_seq.nextval FROM dual
-drop sequence board_id_seq;
 
 	select board_id, board_title, member_id, board_date, board_reference, board_score
 			from(
@@ -96,7 +96,7 @@ UPDATE board
 SET board_reference = board_reference + 1
 WHERE board_id = 2
 
-<<<<<<< HEAD
+
 select *
 from board
 
@@ -112,7 +112,34 @@ delete from reference;
 
 --게시글 더미 데이터
 insert into board values(board_id_seq.nextval,'게시글1','asdf',)
->>>>>>> branch 'master' of https://github.com/KimYoungHyun8702/project_mini.git
+
+select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id
+			from(
+				select rownum rnum, board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id
+				from(
+					select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id 
+					from board WHERE board_title = #{serch} order by board_id
+				)
+				where rownum <= 10
+			)
+			where rnum >= 1
+			
+			select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title
+			from(
+				select rownum rnum, board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title
+				from(
+					select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, board.movie_id, movie_title
+					from board, movie WHERE board.movie_Id = movie.movie_id order by board_id
+				)
+				where rownum <= 10
+			)
+			where rnum >= 1
+			
+		SELECT board_id, board_title, board_date,
+		board_content, board_score, board_reference,
+		member_id, board.movie_id, movie_title 
+		FROM board, movie
+		WHERE board.movie_id = movie.movie_id and Board_id = 6
 
 --영화 쿼리문 연습
 

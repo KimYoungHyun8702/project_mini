@@ -33,12 +33,15 @@ public class ModifyController extends HttpServlet{
 		int boardScore = Integer.parseInt(req.getParameter("boardScore"));
 		String memberId = req.getParameter("memberId");
 		int movieId = Integer.parseInt(req.getParameter("movieId"));
+		String movieTitle = req.getParameter("movieTitle");
 		
 		BoardServiceImpl service = BoardServiceImpl.getInstance();  
-		String message = service.UpdateBoardService(new Board(boardId,boardTitle,new Date(),boardContent,boardScore,boardReference,memberId,movieId));
+		String message = service.UpdateBoardService(new Board(boardId,boardTitle,new Date(),boardContent,boardScore,boardReference,memberId,movieId,movieTitle));
 		Board board = service.selectBoardById(boardId);
 		
+		req.setAttribute("boardId", boardId);
 		req.setAttribute("board", board);
+		req.setAttribute("memberId", memberId);
 		req.getRequestDispatcher("/SelectByIdController").forward(req, resp);
 
 	}
