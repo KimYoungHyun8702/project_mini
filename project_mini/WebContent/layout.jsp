@@ -69,18 +69,18 @@ li a:hover {
 <body>
 	<nav>
 		<ul>
-			<li><a href="/project_mini/index.jsp">메인화면</a></li>
-			<li><a href="/project_mini/movieJsp/search/searchForm.jsp">영화
+			<li><a href="${initParam.rootPath }/index.jsp">메인화면</a></li>
+			<li><a href="${initParam.rootPath }/movieJsp/search/searchForm.jsp">영화
 					검색</a></li>
 			<li><a href="${initParam.rootPath }/SelectController">게시판</a></li>
 			<c:choose>
 				<c:when test="${empty sessionScope.memberLoginInfo }">
 					<li style="float: right"><a
-						href="/project_mini/member/login.jsp">로그인</a></li>
+						href="${initParam.rootPath }/member/login.jsp">로그인</a></li>
 				</c:when>
 				<c:otherwise>
-					<li style="float: right"><a href="/project_mini/member/mypage.jsp">마이페이지</a></li>
-					<li style="float: right"><a href="/project_mini/memberLogout">로그아웃</a></li>
+					<li style="float: right"><a href="${initParam.rootPath }/member/mypage.jsp">마이페이지</a></li>
+					<li style="float: right"><a href="${initParam.rootPath }/memberLogout">로그아웃</a></li>
 					<li style="float: right">${sessionScope.memberLoginInfo.memberId}님 환영합니다.</li>
 				</c:otherwise>
 			</c:choose>

@@ -15,7 +15,7 @@
 		<tr>
 			<c:forEach var="top5Movie" items="${requestScope.top5MovieList }">
 				<td><a
-					href="/project_mini/detailServlet?movie=${top5Movie.movieId }">
+					href="${initParam.rootPath }/detailServlet?movie=${top5Movie.movieId }">
 						<img src="${top5Movie.movieImage}" width="240px" height="344px">
 				</a></td>
 			</c:forEach>
@@ -23,7 +23,7 @@
 		<tr>
 			<c:forEach var="top5Movie" items="${requestScope.top5MovieList }">
 				<td><a
-					href="/project_mini/detailServlet?movie=${top5Movie.movieId }">${top5Movie.movieTitle}</a></td>
+					href="${initParam.rootPath }/detailServlet?movie=${top5Movie.movieId }">${top5Movie.movieTitle}</a></td>
 			</c:forEach>
 		</tr>
 	</table>

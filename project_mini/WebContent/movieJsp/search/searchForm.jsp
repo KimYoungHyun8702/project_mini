@@ -9,7 +9,7 @@
 	<jsp:include page="/layout.jsp" />
 	<h1 align=center>영화 검색하기</h1>
 	<div style="width: 33%; margin: 0 0 0 41%;">
-		<form action="/project_mini/searchServlet" method="post">
+		<form action="${initParam.rootPath }/searchServlet" method="post">
 			<label for="title">영화 제목 : <input type="radio"
 				name="searchField" value="searchByTitle" id="title" checked="true">
 				<input type="text" name="searchTextByTitle"></label><br>

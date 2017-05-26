@@ -21,21 +21,21 @@
 							<c:choose>
 								<c:when test="${loop.count%5==0 }">
 									<td><a
-										href="/project_mini/detailServlet?movie=${resultMovie.movieId }">
+										href="${initParam.rootPath }/detailServlet?movie=${resultMovie.movieId }">
 											<img src="${resultMovie.movieImage}" width="240px"
 											height="344px">
 									</a><br> <a
-										href="/project_mini/detailServlet?movie=${resultMovie.movieId }">${resultMovie.movieTitle}</a>
+										href="${initParam.rootPath }/detailServlet?movie=${resultMovie.movieId }">${resultMovie.movieTitle}</a>
 									</td>
 									<tr>
 								</c:when>
 								<c:otherwise>
 									<td><a
-										href="/project_mini/detailServlet?movie=${resultMovie.movieId }">
+										href="${initParam.rootPath }/detailServlet?movie=${resultMovie.movieId }">
 											<img src="${resultMovie.movieImage}" width="240px"
 											height="344px">
 									</a><br> <a
-										href="/project_mini/detailServlet?movie=${resultMovie.movieId }">${resultMovie.movieTitle}</a>
+										href="${initParam.rootPath }/detailServlet?movie=${resultMovie.movieId }">${resultMovie.movieTitle}</a>
 									</td>
 								</c:otherwise>
 							</c:choose>
