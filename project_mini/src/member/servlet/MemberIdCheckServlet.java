@@ -31,11 +31,11 @@ public class MemberIdCheckServlet extends HttpServlet{
 			
 			if(member ==null){
 				//out.println("<script> alert('사용가능합니다');</script>");
-				request.setAttribute("msg", "사용가능한 아이디입니다.");
+				request.setAttribute("msg", memberId+"은(는) 사용가능한 아이디입니다.");
 				request.getRequestDispatcher("/member/join.jsp").forward(request, response);
 			}else{
 				//out.println("<script> alert('이미사용중입니다');</script>");
-				request.setAttribute("msg", "중복된 아이디 입니다.");
+				request.setAttribute("msg", memberId+"은(는) 중복된 아이디 입니다.");
 				request.getRequestDispatcher("/member/join.jsp").forward(request, response);
 			}
 			/*//로그인 성공

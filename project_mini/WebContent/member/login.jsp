@@ -4,19 +4,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-p{
-	line-height : 20px;
-	margin : 10px 20px;
-	border :1px solid #ccc;
-	padding : 5px;
-}
-</style>
-
-
+<link href="/project_mini/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<jsp:include page="/layout.jsp" />
+<%-- <jsp:include page="/layout.jsp" />
 <h1 style = "text-align:center">로그인</h1>
 
 <p>
@@ -35,6 +26,31 @@ p{
 	</tr>
 	</table>
 	</form>
-</p>
+</p> --%>
+  <body>
+	<div class="login">
+		<div class="login-screen">
+			<div class="app-title">
+				<h1>Login</h1>
+			</div>
+			<form action=/project_mini/memberLogin method="post">
+			<div class="login-form">
+				<div class="control-group">
+				<input type="text" class="login-field" value="" placeholder="MemberID" id="memberId" name="memberId">
+				<label class="login-field-icon fui-user" for="login-name"></label>
+				</div>
+
+				<div class="control-group">
+				<input type="password" class="login-field" value="" placeholder="MemberPassword" id="memberPassword" name="memberPassword">
+				<label class="login-field-icon fui-lock" for="login-pass"></label>
+				</div>
+				<a><input class="btn btn-primary btn-large btn-block" type="submit" value=로그인></a>
+				<a class="login-link" href="/project_mini/index.jsp">메인페이지로</a>
+				<a class="login-link" href="/project_mini/member/join.jsp">회원가입페이지로</a>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
 </body>
 </html>
