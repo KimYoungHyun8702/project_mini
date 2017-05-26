@@ -18,14 +18,6 @@ public interface BoardDao {
 	int insertBoard(SqlSession session, Board board);
 	
 	/**
-	 * 게시판 id 시퀀스 사용 메소드
-	 * @param session
-	 * @param board
-	 * @return
-	 */
-	int insertBoardSeq(SqlSession session, Board board);
-	
-	/**
 	 * 게시판 수정 메소드
 	 * @param session
 	 * @param board
@@ -95,4 +87,13 @@ public interface BoardDao {
 	 * @return
 	 */
 	Reference selectReference(SqlSession session, int boardId, String memberId);
+	
+	/**
+	 * 추천 테이블 삭제 메소드
+	 * @param session
+	 * @param boardId
+	 * @param memberId
+	 * @return
+	 */
+	int deleteReference(SqlSession session, int boardId, String memberId);
 }

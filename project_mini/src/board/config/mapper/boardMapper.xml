@@ -100,4 +100,9 @@
 		FROM reference
 		WHERE board_id = #{boardId} and member_id = #{memberId}
 	</select>
+	
+	<delete id="deleteReference" parameterType="map">
+	DELETE FROM reference
+	WHERE board_id = #{boardId} and member_id = #{memberId}
+	</delete>
 </mapper>

@@ -51,8 +51,9 @@ public interface BoardService {
 	String updateBoardReference(int boardId);
 	
 	void insertReferenceService(Reference reference);
-
 	
 	Reference selectReferenceService(int boardId, String memberId);
+	
+	String deleteReferenceService(int boardId, String memberId);
 
 }

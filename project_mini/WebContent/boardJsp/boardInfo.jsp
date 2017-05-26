@@ -33,7 +33,7 @@
 </table>
 	<c:if test="${requestScope.board.memberId == sessionScope.memberLoginInfo.memberId }">
 	<button onclick="location.href='${initParam.rootPath }/PostModifyController?boardId=${requestScope.board.boardId }'">수정</button>
-	<button onclick="location.href='${initParam.rootPath }/DeleteController?boardId=${requestScope.board.boardId }'">삭제</button>
+	<button onclick="location.href='${initParam.rootPath }/DeleteController?boardId=${requestScope.board.boardId }&memberId=${sessionScope.memberLoginInfo.memberId}'">삭제</button>
 	</c:if>
 	<c:if test="${sessionScope.memberLoginInfo.memberId != null}">
 	<c:if test="${requestScope.reference == null}">

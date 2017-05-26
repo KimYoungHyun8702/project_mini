@@ -1,10 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title></title>
+
 <style>
 #rightAlign {
 	text-align: right;
@@ -65,8 +61,7 @@ li a:hover {
 	color: white;
 }
 </style>
-</head>
-<body>
+
 	<nav>
 		<ul>
 			<li><a href="${initParam.rootPath }/index.jsp">메인화면</a></li>
@@ -86,5 +81,3 @@ li a:hover {
 			</c:choose>
 		</ul>
 	</nav>
-</body>
-</html>
