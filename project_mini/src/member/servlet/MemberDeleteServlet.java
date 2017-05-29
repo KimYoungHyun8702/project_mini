@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import board.service.BoardService;
+import board.service.impl.BoardServiceImpl;
 import member.service.MemberService;
 
 public class MemberDeleteServlet extends HttpServlet{
@@ -21,14 +23,16 @@ public class MemberDeleteServlet extends HttpServlet{
 		
 		MemberService seivice = MemberService.getInstance();
 		seivice.removeMember(memberId);
+		BoardService board = BoardServiceImpl.getInstance();
+		board.deleteReferenceMemberService(memberId);
 		
 		response.setContentType("text/html;charset=UTF-8");
-		 PrintWriter out = response.getWriter(); 
+		PrintWriter out = response.getWriter(); 
 		 
-		 HttpSession session = request.getSession();
-		 session.invalidate();
+		HttpSession session = request.getSession();
+		session.invalidate();
 		 
-		 out.println("<script> alert('삭제완료');</script>");
-		 request.getRequestDispatcher("/member/login.jsp").forward(request, response);
+		out.println("<script> alert('삭제완료');</script>");
+		request.getRequestDispatcher("/member/login.jsp").forward(request, response);
 	}
 }
