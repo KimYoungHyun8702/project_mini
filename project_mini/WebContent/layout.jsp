@@ -38,10 +38,10 @@ a:active {
 
 ul {
 	list-style-type: none;
-	margin: 0;
+	margin: 30px;
 	padding: 0;
 	overflow: hidden;
-	background-color: #999;
+	background-color: #3498DB;
 }
 
 li {
@@ -57,27 +57,46 @@ li a {
 }
 
 li a:hover {
-	background-color: #666;
+	background-color: #1703fc;
 	color: white;
+}
+
+form {
+	margin:20px;
+}
+
+.cgwlogo {
+	align:center;
+	width:600px;
+	margin:20px;
 }
 </style>
 
-	<nav>
-		<ul>
-			<li><a href="${initParam.rootPath }/index.jsp">메인화면</a></li>
-			<li><a href="${initParam.rootPath }/movieJsp/search/searchForm.jsp">영화
-					검색</a></li>
-			<li><a href="${initParam.rootPath }/SelectController">게시판</a></li>
-			<c:choose>
-				<c:when test="${empty sessionScope.memberLoginInfo }">
-					<li style="float: right"><a
-						href="${initParam.rootPath }/member/login.jsp">로그인</a></li>
-				</c:when>
-				<c:otherwise>
-					<li style="float: right"><a href="${initParam.rootPath }/member/mypage.jsp">마이페이지</a></li>
-					<li style="float: right"><a href="${initParam.rootPath }/memberLogout">로그아웃</a></li>
-					<li style="float: right;padding: 15px;color:white">${sessionScope.memberLoginInfo.memberId}님 환영합니다.</li>
-				</c:otherwise>
-			</c:choose>
-		</ul>
-	</nav>
+<div align="center">
+	<img
+		src="http://postfiles12.naver.net/MjAxNzA1MjlfMjk2/MDAxNDk2MDI5MDAzMzI2.d0g0NnxP28TFk-9qzoF5gXmRtU8GstWfLnw_XLRTvk4g.
+		1-U64k03bTRiOFK173PPoGmuPKvlp30GeegZXcgTuhAg.PNG.ohw6814/cgv_logo_900.png?type=w2" width="600px">
+</div>
+<nav>
+	<ul>
+		<li><a href="${initParam.rootPath }/index.jsp">메인화면</a></li>
+		<li><a
+			href="${initParam.rootPath }/movieJsp/search/searchForm.jsp">영화
+				검색</a></li>
+		<li><a href="${initParam.rootPath }/SelectController">게시판</a></li>
+		<c:choose>
+			<c:when test="${empty sessionScope.memberLoginInfo }">
+				<li style="float: right"><a
+					href="${initParam.rootPath }/member/login.jsp">로그인</a></li>
+			</c:when>
+			<c:otherwise>
+				<li style="float: right"><a
+					href="${initParam.rootPath }/member/mypage.jsp">마이페이지</a></li>
+				<li style="float: right"><a
+					href="${initParam.rootPath }/memberLogout">로그아웃</a></li>
+				<li style="float: right; padding: 15px; color: white">${sessionScope.memberLoginInfo.memberId}님
+					환영합니다.</li>
+			</c:otherwise>
+		</c:choose>
+	</ul>
+</nav>
