@@ -20,10 +20,10 @@
 <center>
 <form action="/project_mini/memberJoin" method="post" name="joinform">
 
-<TABLE width="700" border="10" cellspacing="8" cellpadding="5" bordercolor="blue">
+<TABLE width="700" border="10" cellspacing="8" cellpadding="5" bordercolor="blue" style="border-radius: 5px;">
 
 <tr style="background-color:skyblue">
-<td colspan="2" style="text-align:center">*표시는 필수 입력 사항입니다.(다 필수임....)</TD>
+<td colspan="2" style="text-align:center;border-radius: 5px;">*표시는 필수 입력 사항입니다.(다 필수임....)</TD>
 </TR>
 
 <tr>
@@ -31,8 +31,8 @@
 </TR>
 
 <tr>
-<td width="170">*아이디입력</TD>
-<td width="530">
+<td width="170" style="border-radius: 5px;">*아이디입력</TD>
+<td width="530" style="border-radius: 5px;">
 <input id="memberId" name="memberId" type="text" size="10" value="${requestScope.msg}" maxlength="10" style="ime-mode:disabled;">
 <input type="button" onclick="checkId()" value="중복체크" style='background-color:orange' >
 <c:choose>
@@ -48,8 +48,8 @@
 </TR>
 
 <tr>
-<td>*이름(실명) </TD>
-<td>
+<td style="border-radius: 5px;">*이름(실명) </TD>
+<td style="border-radius: 5px;">
 <input name="memberName" type="text" size="12" maxlength="10">
 </TD>
 </TR>
@@ -59,16 +59,16 @@
 </TR>
 
 <tr>
-<td>*비밀번호 </TD>
-<td>
+<td style="border-radius: 5px;">*비밀번호 </TD>
+<td style="border-radius: 5px;">
 <input id="pw1" name="readMemberPassword" type="password" size="10" maxlength="10"><br> 
 비밀번호는 10자를 넘을 수 없습니다
 </TD>
 </TR>
 
 <tr>
-<td>*비밀번호 확인 (완료시 등록 가능)</TD> 
-<td>
+<td style="border-radius: 5px;">*비밀번호 확인 (완료시 등록 가	능)</TD> 
+<td style="border-radius: 5px;">
 <input id="pw2" name="memberPassword" type="password" size="10" maxlength="8">
 <input type="button" onclick="foo2()" value="확인"></input>
 </TD>
@@ -79,8 +79,8 @@
 </TR>
 
 <tr>
-<td> *이메일 주소 </TD>
-<td>
+<td style="border-radius: 5px;"> *이메일 주소 </TD>
+<td style="border-radius: 5px;">
 <!-- <input name="memberEmail" type="email" size="20" maxlength="20"><br> -->
 <input id="memberEmail" name="memberEmail" type="email" size="20" value="${requestScope.msg2}" maxlength="20" style="ime-mode:disabled;">
 <input type="button" onclick="checkEmail()" value="중복체크" style='background-color:brown' >
@@ -97,8 +97,8 @@
 </TR>
 
 <tr>
-<td>*성별 </TD>
-<td>
+<td style="border-radius: 5px;">*성별 </TD>
+<td style="border-radius: 5px;">
 <select name="memberSex">
 <option value="남">남
 <option value="여">여
@@ -107,8 +107,8 @@
 </TR>
 
 <tr>
-<td> *나이 </TD>
-<td>
+<td style="border-radius: 5px;"> *나이 </TD>
+<td style="border-radius: 5px;">
 <input name="memberAge" type="number" size="20" maxlength="20"><br>
 본인의 나이를 솔직하게 적어주세요<br>(반올림말고 미국나이 말고 한.국.나.이)
 </TD>

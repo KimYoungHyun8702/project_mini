@@ -8,7 +8,7 @@
 <link href="/project_mini/css/board_boardView.css" rel="stylesheet" type="text/css">
 <style>
 
-c:link {
+c:link {	
    /*방문하지 않은 링크 설정.*/
    text-decoration: none; /*밑줄 안나오도록 처리.*/
    color: green;
@@ -32,10 +32,7 @@ c:active {
 }
 
 table, td {
-   border: 1px solid gray;
-}
-body {
-   background-color : #fef3d3;
+   border: 1px solid #d9d9d9;
 }
 table {
    border-collapse: collapse;
@@ -51,21 +48,23 @@ td {
     border-width: 2px 10px 4px 20px;
 } */
 p {
-    border-left: 20px solid red;
-    border-right:20px solid red;
-    background-color: lightgrey;
+	border-radius: 10px;
+    border-left: 20px solid #3498DB;
+    border-right:20px solid #3498DB;
+    background-color: #d9d9d9;
     text-align:center;
     width:60%;
     padding:20px;
 }
 
-div {
+.boarddiv {
 	text-align:center;
-	border-left: 20px solid yellow;
-    border-right:20px solid yellow;
-    background-color: lightgrey;
+	border-radius: 10px;
+	border-left: 20px solid #3498DB;
+    border-right:20px solid #3498DB;
+    background-color: #d9d9d9;
     padding:10px;
-    
+    width:800px;
 }
 </style>
 </head>
@@ -163,10 +162,11 @@ div {
       </select> <input type="text" name="keyWord" /> 
       <input type="submit" value="검색" />
       <input type="reset" value="입력 초기화" />&nbsp;
-      <button onclick="location.href='${initParam.rootPath }"/project_mini/movieJsp/search/searchForm.jsp"'>영화 검색후 글쓰기!!</button><br><br>
    </form>
-   
-   <div>
+    <c:if test="${sessionScope.memberLoginInfo.memberId != null}">
+      <button onclick="location.href='/project_mini/movieJsp/search/searchForm.jsp'">영화 검색후 글쓰기!!</button><br><br>
+   </c:if>
+   <div class="boarddiv">
       <%-- ######################################################
                                           페이징 처리
          ###################################################### --%>

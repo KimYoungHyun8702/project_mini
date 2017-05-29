@@ -10,7 +10,7 @@
 <body>
 	<jsp:include page="/layout.jsp" />
 	<h1 align="center">추천영화</h1>
-	<hr>
+	<hr color="#3498DB" size="3" noshade>
 	<table style="align:center;width:100%;">
 		<tr>
 			<c:forEach var="top5Movie" items="${requestScope.top5MovieList }">
