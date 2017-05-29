@@ -163,9 +163,10 @@ div {
       </select> <input type="text" name="keyWord" /> 
       <input type="submit" value="검색" />
       <input type="reset" value="입력 초기화" />&nbsp;
-      <button onclick="location.href='${initParam.rootPath }"/project_mini/movieJsp/search/searchForm.jsp"'>영화 검색후 글쓰기!!</button><br><br>
    </form>
-   
+    <c:if test="${sessionScope.memberLoginInfo.memberId != null}">
+      <button onclick="location.href='/project_mini/movieJsp/search/searchForm.jsp'">영화 검색후 글쓰기!!</button><br><br>
+   </c:if>
    <div>
       <%-- ######################################################
                                           페이징 처리
