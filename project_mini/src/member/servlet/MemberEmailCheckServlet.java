@@ -20,10 +20,7 @@ public class MemberEmailCheckServlet extends HttpServlet{
 		String memberEmail = request.getParameter("memberEmail");
 		MemberService service = MemberService.getInstance();
 		response.setContentType("text/html;charset=UTF-8");
-		PrintWriter out = response.getWriter();
-		
-		
-		System.out.println(request.getParameter("memberEmail"));
+		//PrintWriter out = response.getWriter();
 		
 		try{
 			Member member = service.checkMemberEmail(memberEmail);

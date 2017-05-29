@@ -66,8 +66,6 @@ public class SendEmailServlet extends HttpServlet{
 
 			   // send the message
 			   Transport.send(message);
-			   System.out.println("message sent successfully...");
-			
 			   response.sendRedirect("/project_mini/member/find_info_success.jsp");
 		} catch (LoginFailException | MessagingException | NullPointerException e) {
 			out.println("<script> alert('전송실패!! 뒤로가기를 눌러 다시 확인하세요');</script>");
