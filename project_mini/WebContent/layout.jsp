@@ -14,6 +14,7 @@ body {
 
 table, th, td {
 	text-align: center;
+	word-break: break-all
 }
 
 table {
@@ -75,7 +76,8 @@ form {
 <div align="center">
 	<img
 		src="http://postfiles12.naver.net/MjAxNzA1MjlfMjk2/MDAxNDk2MDI5MDAzMzI2.d0g0NnxP28TFk-9qzoF5gXmRtU8GstWfLnw_XLRTvk4g.
-		1-U64k03bTRiOFK173PPoGmuPKvlp30GeegZXcgTuhAg.PNG.ohw6814/cgv_logo_900.png?type=w2" width="600px">
+		1-U64k03bTRiOFK173PPoGmuPKvlp30GeegZXcgTuhAg.PNG.ohw6814/cgv_logo_900.png?type=w2" width="600px"
+		onClick="location.href='${initParam.rootPath}/index.jsp'" style="cursor:pointer"/>
 </div>
 <nav>
 	<ul>

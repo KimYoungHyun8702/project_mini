@@ -1,8 +1,8 @@
 
 @CHARSET "UTF-8";
 
-body {
-	background-color : #fef3d3;
+table {
+	border-radius: 3px;
 }
 thead, td {
 	font-family : "batang";

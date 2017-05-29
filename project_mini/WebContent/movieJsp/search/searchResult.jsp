@@ -9,11 +9,11 @@
 <body style="align: center">
 	<jsp:include page="/layout.jsp" />
 	<h1 align="center">검색 결과</h1>
-	<hr>
+	<hr color="#3498DB" size="3" noshade>
 	<section>
 		<c:choose>
 			<c:when test="${requestScope.resultMovieList.size()>0 }">
-				<table style="align: center; width: 100%;">
+				<table style="align: center; width:100%">
 					<tr>
 
 						<c:forEach var="resultMovie"
