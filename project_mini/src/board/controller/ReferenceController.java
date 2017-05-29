@@ -12,21 +12,21 @@ import board.service.impl.BoardServiceImpl;
 import board.vo.Reference;
 
 public class ReferenceController extends HttpServlet{
-	
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doPost(req, resp);
-	}
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int boardId = Integer.parseInt(req.getParameter("boardId"));	
-		String memberId = req.getParameter("memberId");
-		
-		BoardService service = BoardServiceImpl.getInstance();
-		String message = service.updateBoardReference(boardId);
-		service.insertReferenceService(new Reference(boardId, memberId));
-		
-		resp.sendRedirect("/project_mini/SelectByIdController?boardId="+boardId+"&memberId="+memberId);
-	}
+   
+   @Override
+   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+      doPost(req, resp);
+   }
+   
+   @Override
+   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+      int boardId = Integer.parseInt(req.getParameter("boardId"));   
+      String memberId = req.getParameter("memberId");
+      
+      BoardService service = BoardServiceImpl.getInstance();
+      service.updateBoardReference(boardId);
+      service.insertReferenceService(new Reference(boardId, memberId));
+      
+      resp.sendRedirect("/project_mini/SelectByIdController?boardId="+boardId+"&memberId="+memberId+"&reference=reference");
+   }
 }

@@ -2,152 +2,168 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="project_mini.config.mapper.boardMapper">
 
-	<resultMap type="Board" id="board-resultmap">
-		<id column="board_id" property="boardId" />
-		<result column="board_title" property="boardTitle" />
-		<result column="board_date" property="boardDate" />
-		<result column="board_content" property="boardContent" />
-		<result column="board_score" property="boardScore"/>
-		<result column="board_reference" property="boardReference"/>
-		<result column="member_id" property="memberId"/>
-		<result column="movie_id" property="movieId"/>
-		<result column="movie_title" property="movieTitle"/>
-	</resultMap>
-	
-	<resultMap type="Reference" id="reference-resultmap">
-		<id column="board_id" property="boardId" />
-		<result column="member_id" property="memberId" />
-	</resultMap>
-	
-	<insert id = "insertBoard123" parameterType="board">
-		INSERT INTO board
-		VALUES(#{boardId},#{boardTitle},#{boardDate},#{boardContent},#{boardScore},#{boardReference},#{memberId},#{movieId})
-	</insert>
-	
-	<insert id="insertBoard" parameterType="board">
-	<!--
-		selectKey : insert시 사용할 parameter값을 조회하는 SQL문을 넣는 태그로 insert 태그의 하위태그로 사용된다. 주로 자동증가하는 값 관련 처리를 한다. \
-		속성 : resultType - 조회결과 타입
-			 keyProperty - select결과를 넣을 parameter객체의 attribute명(setter)
-			 order : selectKey 실행을 insert 전(BEFORE)에 할지 후(AFTER-기본)에 할지 설정
-	-->
-		<selectKey resultType = "int" keyProperty = "boardId" order="BEFORE">
-			SELECT board_id_seq.nextval FROM dual
-		</selectKey>
-		INSERT INTO board
-		VALUES(#{boardId},#{boardTitle},#{boardDate},#{boardContent},#{boardScore},#{boardReference},#{memberId},#{movieId})
-	</insert>
-	
-	<update id = "updateBoard" parameterType="Board">
-		UPDATE board
-		SET Board_title = #{boardTitle}, Board_date =#{boardDate}, Board_content = #{boardContent}, Board_score=#{boardScore},
-		Board_reference = #{boardReference}, member_id =#{memberId}, movie_id=#{movieId}
-		WHERE Board_id = #{boardId}
-	</update>
+   <resultMap type="Board" id="board-resultmap">
+      <id column="board_id" property="boardId" />
+      <result column="board_title" property="boardTitle" />
+      <result column="board_date" property="boardDate" />
+      <result column="board_content" property="boardContent" />
+      <result column="board_score" property="boardScore"/>
+      <result column="board_reference" property="boardReference"/>
+      <result column="member_id" property="memberId"/>
+      <result column="movie_id" property="movieId"/>
+      <result column="movie_title" property="movieTitle"/>
+      <result column="board_count" property="boardCount"/>
+   </resultMap>
+   
+   <resultMap type="Reference" id="reference-resultmap">
+      <id column="board_id" property="boardId" />
+      <result column="member_id" property="memberId" />
+   </resultMap>
+   
+   <insert id = "insertBoard123" parameterType="board">
+      INSERT INTO board
+      VALUES(#{boardId},#{boardTitle},#{boardDate},#{boardContent},#{boardScore},#{boardReference},#{memberId},#{movieId},#{boardCount})
+   </insert>
+   
+   <insert id="insertBoard" parameterType="board">
+   <!--
+      selectKey : insert시 사용할 parameter값을 조회하는 SQL문을 넣는 태그로 insert 태그의 하위태그로 사용된다. 주로 자동증가하는 값 관련 처리를 한다. \
+      속성 : resultType - 조회결과 타입
+          keyProperty - select결과를 넣을 parameter객체의 attribute명(setter)
+          order : selectKey 실행을 insert 전(BEFORE)에 할지 후(AFTER-기본)에 할지 설정
+   -->
+      <selectKey resultType = "int" keyProperty = "boardId" order="BEFORE">
+         SELECT board_id_seq.nextval FROM dual
+      </selectKey>
+      INSERT INTO board
+      VALUES(#{boardId},#{boardTitle},#{boardDate},#{boardContent},#{boardScore},#{boardReference},#{memberId},#{movieId}, #{boardCount})
+   </insert>
+   
+   <update id = "updateBoard" parameterType="Board">
+      UPDATE board
+      SET Board_title = #{boardTitle}, Board_date =#{boardDate}, Board_content = #{boardContent}, Board_score=#{boardScore},
+      Board_reference = #{boardReference}, member_id =#{memberId}, movie_id=#{movieId}, board_count = #{boardCount}
+      WHERE Board_id = #{boardId}
+   </update>
 
-	<delete id="deleteBoard" parameterType="int">
-	DELETE FROM Board
-	WHERE Board_id = #{value}
-	</delete>
-	
-	<select id="selectBoard" resultMap="board-resultmap" parameterType="int">
-		SELECT board_id, board_title, board_date,
-		board_content, board_score, board_reference,
-		member_id, board.movie_id, movie_title 
-		FROM board, movie
-		WHERE board.movie_id = movie.movie_id and Board_id =#{value}
-	</select>
-	
-	<select id="selectBoardCount" resultType="_int">
-		select count(board_id) from board
-	</select>
+   <delete id="deleteBoard" parameterType="int">
+   DELETE FROM Board
+   WHERE Board_id = #{value}
+   </delete>
+   
+   <select id="selectBoard" resultMap="board-resultmap" parameterType="int">
+      SELECT board_id, board_title, board_date,
+      board_content, board_score, board_reference,
+      member_id, board.movie_id, movie_title, board_count
+      FROM board, movie
+      WHERE board.movie_id = movie.movie_id and Board_id =#{value}
+   </select>
+   
+   <select id="selectBoardCount" resultType="_int">
+      select count(board_id) from board
+   </select>
 
-	<select id="selectBoardList" parameterType="map" resultMap="board-resultmap">
-		<![CDATA[
-			select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title
-			from(
-				select rownum rnum, board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title
-				from(
-					select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, board.movie_id, movie_title
-					from board, movie WHERE board.movie_Id = movie.movie_id order by board_id
-				)
-				where rownum <= #{endItemNum}
-			)
-			where rnum >= #{beginItemNum}
-		]]>
-	</select>
-	
-	
-	<select id="movieTitleConvert" parameterType="String" resultMap="board-resultmap">
-		select m.movie_id
-		FROM movie m
-		WHERE m.movie_title = #{value}
-	</select>
-	
-	<update id="updateBoardReference" parameterType="int">
-		UPDATE board 
-		SET board_reference = board_reference + 1
-		WHERE board_id = #{value}
-	</update>
-	
-	<insert id="referenceInsert" parameterType="reference">
-		INSERT INTO reference
-		VALUES( #{boardId}, #{memberId})
-	</insert>
-	
-	<select id="referenceSelect" parameterType="map" resultMap="reference-resultmap">
-		SELECT board_id, member_id
-		FROM reference
-		WHERE board_id = #{boardId} and member_id = #{memberId}
-	</select>
-	
-	<delete id="deleteReference" parameterType="map">
-	DELETE FROM reference
-	WHERE board_id = #{boardId} and member_id = #{memberId}
-	</delete>
-	
-	<select id="boardSerachByBoardTitle" parameterType="map" resultMap="board-resultmap">
-	<![CDATA[
-	select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title
-			from(
-				select rownum rnum, board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title
-				from(
-					select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, board.movie_id, movie_title
-					from board, movie WHERE board.movie_Id = movie.movie_id and board_title Like '%'||#{boardTitle}||'%' order by board_id
-				)
-				where rownum <= #{endItemNo}
-			)
-			where rnum >= #{beginItemNo}
-			]]>
-	</select>
-	
-	<select id="boardSerachByMovieTitle" parameterType="map" resultMap="board-resultmap">
-	<![CDATA[
-	select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title
-			from(
-				select rownum rnum, board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title
-				from(
-					select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, board.movie_id, movie_title
-					from board, movie WHERE board.movie_Id = movie.movie_id and movie_title Like '%'||#{movieTitle}||'%' order by board_id
-				)
-				where rownum <= #{endItemNo}
-			)
-			where rnum >= #{beginItemNo}
-			]]>
-	</select>
-	
-	<select id="boardSerachByMemberId" parameterType="map" resultMap="board-resultmap">
-	<![CDATA[
-	select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title
-			from(
-				select rownum rnum, board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title
-				from(
-					select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, board.movie_id, movie_title
-					from board, movie WHERE board.movie_Id = movie.movie_id and member_id Like '%'||#{memberId}||'%' order by board_id
-				)
-				where rownum <= #{endItemNo}
-			)
-			where rnum >= #{beginItemNo}
-			]]>
-	</select>
+   <select id="selectBoardList" parameterType="map" resultMap="board-resultmap">
+      <![CDATA[
+         select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title, board_count
+         from(
+            select rownum rnum, board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title, board_count
+            from(
+               select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, board.movie_id, movie_title, board_count
+               from board, movie WHERE board.movie_Id = movie.movie_id order by board_id
+            )
+            where rownum <= #{endItemNum}
+         )
+         where rnum >= #{beginItemNum}
+      ]]>
+   </select>
+   
+   <update id="updateBoardReference" parameterType="int">
+      UPDATE board 
+      SET board_reference = board_reference + 1
+      WHERE board_id = #{value}
+   </update>
+   
+   <insert id="referenceInsert" parameterType="reference">
+      INSERT INTO reference
+      VALUES( #{boardId}, #{memberId})
+   </insert>
+   
+   <select id="referenceSelect" parameterType="map" resultMap="reference-resultmap">
+      SELECT board_id, member_id
+      FROM reference
+      WHERE board_id = #{boardId} and member_id = #{memberId}
+   </select>
+   
+   <delete id="deleteReferenceBoard" parameterType="int">
+   DELETE FROM reference
+   WHERE board_id = #{boardId} 
+   </delete>
+   
+   <select id="boardSerachByBoardTitle" parameterType="map" resultMap="board-resultmap">
+   <![CDATA[
+   select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title, board_count
+         from(
+            select rownum rnum, board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title, board_count
+            from(
+               select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, board.movie_id, movie_title, board_count
+               from board, movie WHERE board.movie_Id = movie.movie_id and board_title Like '%'||#{boardTitle}||'%' order by board_id
+            )
+            where rownum <= #{endItemNo}
+         )
+         where rnum >= #{beginItemNo}
+         ]]>
+   </select>
+   
+   <select id="boardSerachByMovieTitle" parameterType="map" resultMap="board-resultmap">
+   <![CDATA[
+   select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title, board_count
+         from(
+            select rownum rnum, board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title, board_count
+            from(
+               select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, board.movie_id, movie_title, board_count
+               from board, movie WHERE board.movie_Id = movie.movie_id and movie_title Like '%'||#{movieTitle}||'%' order by board_id
+            )
+            where rownum <= #{endItemNo}
+         )
+         where rnum >= #{beginItemNo}
+         ]]>
+   </select>
+   
+   <select id="boardSerachByMemberId" parameterType="map" resultMap="board-resultmap">
+   <![CDATA[
+   select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title, board_count
+         from(
+            select rownum rnum, board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title, board_count
+            from(
+               select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, board.movie_id, movie_title, board_count
+               from board, movie WHERE board.movie_Id = movie.movie_id and member_id Like '%'||#{memberId}||'%' order by board_id
+            )
+            where rownum <= #{endItemNo}
+         )
+         where rnum >= #{beginItemNo}
+         ]]>
+   </select>
+   
+   <delete id="deleteReferenceMember" parameterType="String">
+      DELETE FROM reference
+      WHERE member_id = {value}
+   </delete>
+   
+   <select id="selectBoardTop3" resultMap="board-resultmap">
+   <![CDATA[
+            select rownum rnum, board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title, board_count
+            from(
+               select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, board.movie_id, movie_title, board_count
+               from board, movie WHERE board.movie_Id = movie.movie_id order by board_reference desc
+            )
+            where rownum <= 3
+         ]]>
+   </select>
+   
+   <update id="updateBoardCount" parameterType="int">
+      UPDATE board 
+      SET board_count = board_count + 1
+      WHERE board_id = #{value}
+   </update>
 </mapper>

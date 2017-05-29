@@ -31,6 +31,7 @@ create table board(
 	board_reference number not null,
 	member_id varchar2(20) not null,
 	movie_id number ,
+	board_count number,
 	constraint movie_fk foreign key(movie_id) references movie
 	);
 	
