@@ -8,9 +8,6 @@
 <title>CGW</title>
 <link href="/project_mini/css/board_boardInfo.css" rel="stylesheet" type="text/css">
 <style>
-body {
-   background-color : #fef3d3;
-}
 table {
     border-collapse: collapse;
     width: 100%;

@@ -85,7 +85,7 @@ p {
    </c:if>
    <% session.removeAttribute("insertMessage"); %>
    <!-- <p class="double" align = "center" size = "10">상위 TOP3 게시글</p> -->
-   <p>상위 TOP3 게시글</p>
+   <p>추천수 상위 TOP3 게시글</p>
    <table>
       <thead>
          <tr>

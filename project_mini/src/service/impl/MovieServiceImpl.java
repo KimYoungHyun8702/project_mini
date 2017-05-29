@@ -76,7 +76,7 @@ public class MovieServiceImpl implements MovieService {
 		try {
 			session = factory.openSession();
 			movie = dao.selectMovieById(session, movieId);
-			MovieServiceImpl.getInstance().roundAvgScore(dao.selectMovieById(session, movieId));
+			MovieServiceImpl.getInstance().roundAvgScore(dao.selectMovieById(session, movieId));//평점평균 반올림해주는 메소드.
 			session.commit();
 		} finally {
 			session.close();
