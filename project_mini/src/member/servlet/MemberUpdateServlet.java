@@ -1,6 +1,7 @@
 package member.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,9 +15,12 @@ import member.vo.Member;
 public class MemberUpdateServlet extends HttpServlet{
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, NumberFormatException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
+		/*response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter(); */
+		try{
 		String memberId = request.getParameter("memberId");
 		String memberName = request.getParameter("memberName");
 		String memberPassword = request.getParameter("memberPassword");
@@ -37,8 +41,13 @@ public class MemberUpdateServlet extends HttpServlet{
 		
 		request.setAttribute("memberLoginInfo", member);
 		session.setAttribute("memberLoginInfo", member);
-		request.getRequestDispatcher("/member/mypage.jsp").forward(request, response);
-		 
+		//request.getRequestDispatcher("/member/mypage.jsp").forward(request, response);
+		response.sendRedirect("/project_mini/member/mypage.jsp");
+		}catch(NumberFormatException e){
+			/*out.println("<script> alert('입력값이 올바르지 않습니다.');</script>");
+			request.getRequestDispatcher("/member/update.jsp").forward(request, response);*/
+			response.sendRedirect("/project_mini/member/update.jsp");
+		}
 		 
 	}
 }

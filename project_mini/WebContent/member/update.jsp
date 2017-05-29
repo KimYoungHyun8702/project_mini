@@ -4,7 +4,7 @@
 
 <HTML>
 <HEAD>
-<TITLE>회원가입</TITLE>
+<title>CGW</title>
 <!-- <link href="style.css" rel="stylesheet" type="text/css"> -->
 </HEAD>
 <BODY>
@@ -83,13 +83,17 @@
 </TD>
 </TR>
 
+<tr align="center">
+<td colspan="2"> ★★★수정 완료시 마이페이지로 이동하게 됩니다★★★ </TD>
+</TR>
+
 <tr>
 <!-- <td colspan="2"> </TD>-->
 </TR>
 
 <tr align="center">
 <td colspan="2">
-<input id="submitBtn" type="submit" onclick="foo()" value="수정" disabled="true">
+<input id="submitBtn" type="submit" value="수정" disabled="true">
 <input type="reset" value="취소">
 </TD>
 </TR>

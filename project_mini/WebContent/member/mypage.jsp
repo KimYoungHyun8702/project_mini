@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <HTML>
 <HEAD>
-<TITLE>회원가입</TITLE>
+<title>CGW</title>
 <!-- <link href="style.css" rel="stylesheet" type="text/css"> -->
 </HEAD>
 <BODY>

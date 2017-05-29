@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <HTML>
 <HEAD>
-<TITLE>회원가입</TITLE>
+<title>CGW</title>
 <!-- <link href="style.css" rel="stylesheet" type="text/css"> -->
 </HEAD>
 <%-- <c:choose> 
@@ -32,7 +32,7 @@
 <tr>
 <td width="170">*아이디입력</TD>
 <td width="530">
-<input id="memberId" name="memberId" type="text" size="8" value="${requestScope.msg}" maxlength="8" style="ime-mode:disabled;">
+<input id="memberId" name="memberId" type="text" size="10" value="${requestScope.msg}" maxlength="10" style="ime-mode:disabled;">
 <input type="button" onclick="checkId()" value="중복체크" style='background-color:orange' >
 <c:choose>
 <c:when test="${requestScope.msg != null }">
@@ -42,9 +42,9 @@
 <input type="text" value="다른 아이디를 입력해 주세요" readonly size="40" style="text-align:center"></input><br>
 </c:otherwise>
 </c:choose>
-한글아이디를 입력할 수 없습니다.
+한글아이디를 입력할 수 없습니다
 </TD>
-
+</TR>
 
 <tr>
 <td>*이름(실명) </TD>
@@ -60,8 +60,8 @@
 <tr>
 <td>*비밀번호 </TD>
 <td>
-<input id="pw1" name="readMemberPassword" type="password" size="10" maxlength="8"><br> 
-4~10자 이하로 입력(해주세요ㅠㅠ)
+<input id="pw1" name="readMemberPassword" type="password" size="10" maxlength="10"><br> 
+비밀번호는 10자를 넘을 수 없습니다
 </TD>
 </TR>
 
@@ -80,8 +80,18 @@
 <tr>
 <td> *이메일 주소 </TD>
 <td>
-<input name="memberEmail" type="email" size="20" maxlength="20"><br>
-아이디/비밀번호 분실, 변경시 본인확인 방법으로 사용하실 수 (있게하고싶습니다..)
+<!-- <input name="memberEmail" type="email" size="20" maxlength="20"><br> -->
+<input id="memberEmail" name="memberEmail" type="email" size="20" value="${requestScope.msg2}" maxlength="20" style="ime-mode:disabled;">
+<input type="button" onclick="checkEmail()" value="중복체크" style='background-color:brown' >
+<c:choose>
+<c:when test="${requestScope.msg2 != null }">
+<input type="text" value="${requestScope.msg2} 는 사용가능한 이메일입니다" readonly size="40" style="text-align:center"></input><br>
+</c:when>
+<c:otherwise>
+<input type="text" value="다른 이메일을 입력해 주세요" readonly size="40" style="text-align:center"></input><br>
+</c:otherwise>
+</c:choose>
+<br>아이디/비밀번호 분실, 변경시 <br>본인확인 방법으로 사용됩니다
 </TD>
 </TR>
 
@@ -117,6 +127,13 @@
 <input type="hidden" name="isdup" value="N">
 </form>
 </center>
+<c:choose>
+	<c:when test="${sessionScope.msg == 'fail' }">
+	<script>alert("입력한 값이 바르지 않습니다");</script>
+	</c:when>
+</c:choose>
+	<%session.removeAttribute("msg"); %>
+
 <script type="text/javascript">
 function foo() {
 	window.open("id_check.jsp", "id_check", "width=500,height=300");
@@ -138,6 +155,12 @@ function foo2() {
 function checkId() {
  	var sid = document.getElementById("memberId") .value;         
  	location.href="/project_mini/memberIdCheck?memberId=" + sid;	 
+}
+
+// 이메일 중복 확인(이메일을 입력하고 중복확인 버튼을 누르면 실행)
+function checkEmail() {
+ 	var sid = document.getElementById("memberEmail") .value;         
+ 	location.href="/project_mini/memberEmailCheck?memberEmail=" + sid;	 
 }
 </script>
 </BODY>

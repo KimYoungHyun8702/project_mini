@@ -80,9 +80,27 @@
 		<url-pattern>/memberIdCheck</url-pattern>
 	</servlet-mapping>
 	
+	<!-- MemberEmailCheckServlet 객체 등록 -->
+	<servlet>
+		<servlet-name>memberEmailCheck</servlet-name>
+		<servlet-class>member.servlet.MemberEmailCheckServlet</servlet-class> <!-- Servlet파일 경로 -->
+	</servlet>
+	<!-- MemberEmailCheckServlet 경로 지정 -->
+	<servlet-mapping>
+		<servlet-name>memberEmailCheck</servlet-name>
+		<url-pattern>/memberEmailCheck</url-pattern>
+	</servlet-mapping>
 	
-	
-	
+	<!-- SendEmailServlet 객체 등록 -->
+	<servlet>
+		<servlet-name>sendEmail</servlet-name>
+		<servlet-class>member.servlet.SendEmailServlet</servlet-class> <!-- Servlet파일 경로 -->
+	</servlet>
+	<!-- SendEmailServlet 경로 지정 -->
+	<servlet-mapping>
+		<servlet-name>sendEmail</servlet-name>
+		<url-pattern>/sendEmail</url-pattern>
+	</servlet-mapping>
 	
 	<!--===============================게시판 관리 ===========================================  -->
 		<context-param>

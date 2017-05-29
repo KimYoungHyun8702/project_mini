@@ -28,7 +28,7 @@ public class MemberService {
 	MemberDao dao = MemberDaoImpl.getInstance();
 	SqlSession session = null;
 
-	public void addMember(Member member) throws IOException {
+	public void addMember(Member member) throws IOException,NumberFormatException {
 		try {
 			session = SqlSessionFactoryManager.getInstance().getSqlSessionFactory().openSession();
 			int cnt = dao.insertMember(session, new Member(member.getMemberId(), member.getMemberName(),
@@ -86,6 +86,17 @@ public class MemberService {
 		try{
 			session = SqlSessionFactoryManager.getInstance().getSqlSessionFactory().openSession();
 			Member member = dao.selectMemberById(session, memberId);
+			return member;
+			
+		}finally{
+			session.close();
+		}
+	}
+	
+	public Member checkMemberEmail(String memberEmail) throws LoginFailException,IOException{
+		try{
+			session = SqlSessionFactoryManager.getInstance().getSqlSessionFactory().openSession();
+			Member member = dao.selectMemberByEmail(session, memberEmail);
 			return member;
 			
 		}finally{

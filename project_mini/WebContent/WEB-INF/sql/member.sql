@@ -4,7 +4,7 @@ create table member(
 	member_id varchar2(20) primary key,
 	member_name varchar2(15) not null,
 	member_password varchar2(20) not null,
-	member_email varchar2(30) not null,
+	member_email varchar2(30) unique,
 	member_sex varchar2(10) not null,
 	member_age number not null
 );

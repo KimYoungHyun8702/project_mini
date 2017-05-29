@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>CGW</title>
 <link href="/project_mini/css/style.css" rel="stylesheet" type="text/css">
 
 <title>당신이 원하는 바로 그 영화!@KOSTA탈주</title>
@@ -28,9 +28,10 @@
 				<input type="password" class="login-field" value="" placeholder="MemberPassword" id="memberPassword" name="memberPassword">
 				<label class="login-field-icon fui-lock" for="login-pass"></label>
 				</div>
-				<a><input class="btn btn-primary btn-large btn-block" type="submit" value=로그인></a>
+				<a><input class="btn btn-primary btn-large btn-block" type="submit" value="로그인"></a>
 				<a class="login-link" href="/project_mini/index.jsp">메인페이지로</a>
 				<a class="login-link" href="/project_mini/member/join.jsp">회원가입페이지로</a>
+				<a class="login-link" href="/project_mini/member/find_info.jsp">아이디/비밀번호 찾기</a>
 				</form>
 			</div>
 		</div>

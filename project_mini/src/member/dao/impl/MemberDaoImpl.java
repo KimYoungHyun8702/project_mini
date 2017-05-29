@@ -34,5 +34,9 @@ public class MemberDaoImpl implements MemberDao{
 	public Member selectMemberById(SqlSession session, String memberId){
 		return session.selectOne("memberMapper.selectMemberById", memberId);
 	}
+	@Override
+	public Member selectMemberByEmail(SqlSession session, String memberEmail) {
+		return session.selectOne("memberMapper.selectMemberByEmail", memberEmail);
+	}
 	
 }
