@@ -16,9 +16,6 @@ form {
    font-size:20px;
    text-align:center;
 }
-body {
-	background-color : #fef3d3;
-}
 
 </style>
 </head>
