@@ -3,15 +3,9 @@
 <!DOCTYPE html>
 <HTML>
 <HEAD>
-<<<<<<< HEAD
 <title>CGW</title>
-=======
-<TITLE>CGW</TITLE>
->>>>>>> branch 'master' of https://github.com/KimYoungHyun8702/project_mini.git
-<!-- <link href="style.css" rel="stylesheet" type="text/css"> -->
 </HEAD>
 <BODY>
-<br><br><br><br><br>
 <jsp:include page="/layout.jsp" />
 <center>
 <form action="/project_mini/memberJoin" method="post" name="joinform">
