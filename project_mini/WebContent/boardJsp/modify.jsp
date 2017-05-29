@@ -6,16 +6,17 @@
 <title>CGW</title>
 <link href="/project_mini/css/board_input.css" rel="stylesheet" type="text/css">
 <style>
+h2 {
+	font-family:"godik";
+}
 form {
-   font-family : "batang";
+   font-family : "godik";
    font-size:20px;
    text-align:center;
 }
 body {
-    background-image: url("https://cdn.pixabay.com/photo/2014/04/16/17/08/bulletin-board-325721_960_720.jpg");
-     
-    /* padding : 10px;
-    margin:10px; */
+    background-color : #fef3d3;
+    font-family : godik;
 }
 </style>
 </head>

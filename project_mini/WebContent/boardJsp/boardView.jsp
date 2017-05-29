@@ -54,16 +54,18 @@ p {
     border-left: 20px solid red;
     border-right:20px solid red;
     background-color: lightgrey;
-    margin:10px;
+    text-align:center;
+    width:60%;
     padding:20px;
 }
+
 div {
-   border-left:20px solid yellow;
-   border-right:20px solid yellow;
-   background-color:lightgrey;
-   padding:10px;
-   width:20%;
-   text-align:center;
+	text-align:center;
+	border-left: 20px solid yellow;
+    border-right:20px solid yellow;
+    background-color: lightgrey;
+    padding:10px;
+    
 }
 </style>
 </head>
@@ -84,7 +86,7 @@ div {
    </c:if>
    <% session.removeAttribute("insertMessage"); %>
    <!-- <p class="double" align = "center" size = "10">상위 TOP3 게시글</p> -->
-   <p class="seven" size = "60">상위 TOP3 게시글</p>
+   <p>상위 TOP3 게시글</p>
    <table>
       <thead>
          <tr>
@@ -118,7 +120,7 @@ div {
       </tbody>
    </table><br><br><br>
    
-   <p class="seven" size = "50">전체 게시글 목록</p>
+   <p>전체 게시글 목록</p>
    <table>
       <thead>
          <tr>
@@ -160,10 +162,11 @@ div {
          <option value="memberId">작성자 ID</option>
       </select> <input type="text" name="keyWord" /> 
       <input type="submit" value="검색" />
-      <input type="reset" value="입력 초기화" />
-   </form></center>
-   <a href="/project_mini/movieJsp/search/searchForm.jsp">영화 검색후 글쓰기!!</a><br>
-   <div style="text-align:center">
+      <input type="reset" value="입력 초기화" />&nbsp;
+      <button onclick="location.href='${initParam.rootPath }"/project_mini/movieJsp/search/searchForm.jsp"'>영화 검색후 글쓰기!!</button><br><br>
+   </form>
+   
+   <div>
       <%-- ######################################################
                                           페이징 처리
          ###################################################### --%>

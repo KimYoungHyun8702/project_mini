@@ -46,7 +46,7 @@
 		</div>
 	</section>
 	<c:if test="${sessionScope.memberLoginInfo.memberId != null }">
-	<a href="${initParam.rootPath }/InputDataController?movieId=<%=((Movie) request.getAttribute("movieDetail")).getMovieId()%>&movieTitle=<%=((Movie) request.getAttribute("movieDetail")).getMovieTitle()%>">게시글 쓰기</a>
+	<center><a href="${initParam.rootPath }/InputDataController?movieId=<%=((Movie) request.getAttribute("movieDetail")).getMovieId()%>&movieTitle=<%=((Movie) request.getAttribute("movieDetail")).getMovieTitle()%>">게시글 쓰기</a></center>
 	</c:if>
 </body>
 </html>
