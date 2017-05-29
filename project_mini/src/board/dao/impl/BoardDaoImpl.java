@@ -86,6 +86,29 @@ public class BoardDaoImpl implements BoardDao{
 		referenceMap.put("memberId", memberId);
 		return session.delete(makeSql("deleteReference"),referenceMap);
 	}
-	
+	@Override
+	public List<Board> boardSerachByBoardTitle(SqlSession session, int beginItemNo, int endItemNo, String keyWord) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("beginItemNo", beginItemNo);
+		map.put("endItemNo", endItemNo);
+		map.put("boardTitle", keyWord);
+		return session.selectList(makeSql("boardSerachByBoardTitle"), map);
+	}
+	@Override
+	public List<Board> boardSerachByMovieTitle(SqlSession session, int beginItemNo, int endItemNo, String keyWord) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("beginItemNo", beginItemNo);
+		map.put("endItemNo", endItemNo);
+		map.put("movieTitle", keyWord);
+		return session.selectList(makeSql("boardSerachByMovieTitle"), map);
+	}
+	@Override
+	public List<Board> boardSerachByMemberId(SqlSession session, int beginItemNo, int endItemNo, String keyWord) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("beginItemNo", beginItemNo);
+		map.put("endItemNo", endItemNo);
+		map.put("memberId", keyWord);
+		return session.selectList(makeSql("boardSerachByMemberId"), map);
+	}	
 	
 }

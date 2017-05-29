@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판</title>
+<title>CGW</title>
 </head>
 <body>
 	<jsp:include page="/layout.jsp" />

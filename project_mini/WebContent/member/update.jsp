@@ -4,7 +4,11 @@
 
 <HTML>
 <HEAD>
+<<<<<<< HEAD
 <title>CGW</title>
+=======
+<TITLE>CGW</TITLE>
+>>>>>>> branch 'master' of https://github.com/KimYoungHyun8702/project_mini.git
 <!-- <link href="style.css" rel="stylesheet" type="text/css"> -->
 </HEAD>
 <BODY>

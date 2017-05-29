@@ -3,11 +3,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 등록</title>
+<title>CGW</title>
 </head>
 <body>
 	<jsp:include page="/layout.jsp" />
-	<h2>게시판 등록</h2>
+	<h2>게시글을 등록하세요</h2>
 		<form action="${initParam.rootPath }/InsertController" method="post">
 			영화 제목 : <input type="text" name="movieTitle" value="${requestScope.movieTitle }" readonly/>
 			평점 : <input type="number" name="boardScore" max="5" min="1"/><br>
@@ -24,6 +24,6 @@
 </body>
 <script type="text/javascript">
 function msg(){
-	alert("게시물 등록 완료했습니다!!.!!");
+	alert("게시글 등록을 완료했습니다!!.!!");
 }
 </script>

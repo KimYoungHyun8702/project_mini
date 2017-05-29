@@ -96,4 +96,35 @@ public interface BoardDao {
 	 * @return
 	 */
 	int deleteReference(SqlSession session, int boardId, String memberId);
+	
+	
+	/**
+	 * 게시판 이름으로 조회 메소드
+	 * @param session
+	 * @param beginItemNo
+	 * @param endItemNo
+	 * @param boardTitle
+	 * @return
+	 */
+	List<Board> boardSerachByBoardTitle(SqlSession session, int beginItemNo, int endItemNo, String keyWord);
+	
+	/**
+	 * 영화 제목으로 조회 메소드
+	 * @param session
+	 * @param beginItemNo
+	 * @param endItemNo
+	 * @param keyWord
+	 * @return
+	 */
+	List<Board> boardSerachByMovieTitle(SqlSession session, int beginItemNo, int endItemNo, String keyWord);
+	
+	/**
+	 * 작성자 이름으로 조회 메소드
+	 * @param session
+	 * @param beginItemNo
+	 * @param endItemNo
+	 * @param keyWord
+	 * @return
+	 */
+	List<Board> boardSerachByMemberId(SqlSession session, int beginItemNo, int endItemNo, String keyWord);
 }

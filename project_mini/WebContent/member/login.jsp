@@ -6,7 +6,7 @@
 <title>CGW</title>
 <link href="/project_mini/css/style.css" rel="stylesheet" type="text/css">
 
-<title>당신이 원하는 바로 그 영화!@KOSTA탈주</title>
+<title>CGW</title>
 </head>
 <body>
 <%-- <jsp:include page="/layout.jsp" /> --%>

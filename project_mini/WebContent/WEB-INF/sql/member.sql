@@ -276,3 +276,36 @@ from movie m, board b
 where m.movie_id=b.b_movie_id(+) 
 order by m.movie_id 
 group by b.b_movie_id;
+
+select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title
+			from(
+				select rownum rnum, board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title
+				from(
+					select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, board.movie_id, movie_title
+					from board, movie WHERE board.movie_Id = movie.movie_id and board.board_title = '%' || #{searchTitle} || '%' order by board_id
+				)
+				where rownum <= #{endItemNum}
+			)
+			where rnum >= #{beginItemNum}
+			
+			select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title
+			from(
+				select rownum rnum, board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title
+				from(
+					select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, board.movie_id, movie_title
+					from board, movie WHERE board.movie_Id = movie.movie_id and board_title Like '%지%' order by board_id
+				)
+				where rownum <= 10
+			)
+			where rnum >= 1
+			
+			select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title
+			from(
+				select rownum rnum, board_id, board_title, board_date, board_content, board_score, board_reference, member_id, movie_id, movie_title
+				from(
+					select board_id, board_title, board_date, board_content, board_score, board_reference, member_id, board.movie_id, movie_title
+					from board, movie WHERE board.movie_Id = movie.movie_id and movie_title Like '%나우%' order by board_id
+				)
+				where rownum <= 10
+			)
+			where rnum >= 1

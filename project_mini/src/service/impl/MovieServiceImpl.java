@@ -144,7 +144,7 @@ public class MovieServiceImpl implements MovieService {
 			} else {
 				// 평점 등록수가 부족하여 top5안되는 경우 random으로 영화 5개 선정.
 				// 등록된 영화ID와 일치하는 중복없는 랜덤수 배열생성.
-				System.out.println("평점등록수가 부족하여 top5를 선정할 수 없습니다.");
+				//System.out.println("평점등록수가 부족하여 top5를 선정할 수 없습니다.");
 				int randomList[] = new int[5];
 				for (int i = 0; i < randomList.length; i++) {
 					randomList[i] = (int) (Math.random() * dao.countMovie(session)) + 1;
@@ -154,7 +154,6 @@ public class MovieServiceImpl implements MovieService {
 						}
 					}
 				}
-
 				// 생성한 랜덤수를 movieId로 하는 영화5개정보 list에 저장.
 				for (int i = 0; i < 5; i++) {
 					top5MovieList.add(MovieServiceImpl.getInstance().findMovieById(randomList[i]));

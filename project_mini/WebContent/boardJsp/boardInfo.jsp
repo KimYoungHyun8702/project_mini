@@ -1,45 +1,56 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="enconding">
-<title>게시글 정보</title>
+<title>CGW</title>
 </head>
 <body>
-<h1>테이블 정보입니다</h1>
-<table border = "1" width="1000">
-	<thead>
-		<tr>
-			<td>작성자 </td>
-			<td>영화 제목</td>
-			<td>제목 </td>
-			<td>내용 </td>
-			<td>작성일자 </td>
-			<td>추천수 </td>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>${requestScope.board.memberId}</td>
-			<td>${requestScope.board.movieTitle }</td>
-			<td>${requestScope.board.boardTitle}</td>
-			<td>${requestScope.board.boardContent}</td>
-			<td>${requestScope.board.boardDate}</td>
-			<td>${requestScope.board.boardReference}</td>
-		</tr>
-	</tbody>
-</table>
-	<c:if test="${requestScope.board.memberId == sessionScope.memberLoginInfo.memberId }">
-	<button onclick="location.href='${initParam.rootPath }/PostModifyController?boardId=${requestScope.board.boardId }'">수정</button>
-	<button onclick="location.href='${initParam.rootPath }/DeleteController?boardId=${requestScope.board.boardId }&memberId=${sessionScope.memberLoginInfo.memberId}'">삭제</button>
+	<jsp:include page="/layout.jsp" />
+	<h1>게시글 정보입니다</h1>
+	<table border="1" width="1000">
+		<thead>
+			<tr>
+				<td>게시글 번호</td>
+				<td>영화 제목</td>
+				<td>제목</td>
+				<td>작성자</td>
+				<td>내용</td>
+				<td>작성일자</td>
+				<td>추천수</td>
+				<td>평점</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>${requestScope.board.boardId }</td>
+				<td>${requestScope.board.movieTitle }</td>
+				<td>${requestScope.board.boardTitle}</td>
+				<td>${requestScope.board.memberId}</td>
+				<td>${requestScope.board.boardContent}</td>
+				<td>${requestScope.board.boardDate}</td>
+				<td>${requestScope.board.boardReference}</td>
+				<td>${requestScope.board.boardScore }</td>
+			</tr>
+		</tbody>
+	</table>
+	<c:if
+		test="${requestScope.board.memberId == sessionScope.memberLoginInfo.memberId }">
+		<button
+			onclick="location.href='${initParam.rootPath }/PostModifyController?boardId=${requestScope.board.boardId }'">수정</button>
+		<button
+			onclick="location.href='${initParam.rootPath }/DeleteController?boardId=${requestScope.board.boardId }&memberId=${sessionScope.memberLoginInfo.memberId}'">삭제</button>
 	</c:if>
 	<c:if test="${sessionScope.memberLoginInfo.memberId != null}">
-	<c:if test="${requestScope.reference == null}">
-	<button onclick="location.href='${initParam.rootPath }/ReferenceController?boardId=${requestScope.board.boardId }&memberId=${sessionScope.memberLoginInfo.memberId }'">추천하기 꾸욱~</button>
+		<c:if test="${requestScope.reference == null}">
+			<button
+				onclick="location.href='${initParam.rootPath }/ReferenceController?boardId=${requestScope.board.boardId }&memberId=${sessionScope.memberLoginInfo.memberId }'">추천하기
+				꾸욱~</button>
+		</c:if>
 	</c:if>
-	</c:if>
-	<button onclick="location.href='${initParam.rootPath }/SelectController?memberId=${sessionScope.memberLoginInfo.memberId }'">뒤로가기</button>
+	<button
+		onclick="location.href='${initParam.rootPath }/SelectController?memberId=${sessionScope.memberLoginInfo.memberId }'">뒤로가기</button>
 </body>
 </html>

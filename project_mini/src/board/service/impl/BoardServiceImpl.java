@@ -169,6 +169,59 @@ public class BoardServiceImpl implements BoardService{
 		}
 		return "성공";
 	}
+
+	@Override
+	public Map<String, Object> boardSerachByBoardTitleService(int page, String keyWord) {
+		HashMap<String, Object> map = new HashMap<>();// 결과값을 담을 Map
+		SqlSession session = factory.openSession();
+		try {
+			// 1. PagingBean 객체 생성 -> Paging 계산 처리하는 객체 -> 보려는 페이지, 총 item 수
+			int totalCount = dao.selectBoardCount(session);
+			BoardBean boardBean = new BoardBean(totalCount, page); // java.util
+			map.put("pageBean", boardBean);
+			//2. page에 보여줄 item 리스트
+			List<Board> list = dao.boardSerachByBoardTitle(session, boardBean.getBeginBoardInPage(), boardBean.getEndBoardInPage(),keyWord);
+			map.put("list", list);
+			return map;
+		} finally {
+			session.close();
+		}
+	}
+	
+	public Map<String, Object> boardSerachByMovieTitleService(int page, String keyWord) {
+		HashMap<String, Object> map = new HashMap<>();// 결과값을 담을 Map
+		SqlSession session = factory.openSession();
+		try {
+			// 1. PagingBean 객체 생성 -> Paging 계산 처리하는 객체 -> 보려는 페이지, 총 item 수
+			int totalCount = dao.selectBoardCount(session);
+			BoardBean boardBean = new BoardBean(totalCount, page); // java.util
+			map.put("pageBean", boardBean);
+			//2. page에 보여줄 item 리스트
+			List<Board> list = dao.boardSerachByMovieTitle(session, boardBean.getBeginBoardInPage(), boardBean.getEndBoardInPage(),keyWord);
+			map.put("list", list);
+			return map;
+		} finally {
+			session.close();
+		}
+	}
+
+	@Override
+	public Map<String, Object> boardSerachByMemberIdService(int page, String keyWord) {
+		HashMap<String, Object> map = new HashMap<>();// 결과값을 담을 Map
+		SqlSession session = factory.openSession();
+		try {
+			// 1. PagingBean 객체 생성 -> Paging 계산 처리하는 객체 -> 보려는 페이지, 총 item 수
+			int totalCount = dao.selectBoardCount(session);
+			BoardBean boardBean = new BoardBean(totalCount, page); // java.util
+			map.put("pageBean", boardBean);
+			//2. page에 보여줄 item 리스트
+			List<Board> list = dao.boardSerachByMemberId(session, boardBean.getBeginBoardInPage(), boardBean.getEndBoardInPage(),keyWord);
+			map.put("list", list);
+			return map;
+		} finally {
+			session.close();
+		}
+	}
 	
 	
 	

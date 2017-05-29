@@ -55,5 +55,11 @@ public interface BoardService {
 	Reference selectReferenceService(int boardId, String memberId);
 	
 	String deleteReferenceService(int boardId, String memberId);
+	
+	Map<String, Object> boardSerachByBoardTitleService(int page, String keyWord);
+	
+	Map<String, Object> boardSerachByMovieTitleService(int page, String keyWord);
+	
+	Map<String, Object> boardSerachByMemberIdService(int page, String keyWord);
 
 }
