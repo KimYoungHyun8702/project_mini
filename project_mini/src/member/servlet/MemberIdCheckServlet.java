@@ -23,9 +23,6 @@ public class MemberIdCheckServlet extends HttpServlet{
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
-		
-		System.out.println(request.getParameter("memberId"));
-		
 		try{
 			Member member = service.checkMemberId(memberId);
 			
