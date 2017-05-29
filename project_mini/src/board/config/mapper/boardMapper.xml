@@ -147,7 +147,7 @@
    
    <delete id="deleteReferenceMember" parameterType="String">
       DELETE FROM reference
-      WHERE member_id = {value}
+      WHERE member_id = #{value}
    </delete>
    
    <select id="selectBoardTop3" resultMap="board-resultmap">
